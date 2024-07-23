@@ -1,0 +1,39 @@
+@import 'bulma/bulma.scss';
+
+$blue-100: #ebf8ff;
+$blue-200: #bee3f8;
+$blue-300: #90cdf4;
+$blue-400: #63b3ed;
+$blue-500: #4299e1;
+$blue-600: #3182ce;
+$blue-700: #2b6cb0;
+$blue-800: #2c5282;
+
+$rsg-colors: (
+  'blue': (
+    $blue-100,
+    $blue-200,
+    $blue-300,
+    $blue-400,
+    $blue-500,
+    $blue-600
+  )
+);
+
+@each $map in $rsg-colors {
+  $name: nth($map, 1);
+  $map: map-get($rsg-colors, $name);
+  $i: 0;
+
+  @each $color in $map {
+    $i: $i + 1;
+
+    .text-#{$name}-#{$i*100} {
+      color: $color;
+    }
+  }
+}
+
+.text-blue-400 {
+  background-color: $blue-400;
+}
