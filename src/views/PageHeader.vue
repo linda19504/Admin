@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
     <el-page-header :icon="ArrowLeft" :title="header_title_trans">
         <template #content>
 
@@ -30,4 +30,4 @@ const dropdown_items_trans = computed(() => {
 
 </script>
 
-<style scoped></style>
+<style scoped></style> -->

@@ -23,8 +23,6 @@
 <script setup>
 import { ref } from "vue";
 import { useUserStore } from '@/stores/user.js';
-// import { useCounterStore } from '../store/counter'
-// import { useRouter } from "vue-router";
 
 const isLogin = ref(true);
 const email = ref("");
@@ -32,7 +30,6 @@ const username = ref("");
 const password = ref("");
 const agreementChecked = ref(false);
 const userStore = useUserStore();
-// const router = useRouter();
 
 async function register() {
     if (!agreementChecked.value) {

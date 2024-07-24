@@ -21,9 +21,6 @@
             </el-sub-menu>
         </el-menu>
     </div>
-
-
-
     <div class="button_container_group">
         <div class="switch_container">
             <div class="switch_button">
@@ -42,8 +39,8 @@
         </div>
         <div class="group-container">
             <el-button-group>
-                <el-button type="primary" color="#E0E0E0" :icon="Plus" @click="showDrawer" />
                 <DrawerList></DrawerList>
+                <el-button type="primary" color="#E0E0E0" :icon="Plus" @click="showDrawer" />
                 <el-button type="primary" color="#E0E0E0" :icon="Edit" />
                 <el-button type="primary" color="#E0E0E0" :icon="Upload" />
                 <el-button type="primary" color="#E0E0E0" :icon="Delete" />
@@ -51,9 +48,6 @@
 
         </div>
     </div>
-
-
-
     <div class="table_container">
         <el-table :data="tableData" border>
             <el-table-column fixed prop="date" label="Date" width="150" />
@@ -147,17 +141,6 @@ const search = async () => {
     min-height: 36px;
 }
 
-.button_container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    text-align: center;
-    width: 100%;
-    padding: 10px 20px;
-    margin-top: 10px;
-}
-
 .el-button {
     font-size: 16px;
     font-weight: bold;
@@ -174,28 +157,20 @@ const search = async () => {
     flex-wrap: nowrap;
     padding-top: 17px;
     padding-bottom: 5px;
-    /* width: 100%; */
     width: 100%;
     margin: 0 auto;
+    /* width: 100%;
+    padding: 12px;
+    padding-left: 36px;
+
+    background: #f1f1f1;
+    border-radius: 14px;
+    border: none;
+    position: relative; */
 }
 
 .el-input {
     margin-right: 15px;
-}
-
-.table_container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    /* width: 100%; */
-    height: 250px;
-}
-
-.search_container.el-button {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: flex-end;
 }
 
 .button_container_group {
@@ -203,13 +178,13 @@ const search = async () => {
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: flex-end;
-    margin-right: auto;
 }
 
 .el-button-group {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
+    justify-content: flex-end;
 }
 
 .search_container {
@@ -223,14 +198,6 @@ const search = async () => {
     display: flex;
     flex-wrap: nowrap;
     margin-bottom: 30px;
-}
-
-.search_button {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: flex-end;
-    margin-bottom: 15px;
 }
 
 .switch_container {
