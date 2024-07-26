@@ -1,4 +1,4 @@
-<!-- <template>
+<template>
     <el-page-header :icon="ArrowLeft" :title="header_title_trans">
         <template #content>
 
@@ -19,6 +19,7 @@ import AvatorDropdown from '@/components/AvatorDropdown.vue'
 
 
 const { t } = useI18n()
+
 const header_title_trans = computed(() => t('nav.back'))
 const dropdown_items = reactive([
     { title: "auth.logout", onclick: () => { alert("logout") } },
@@ -28,6 +29,7 @@ const dropdown_items_trans = computed(() => {
 })
 
 
+
 </script>
 
-<style scoped></style> -->
+<style scoped></style>
