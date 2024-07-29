@@ -1,7 +1,5 @@
 export default {
-    navigateBar:{
-        PEDK:'pedk',
-        Setting:'数据可视化',
-        Printer:'打印机'
-    }
-}
+    Setting_List : 'Setting 列表',
+    Control_List : 'Control 列表',
+    Panel_List:'Panel 列表', 
+};

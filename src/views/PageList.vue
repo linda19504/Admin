@@ -9,15 +9,15 @@
             <el-menu-item index="1">loginPage</el-menu-item>
             <el-sub-menu index="2">
                 <template #title>List Menu</template>
-                <el-menu-item index="2-1">Setting List</el-menu-item>
-                <el-menu-item index="2-2">Control List</el-menu-item>
-                <el-menu-item index="2-3">Panel List</el-menu-item>
-                <el-sub-menu index="2-4">
+                <el-menu-item index="2-1">{{ t('Setting_List') }}</el-menu-item>
+                <el-menu-item index="2-2">{{ t('Control_List') }}</el-menu-item>
+                <el-menu-item index="2-3">{{ t('Panel_List') }}</el-menu-item>
+                <!-- <el-sub-menu index="2-4">
                     <template #title>BSP List</template>
                     <el-menu-item index="2-4-1"> one</el-menu-item>
                     <el-menu-item index="2-4-2"> two</el-menu-item>
                     <el-menu-item index="2-4-3"> three</el-menu-item>
-                </el-sub-menu>
+                </el-sub-menu> -->
             </el-sub-menu>
         </el-menu>
     </div>
@@ -60,12 +60,13 @@
     </div>
 </template>
 <script setup>
-
+import { useI18n } from 'vue-i18n';
 import { Delete, Edit, Search, Upload, Plus } from '@element-plus/icons-vue';
 import DrawerList from "@/components/DrawerList.vue";
 import { ref } from 'vue';
 import { useDrawerStore } from '@/stores/drawer';
 import axios from 'axios';
+const { t } = useI18n()
 const search_input = ref();
 const drawer = ref(false);
 const value2 = ref(true);
@@ -112,6 +113,7 @@ const handleSearch = () => {
 const store = useDrawerStore();
 const showDrawer = () => {
     store.drawerClick();
+
 };
 const search = async () => {
     const options = {

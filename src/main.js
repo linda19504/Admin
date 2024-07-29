@@ -6,18 +6,18 @@ import 'element-plus/dist/index.css'
 import '@/styles/style.scss'
 import App from './App.vue'
 import router from './router'
-import createI18n from 'vue-i18n'
+import {createI18n} from 'vue-i18n'
 import en from'./language/en'
 import zh from'./language/zh'
 
-const message = {
+const messages = {
     en,
     zh
 }
 const app = createApp(App)
 const i18n = createI18n({
     legacy:false,
-    message,
+    messages,
     locale:'en'
 })
 app.use(createPinia())

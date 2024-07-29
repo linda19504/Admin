@@ -1,7 +1,5 @@
 export default {
-    navigateBar:{
-        PEDK:'pedk',
-        Setting:'setting',
-        Printer:'printer'
-    }
-}
+    Setting_List : ' Setting list ',
+    Control_List : 'Control list',
+    Panel_List:'Panel list', 
+};
