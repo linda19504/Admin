@@ -42,6 +42,9 @@
                 <DrawerList></DrawerList>
                 <el-button type="primary" color="#E0E0E0" :icon="Plus" @click="showDrawer" />
                 <el-button type="primary" color="#E0E0E0" :icon="Edit" />
+                <!-- <a id="gotoEdit" href="#" @click="showModal(PopUp)">{{
+                    HOME_PAGE.ACTION_CALCULATE }}</a> -->
+                <PopUp></PopUp>
                 <el-button type="primary" color="#E0E0E0" :icon="Upload" />
                 <el-button type="primary" color="#E0E0E0" :icon="Delete" />
             </el-button-group>
@@ -63,6 +66,7 @@
 import { useI18n } from 'vue-i18n';
 import { Delete, Edit, Search, Upload, Plus } from '@element-plus/icons-vue';
 import DrawerList from "@/components/DrawerList.vue";
+import PopUp from '@/components/PopUp.vue';
 import { ref } from 'vue';
 import { useDrawerStore } from '@/stores/drawer';
 import axios from 'axios';

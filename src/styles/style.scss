@@ -1,5 +1,101 @@
+// @import 'bulma/bulma.scss';
+
+// $blue-100: #ebf8ff;
+// $blue-200: #bee3f8;
+// $blue-300: #90cdf4;
+// $blue-400: #63b3ed;
+// $blue-500: #4299e1;
+// $blue-600: #3182ce;
+// $blue-700: #2b6cb0;
+// $blue-800: #2c5282;
+
+// $rsg-colors: (
+//   'blue': (
+//     $blue-100,
+//     $blue-200,
+//     $blue-300,
+//     $blue-400,
+//     $blue-500,
+//     $blue-600
+//   )
+// );
+
+// @each $map in $rsg-colors {
+//   $name: nth($map, 1);
+//   $map: map-get($rsg-colors, $name);
+//   $i: 0;
+
+//   @each $color in $map {
+//     $i: $i + 1;
+
+//     .text-#{$name}-#{$i*100} {
+//       color: $color;
+//     }
+//   }
+// }
+
+// .text-blue-400 {
+//   background-color: $blue-400;
+// }
 @import 'bulma/bulma.scss';
 
+@mixin breakpoint($point) {
+    @if $point == "small" {
+        @media (max-width: 576px) {
+            @content;
+        }
+    }
+
+    @else if $point == "medium" {
+        @media (max-width: 768px) {
+            @content;
+        }
+    }
+
+    @else if $point == "large" {
+        @media (max-width: 992px) {
+            @content;
+        }
+    }
+
+    @else if $point == "extralarge" {
+        @media (max-width: 1200px) {
+            @content;
+        }
+    }
+}
+
+// 灰色系
+$grey-100: #f9fafb;
+$grey-200: #f3f4f6;
+$grey-300: #e5e7eb;
+$grey-400: #d1d5db;
+$grey-500: #9ca3af;
+$grey-600: #6b7280;
+$grey-700: #4b5563;
+$grey-800: #374151;
+
+//黑色系
+$black-100: #f2f2f2;
+$black-200: #e5e5e5;
+$black-300: #cccccc;
+$black-400: #b3b3b3;
+$black-500: #999999;
+$black-600: #808080;
+$black-700: #666666;
+$black-800: #4d4d4d;
+
+//白色系
+$white-100: #ffffff;
+$white-200: #f9f9f9;
+$white-300: #f2f2f2;
+$white-400: #e5e5e5;
+$white-500: #d9d9d9;
+$white-600: #cccccc;
+$white-700: #b3b3b3;
+$white-800: #999999;
+
+// 蓝色系
 $blue-100: #ebf8ff;
 $blue-200: #bee3f8;
 $blue-300: #90cdf4;
@@ -9,31 +105,261 @@ $blue-600: #3182ce;
 $blue-700: #2b6cb0;
 $blue-800: #2c5282;
 
+// 红色系
+$red-100: #fff5f5;
+$red-200: #fed7d7;
+$red-300: #feb2b2;
+$red-400: #fc8181;
+$red-500: #f56565;
+$red-600: #e53e3e;
+$red-700: #c53030;
+$red-800: #9b2c2c;
+
+// 黄色系
+$yellow-100: #fffff0;
+$yellow-200: #fefcbf;
+$yellow-300: #faf089;
+$yellow-400: #f6e05e;
+$yellow-500: #ecc94b;
+$yellow-600: #d69e2e;
+$yellow-700: #b7791f;
+$yellow-800: #975a16;
+
+// 绿色系
+$green-100: #f0fff4;
+$green-200: #c6f6d5;
+$green-300: #9ae6b4;
+$green-400: #68d391;
+$green-500: #48bb78;
+$green-600: #38a169;
+$green-700: #2f855a;
+$green-800: #276749;
+
+//橙色系
+$orange-100: #FFE8D9;
+$orange-200: #FFD0B5;
+$orange-300: #FFB088;
+$orange-400: #FF9466;
+$orange-500: #F9703E;
+$orange-600: #F35627;
+
+h1,
+.heading-xxl,
+h2,
+.heading-xl,
+h3,
+.heading-l,
+h4,
+.heading-m,
+h5,
+.heading-s,
+h6,
+.heading-xs {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    color: $grey-800;
+}
+
+
+h1,
+.heading-xxl,
+h2,
+.heading-xl,
+h3,
+.heading-l {
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+h4,
+.heading-m,
+h5,
+.heading-s {
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+h6,
+.heading-xs {
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+
+h1,
+.heading-xxl {
+    font-size: 2rem;
+
+    @include breakpoint(large) {
+        font-size: 2.25rem;
+    }
+}
+
+h2,
+.heading-xl {
+    font-size: 2rem;
+}
+
+h3,
+.heading-l {
+    font-size: 1.75rem;
+}
+
+h4,
+.heading-m {
+    font-size: 1.5rem;
+}
+
+h5,
+.heading-s {
+    font-size: 1.25rem;
+}
+
+h6,
+.heading-xs {
+    font-size: 1.125rem;
+}
+
+
+.body-1,
+.body-m,
+.body-s,
+.body-xs {
+    line-height: 1.5;
+}
+
+body {
+    color: $grey-800;
+}
+
+a {
+    color: $blue-500
+}
+
+.body-1 {
+    font-size: 1.125rem;
+}
+
+.body-m {
+    font-size: 1rem;
+}
+
+.body-s {
+    font-size: 0.875rem;
+}
+
+.body-xs {
+    font-size: 0.75rem;
+}
+
+.font-number {
+    font-family: neuzeit_grotesk, Helvetica, Arial, sans-serif;
+}
+
+.text-normal {
+    font-weight: normal;
+}
+
+.text-bold {
+    font-weight: bold;
+}
+
 $rsg-colors: (
-  'blue': (
-    $blue-100,
-    $blue-200,
-    $blue-300,
-    $blue-400,
-    $blue-500,
-    $blue-600
-  )
+    'grey':($grey-100,
+        $grey-200,
+        $grey-300,
+        $grey-400,
+        $grey-500,
+        $grey-600,
+    ),
+    'blue':($blue-100,
+        $blue-200,
+        $blue-300,
+        $blue-400,
+        $blue-500,
+        $blue-600,
+    ),
+    'orange':($orange-100,
+        $orange-200,
+        $orange-300,
+        $orange-400,
+        $orange-500,
+        $orange-600,
+    )
 );
 
 @each $map in $rsg-colors {
-  $name: nth($map, 1);
-  $map: map-get($rsg-colors, $name);
-  $i: 0;
+    $name: nth($map, 1);
+    $map: map-get($rsg-colors, $name);
+    $i: 0;
 
-  @each $color in $map {
-    $i: $i + 1;
+    @each $color in $map {
+        $i: $i+1;
 
-    .text-#{$name}-#{$i*100} {
-      color: $color;
+
+        .text-#{$name}-#{$i*100} {
+            color: $color;
+        }
     }
-  }
 }
 
-.text-blue-400 {
-  background-color: $blue-400;
-}
+// .container-small {
+//     margin: auto;
+
+//     @include breakpoint(small) {
+//         max-width: 576px;
+//         /* 当屏幕宽度在小于576px和768px时，设置容器的最大宽度 */
+//     }
+
+//     max-width: 576px;
+// }
+
+// .container-medium {
+//     margin: auto;
+
+//     @include breakpoint(small) {
+//         max-width: 768px;
+//         /* 当屏幕宽度在小于576px和768px时，设置容器的最大宽度 */
+//     }
+
+//     @include breakpoint(medium) {
+//         max-width: 768px;
+//         /* 当屏幕宽度在576px和768px之间时，设置容器的最大宽度 */
+//     }
+
+//     @include breakpoint(large) {
+//         max-width: 768px;
+//         /* 当屏幕宽度在768px和992px之间时，设置容器的最大宽度 */
+//     }
+
+//     @include breakpoint(extralarge) {
+//         max-width: 768px;
+//         /* 当屏幕宽度在992px和1200px之间时，设置容器的最大宽度 */
+//     }
+
+//     max-width: 768px;
+// }
+
+// .row {
+//     display: flex;
+//     flex-direction: row;
+//     flex-wrap: nowrap;
+//     align-items: stretch;
+// }
+
+// .column {
+//     display: flex;
+//     flex-direction: column;
+//     flex-wrap: nowrap;
+//     align-items: stretch;
+// }
+
+
+// display: flex：将容器设置为flex布局，使其成为一个flex容器。
+// flex-direction：将项目排列方向设置为行、列、行反转、列反转等方向。
+// justify-content：在主轴上对齐项目。
+// align-items：在交叉轴上对齐项目。
+// flex-wrap：控制项目在一行/列中是否换行。
+// flex-grow：指定项目在剩余空间中的放大比例。
+// flex-shrink：指定项目的缩小比例。
+// flex-basis：指定项目的基础尺寸。
