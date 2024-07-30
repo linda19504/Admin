@@ -12,12 +12,6 @@
                 <el-menu-item index="2-1">{{ t('Setting_List') }}</el-menu-item>
                 <el-menu-item index="2-2">{{ t('Control_List') }}</el-menu-item>
                 <el-menu-item index="2-3">{{ t('Panel_List') }}</el-menu-item>
-                <!-- <el-sub-menu index="2-4">
-                    <template #title>BSP List</template>
-                    <el-menu-item index="2-4-1"> one</el-menu-item>
-                    <el-menu-item index="2-4-2"> two</el-menu-item>
-                    <el-menu-item index="2-4-3"> three</el-menu-item>
-                </el-sub-menu> -->
             </el-sub-menu>
         </el-menu>
     </div>
@@ -41,10 +35,8 @@
             <el-button-group>
                 <DrawerList></DrawerList>
                 <el-button type="primary" color="#E0E0E0" :icon="Plus" @click="showDrawer" />
-                <el-button type="primary" color="#E0E0E0" :icon="Edit" />
-                <!-- <a id="gotoEdit" href="#" @click="showModal(PopUp)">{{
-                    HOME_PAGE.ACTION_CALCULATE }}</a> -->
-                <PopUp></PopUp>
+                <Modal></Modal>
+                <el-button type="primary" color="#E0E0E0" :icon="Edit" @click="showModal" />
                 <el-button type="primary" color="#E0E0E0" :icon="Upload" />
                 <el-button type="primary" color="#E0E0E0" :icon="Delete" />
             </el-button-group>
@@ -66,13 +58,15 @@
 import { useI18n } from 'vue-i18n';
 import { Delete, Edit, Search, Upload, Plus } from '@element-plus/icons-vue';
 import DrawerList from "@/components/DrawerList.vue";
-import PopUp from '@/components/PopUp.vue';
+import Modal from '@/components/Modal.vue';
 import { ref } from 'vue';
 import { useDrawerStore } from '@/stores/drawer';
+import { usePopupStore } from '@/stores/popup';
 import axios from 'axios';
 const { t } = useI18n()
 const search_input = ref();
 const drawer = ref(false);
+const popup = ref(false);
 const value2 = ref(true);
 const activeIndex = ref('1');
 const handleSelect = () => { };
@@ -115,9 +109,13 @@ const handleSearch = () => {
     search()
 };
 const store = useDrawerStore();
+const popupStore = usePopupStore();
 const showDrawer = () => {
     store.drawerClick();
 
+};
+const showModal = () => {
+    popupStore.popupClick();
 };
 const search = async () => {
     const options = {

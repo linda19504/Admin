@@ -21,9 +21,12 @@
     </div>
 </template>
 <script setup>
+import { usePopupStore } from '@/stores/popup.js'
 import TheList from "@/components/TheList.vue";
 import TheButton from "@/components/TheButton.vue";
-
+import { storeToRefs } from 'pinia'
+const popupStore = usePopupStore();
+const { popup } = storeToRefs(popupStore)
 const isOrdered = true;
 
 const props = defineProps({
@@ -47,10 +50,10 @@ const props = defineProps({
     padding: 0 1.125rem;
     overflow-y: auto;
 
-    @include breakpoint(medium) {
-        max-width: 28rem;
-        margin: 0 auto; //得一个元素的最大宽度为 28rem，同时在水平方向上居中对齐
-    }
+    // @include breakpoint(medium) {
+    //     max-width: 28rem;
+    //     margin: 0 auto; //得一个元素的最大宽度为 28rem，同时在水平方向上居中对齐
+    // }
 
     p {
         margin: 1.5rem 0 0;
@@ -68,7 +71,7 @@ const props = defineProps({
     flex-shrink: 1;
 
     .tooltip_button {
-        background-color: $blue-500;
+        // background-color: $blue-500;
         color: #fff;
         border: none;
         border-radius: 4px;
