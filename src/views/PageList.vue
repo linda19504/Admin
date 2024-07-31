@@ -33,10 +33,14 @@
         </div>
         <div class="group-container">
             <el-button-group>
-                <DrawerList></DrawerList>
-                <el-button type="primary" color="#E0E0E0" :icon="Plus" @click="showDrawer" />
-                <Modal></Modal>
-                <el-button type="primary" color="#E0E0E0" :icon="Edit" @click="showModal" />
+                <el-button type="primary" color="#E0E0E0" :icon="Plus" @click="showDrawer">
+                    <DrawerList></DrawerList>
+                </el-button>
+                <el-button type="primary" color="#E0E0E0" :icon="Edit" @click="showModal">
+                    <TheTooltip>
+                        <Modal :handleClose="closeModal"></Modal>
+                    </TheTooltip>
+                </el-button>
                 <el-button type="primary" color="#E0E0E0" :icon="Upload" />
                 <el-button type="primary" color="#E0E0E0" :icon="Delete" />
             </el-button-group>
@@ -59,14 +63,18 @@ import { useI18n } from 'vue-i18n';
 import { Delete, Edit, Search, Upload, Plus } from '@element-plus/icons-vue';
 import DrawerList from "@/components/DrawerList.vue";
 import Modal from '@/components/Modal.vue';
+import TheTooltip from '@/components/TheTooltip.vue';
 import { ref } from 'vue';
 import { useDrawerStore } from '@/stores/drawer';
 import { usePopupStore } from '@/stores/popup';
+import { useCloseStore } from '@/stores/close';
+
 import axios from 'axios';
-const { t } = useI18n()
+const { t } = useI18n();
 const search_input = ref();
 const drawer = ref(false);
 const popup = ref(false);
+const close = ref(false);
 const value2 = ref(true);
 const activeIndex = ref('1');
 const handleSelect = () => { };
@@ -110,12 +118,18 @@ const handleSearch = () => {
 };
 const store = useDrawerStore();
 const popupStore = usePopupStore();
+const closeStore = useCloseStore();
+
 const showDrawer = () => {
     store.drawerClick();
-
+};
+const closeModal = () => {
+    closeStore.closeClick();
+    console.log("close")
 };
 const showModal = () => {
     popupStore.popupClick();
+    console.log("popup")
 };
 const search = async () => {
     const options = {

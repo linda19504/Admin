@@ -38,6 +38,13 @@
 //   background-color: $blue-400;
 // }
 @import 'bulma/bulma.scss';
+// @mixin breakpoint($size) {
+//     @if $size == medium {
+//         @media (min-width: 768px) {
+//             @content;
+//         }
+//     }
+// }
 
 @mixin breakpoint($point) {
     @if $point == "small" {

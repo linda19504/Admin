@@ -1,5 +1,5 @@
 <template>
-    <div class="reveal-wrapper">
+    <div class="reveal-wrapper" v-show="popup">
         <div class="reveal-content">
             <p class="heading-xxl modal_title">Setting</p>
             <div class="calculate-principle-content">
@@ -24,7 +24,7 @@
 import { usePopupStore } from '@/stores/popup.js'
 import TheList from "@/components/TheList.vue";
 import TheButton from "@/components/TheButton.vue";
-import { storeToRefs } from 'pinia'
+import { storeToRefs } from 'pinia';
 const popupStore = usePopupStore();
 const { popup } = storeToRefs(popupStore)
 const isOrdered = true;
