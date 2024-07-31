@@ -6,5 +6,8 @@ export const usePopupStore = defineStore('popup', {
     popupClick() {
       this.popup = true;
     },
+    popupClose() {
+      this.popup = false;
+    }
   },
 });

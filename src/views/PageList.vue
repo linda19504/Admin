@@ -37,9 +37,7 @@
                     <DrawerList></DrawerList>
                 </el-button>
                 <el-button type="primary" color="#E0E0E0" :icon="Edit" @click="showModal">
-                    <TheTooltip>
-                        <Modal :handleClose="closeModal"></Modal>
-                    </TheTooltip>
+
                 </el-button>
                 <el-button type="primary" color="#E0E0E0" :icon="Upload" />
                 <el-button type="primary" color="#E0E0E0" :icon="Delete" />
@@ -57,6 +55,9 @@
             <el-table-column prop="zip" label="Zip" width="600" />
         </el-table>
     </div>
+    <!-- <TheTooltip> -->
+    <Modal :handleClose="closeModal"></Modal>
+    <!-- </TheTooltip> -->
 </template>
 <script setup>
 import { useI18n } from 'vue-i18n';
@@ -118,13 +119,13 @@ const handleSearch = () => {
 };
 const store = useDrawerStore();
 const popupStore = usePopupStore();
-const closeStore = useCloseStore();
+// const closeStore = useCloseStore();
 
 const showDrawer = () => {
     store.drawerClick();
 };
 const closeModal = () => {
-    closeStore.closeClick();
+    popupStore.popupClose();
     console.log("close")
 };
 const showModal = () => {

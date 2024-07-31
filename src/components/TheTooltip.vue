@@ -1,6 +1,6 @@
 <template>
     <Teleport to="body">
-        <div v-show="onShow">
+        <!-- <div v-show="onShow"> -->
             <div @click="handleOverlayClick" class="reveal-overlay">
             </div>
             <div class="reveal-container">
@@ -8,7 +8,7 @@
                     <slot></slot>
                 </div>
             </div>
-        </div>
+        <!-- </div> -->
     </Teleport>
 </template>
 <script setup>
