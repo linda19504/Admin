@@ -1,23 +1,23 @@
 <template>
     <Teleport to="body">
         <!-- <div v-show="onShow"> -->
-            <div @click="handleOverlayClick" class="reveal-overlay">
+        <div @click="handleOverlayClick" class="reveal-overlay">
+        </div>
+        <div class="reveal-container">
+            <div class="my-modal">
+                <slot></slot>
             </div>
-            <div class="reveal-container">
-                <div class="my-modal">
-                    <slot></slot>
-                </div>
-            </div>
+        </div>
         <!-- </div> -->
     </Teleport>
 </template>
 <script setup>
-import { computed, ref } from 'vue';
+import { ref } from 'vue';
 import classnames from "classnames";
 import { useCloseStore } from '@/stores/close.js';
 import { storeToRefs } from 'pinia';
 const store = useCloseStore();
-const onShow = ref();
+// const onShow = ref();
 const closeStore = useCloseStore();
 const { close } = storeToRefs(closeStore);
 // const onShow = store.state.onShow;

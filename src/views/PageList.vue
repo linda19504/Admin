@@ -37,7 +37,6 @@
                     <DrawerList></DrawerList>
                 </el-button>
                 <el-button type="primary" color="#E0E0E0" :icon="Edit" @click="showModal">
-
                 </el-button>
                 <el-button type="primary" color="#E0E0E0" :icon="Upload" />
                 <el-button type="primary" color="#E0E0E0" :icon="Delete" />
@@ -56,7 +55,9 @@
         </el-table>
     </div>
     <!-- <TheTooltip> -->
-    <Modal :handleClose="closeModal"></Modal>
+    <Modal :handleClose="closeModal">
+        <TheEditing></TheEditing>
+    </Modal>
     <!-- </TheTooltip> -->
 </template>
 <script setup>
@@ -64,7 +65,8 @@ import { useI18n } from 'vue-i18n';
 import { Delete, Edit, Search, Upload, Plus } from '@element-plus/icons-vue';
 import DrawerList from "@/components/DrawerList.vue";
 import Modal from '@/components/Modal.vue';
-import TheTooltip from '@/components/TheTooltip.vue';
+import TheEditing from '@/components/TheEditing.vue';
+// import TheTooltip from '@/components/TheTooltip.vue';
 import { ref } from 'vue';
 import { useDrawerStore } from '@/stores/drawer';
 import { usePopupStore } from '@/stores/popup';

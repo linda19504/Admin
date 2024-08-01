@@ -3,9 +3,9 @@
         <div v-show="popup">
             <div @click="handleOverlayClick" class="reveal-overlay">
             </div>
-            <div class="reveal-container">
+            <!-- <div class="reveal-container">
                 <div class="my-modal">
-                    <div class="reveal-wrapper" >
+                    <div class="reveal-wrapper">
                         <div class="reveal-content">
                             <p class="heading-xxl modal_title">Setting</p>
                             <div class="calculate-principle-content">
@@ -27,9 +27,9 @@
                                 </TheButton>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
+                    </div> -->
+            <!-- </div> -->
+            <!-- </div> -->
         </div>
     </Teleport>
 </template>
