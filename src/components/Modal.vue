@@ -3,6 +3,11 @@
         <div v-show="popup">
             <div @click="handleOverlayClick" class="reveal-overlay">
             </div>
+            <div class="reveal-container">
+                <div class="my-modal">
+                    <slot></slot>
+                </div>
+            </div>
             <!-- <div class="reveal-container">
                 <div class="my-modal">
                     <div class="reveal-wrapper">

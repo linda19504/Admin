@@ -31,7 +31,7 @@
         </form>
     </div>
 </template>
-<script>
+<script setup>
 import TheButton from './TheButton.vue';
 import { BUTTON_KIND } from '@/constants';
 </script>
