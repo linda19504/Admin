@@ -60,6 +60,7 @@
     </Modal>
     <!-- </TheTooltip> -->
 </template>
+
 <script setup>
 import { useI18n } from 'vue-i18n';
 import { Delete, Edit, Search, Upload, Plus } from '@element-plus/icons-vue';
@@ -70,7 +71,6 @@ import TheEditing from '@/components/TheEditing.vue';
 import { ref } from 'vue';
 import { useDrawerStore } from '@/stores/drawer';
 import { usePopupStore } from '@/stores/popup';
-import { useCloseStore } from '@/stores/close';
 
 import axios from 'axios';
 const { t } = useI18n();
