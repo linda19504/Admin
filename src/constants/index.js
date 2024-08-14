@@ -8,7 +8,7 @@ export const BUTTON_KIND = {
    PRIMARY:'primary',
    REVERSE:'reverse',
    SECONDARY:'secondary',
-   TERITARY:'tertiary',    
+   TERITARY:'tertiary',   
 };
 
 export const CHECKBOX_SIZE = {
