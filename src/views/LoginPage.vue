@@ -1,8 +1,7 @@
 <template>
     <div class="loginPage">
-        <!-- <img src="../assets/phone.png" alt="" class="phoneImage" /> -->
+        <img src="../assets/icon.png" alt="" class="IconImage" />
         <div class="loginForm">
-            <img src="../assets/logo.svg" alt="" />
             <form @submit.prevent>
                 <input type="email" placeholder="邮箱" v-model="email" />
                 <input v-if="!isLogin" type="text" placeholder="用户名" v-model="username" />
@@ -56,6 +55,7 @@ async function login() {
     max-width: 100%;
     background: #f8f9fb;
     padding: 0 10vw;
+
 }
 
 .phoneImage {
