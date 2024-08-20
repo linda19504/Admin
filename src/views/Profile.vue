@@ -1,11 +1,7 @@
 <template>
     <div>
-        <h2 class="title">Setting Edit</h2>
-        <!-- <div class="changeAvatar">
-        <TheAvatar :width="48" :height="48" />
-        <TheButton>修改头像</TheButton>
-        <input type="file" class="inputFile" />
-      </div> -->
+        <TheBreadcrumb></TheBreadcrumb>
+
         <form class="profileForm">
             <label for="username">用户名：</label>
             <input type="text" />
@@ -16,14 +12,6 @@
             <label for="mobilePhone">初值：</label>
             <input type="text" />
             <label>性别：</label>
-            <!-- <div class="genderRadios">
-                <input type="radio" name="gender" id="M" value="M" />
-                男
-                <input type="radio" name="gender" id="F" value="F" />
-                女
-            </div> -->
-            <!-- <label for="website">网站：</label> -->
-            <!-- <input type="text" /> -->
             <div class="actions">
                 <TheButton :kind="BUTTON_KIND.REVERSE">取消</TheButton>
                 <TheButton :kind="BUTTON_KIND.PRIMARY">确认</TheButton>
@@ -31,9 +19,10 @@
         </form>
     </div>
 </template>
-<script>
-import TheButton from './TheButton.vue';
+<script setup>
 import { BUTTON_KIND } from '@/constants';
+import TheBreadcrumb from '@/components/TheBreadcrumb.vue';
+import TheButton from '@/components/TheButton.vue';
 </script>
 <style>
 .title {
@@ -41,16 +30,6 @@ import { BUTTON_KIND } from '@/constants';
     font-size: 24px;
     font-weight: 600;
 }
-
-/* .changeAvatar {
-    display: flex;
-    align-items: center;
-    position: relative;
-}
-
-.changeAvatar .button {
-    margin-left: 26px;
-} */
 
 .inputFile {
     opacity: 0;

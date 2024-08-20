@@ -9,7 +9,6 @@ import router from './router'
 import {createI18n} from 'vue-i18n'
 import en from'./language/en'
 import zh from'./language/zh'
-
 const messages = {
     en,
     zh
