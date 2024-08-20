@@ -24,12 +24,7 @@
                 <el-main>
                     <el-container>
                         <el-header>
-                            <el-breadcrumb separator="/">
-                                <el-breadcrumb-item :to="{ path: '/' }">通用平台</el-breadcrumb-item>
-                                <el-breadcrumb-item>
-                                    <a href="/">我的审批单</a>
-                                </el-breadcrumb-item>
-                            </el-breadcrumb>
+                            <TheBreadcrumb></TheBreadcrumb>
                         </el-header>
                         <el-main>
                             <div class="table_container">
@@ -58,6 +53,7 @@
 import { ChromeFilled } from '@element-plus/icons-vue';
 import SideBar from "@/components/SideBar.vue";
 import { HOME_MAIN } from "@/constants/MainPage.constants.js";
+import TheBreadcrumb from '@/components/TheBreadcrumb.vue';
 const handleSelect = (key, keyPath) => {
     console.log(key, keyPath)
 };
