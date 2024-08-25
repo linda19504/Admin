@@ -1,7 +1,6 @@
 <template>
     <div>
         <TheBreadcrumb></TheBreadcrumb>
-
         <form class="profileForm">
             <label for="username">用户名：</label>
             <input type="text" />

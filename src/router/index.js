@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import MainPage from'@/views/MainPage.vue'
+import CreateNextPage from'@/views/CreateNextPage.vue'
 import Profile from'@/views/Profile.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -17,13 +17,13 @@ const router = createRouter({
       meta: { breadcrumb: '' } 
     },
     {
-      path:'/MainPage',
+      path:'/CreateNextPage',
       name:'通用平台',
-      component:MainPage,
+      component:CreateNextPage,
       children:[{
         path:'Profile',
         component: () => import('@/views/Profile.vue'),
-        name:'我的申请单'
+        name:'设定项'
        },
       ],                       
       // meta: { breadcrumb: '接口管理' },
