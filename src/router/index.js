@@ -1,6 +1,6 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import CreateNextPage from'@/views/CreateNextPage.vue'
-import Profile from'@/views/Profile.vue'
+import { createRouter, createWebHistory } from 'vue-router';
+import HomeMainPage from'@/views/HomeMainPage.vue';
+import CreateNextPage from'@/views/CreateNextPage.vue';
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -16,16 +16,33 @@ const router = createRouter({
       component: () => import('@/views/PageList.vue'),   
       meta: { breadcrumb: '' } 
     },
+
     {
-      path:'/CreateNextPage',
+      path:'/home',
       name:'通用平台',
       component:CreateNextPage,
-      children:[{
-        path:'Profile',
-        component: () => import('@/views/Profile.vue'),
-        name:'设定项'
-       },
-      ],                       
+      children: [
+        {
+          path: 'CreateNextPage/model/:model_id(\\d+)',
+          component: () => import('@/views/CreateNextPage.vue'),
+          name: '设定项',
+          props: (route) => {
+            return { model_id: parseInt(route.params.model_id) }
+          },
+        }
+        // {
+        //   path: "setting/model/:model_id(\\d+)/detail/:setting_id(\\d+)",
+        //   name: "SettingDetail",
+        //   props: (route) => {
+        //     return {
+        //       model_id: parseInt(route.params.model_id),
+        //       setting_id: parseInt(route.params.setting_id),
+        //     };
+        //   },
+        //   component: () => import("@/views/SettingDetailView.vue"),
+        // },
+      ], 
+                      
       // meta: { breadcrumb: '接口管理' },
     },
     // {

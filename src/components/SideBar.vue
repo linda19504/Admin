@@ -2,7 +2,6 @@
     <div class="common-layout ">
         <el-container class="h-max">
             <el-aside>
-                <!-- <el-col :span="12"> -->
                 <el-menu default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose">
                     <el-menu-item index="1-1">
                         <el-icon>

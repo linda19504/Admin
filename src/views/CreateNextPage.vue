@@ -10,12 +10,12 @@
                         </el-icon>
                         <span class="title_name">{{ HOME_MAIN.TITLE }}</span>
                     </el-menu-item>
-                    <el-menu-item index="1">Processing Center</el-menu-item>
+                    <el-menu-item index="1">首页</el-menu-item>
                     <el-sub-menu index="2">
-                        <template #title>Workspace</template>
-                        <el-menu-item index="2-1">item one</el-menu-item>
-                        <el-menu-item index="2-2">item two</el-menu-item>
-                        <el-menu-item index="2-3">item three</el-menu-item>
+                        <template #title>登录</template>
+                        <el-menu-item index="2-1">登入</el-menu-item>
+                        <el-menu-item index="2-2">登出</el-menu-item>
+                        <!-- <el-menu-item index="2-3">item three</el-menu-item> -->
                     </el-sub-menu>
                 </el-menu>
             </el-header>
@@ -69,6 +69,7 @@
                                                 style="width: 100%" />
                                         </el-form-item>
                                     </el-col>
+
                                     <el-col :span="8">
                                         <el-form-item label="数据类型">
                                             <el-select v-model="formInline.string" placeholder="Short String" clearable
@@ -128,7 +129,18 @@ import { ChromeFilled } from '@element-plus/icons-vue';
 import SideBar from "@/components/SideBar.vue";
 import { HOME_MAIN } from "@/constants/MainPage.constants.js";
 import TheBreadcrumb from '@/components/TheBreadcrumb.vue';
-import { ElNotification as notify } from 'element-plus'
+import { ElNotification as notify } from 'element-plus';
+
+const props = defineProps({
+    model_id: {
+        type: Number,
+        default: "",
+    },
+});
+// const options = {
+//     methods: "get",
+//     url: `api/models/${model_id}`
+// }
 const handleSelect = (key, keyPath) => {
     console.log(key, keyPath)
 };

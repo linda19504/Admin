@@ -13,7 +13,7 @@
 import { computed } from 'vue';
 
 const props = defineProps({
-    name: 'TheList',
+    name: 'TheSettingList',
     isOrdered: {
         type: Boolean,
         default: "false",

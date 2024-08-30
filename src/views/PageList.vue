@@ -65,8 +65,8 @@
 import { useI18n } from 'vue-i18n';
 import { Delete, Edit, Search, Upload, Plus } from '@element-plus/icons-vue';
 import DrawerList from "@/components/DrawerList.vue";
-import Modal from '@/components/Modal.vue';
-import TheEditing from '@/components/TheEditing.vue';
+// import Modal from '@/components/Modal.vue';
+// import TheEditing from '@/components/TheEditing.vue';
 // import TheTooltip from '@/components/TheTooltip.vue';
 import { ref } from 'vue';
 import { useDrawerStore } from '@/stores/drawer';
