@@ -15,8 +15,18 @@
 </template>
 <script setup>
 import { ref } from 'vue';
+import { defineComponent, defineEmits } from 'vue';
 import { HOME_MAIN } from "@/constants/MainPage.constants.js";
 import { ElMessageBox } from 'element-plus';
+const emit = defineEmits(['confirmDialog', 'cancelDialog']);
+    const confirmDialog = () => {
+      emit('confirmDialog');
+    };
+
+    const cancelDialog = () => {
+      emit('cancelDialog');
+    };
+
 const dialogVisible = ref(true);
 const handleClose = () => {
     ElMessageBox.confirm('HOME_MAIN.SUBMIT_ITEMS')
@@ -26,10 +36,6 @@ const handleClose = () => {
         .catch(() => {
         })
 };
-const cancelDialog = () => {
-    this.$emit = ('cancel')
-};
-const confirmDialog = () => {
-    this.$emit = ('confirm')
-};
 </script>
+
+
