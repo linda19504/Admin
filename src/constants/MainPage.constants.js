@@ -2,6 +2,10 @@
 export const HOME_MAIN = {
    
     TITLE:'软固件接口管理系统',
+    MAIN_PAGE:'首页',
+    LOG:'登录',
+    LOG_IN:'登入',
+    LOG_OUT:'登出',
     ITEMS_ONE:'主页',
     ITEMS_TWO:'仪表盘',
     ITEMS_THREE:'接口',
@@ -19,4 +23,5 @@ export const HOME_MAIN = {
     SAVE:'保存',
     SUBMIT_ONE:'提交',
     CREATE_ONE:'提交并创建下一个页面',
+    SUBMIT_ITEMS:'是否提交',
 };

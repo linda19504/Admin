@@ -10,12 +10,11 @@
                         </el-icon>
                         <span class="title_name">{{ HOME_MAIN.TITLE }}</span>
                     </el-menu-item>
-                    <el-menu-item index="1">首页</el-menu-item>
+                    <el-menu-item index="1">{{ HOME_MAIN.MAIN_PAGE }}</el-menu-item>
                     <el-sub-menu index="2">
-                        <template #title>登录</template>
-                        <el-menu-item index="2-1">登入</el-menu-item>
-                        <el-menu-item index="2-2">登出</el-menu-item>
-                        <!-- <el-menu-item index="2-3">item three</el-menu-item> -->
+                        <template #title>{{ HOME_MAIN.LOG }}</template>
+                        <el-menu-item index="2-1">{{ HOME_MAIN.LOG_IN }}</el-menu-item>
+                        <el-menu-item index="2-2">{{ HOME_MAIN.LOG_OUT }}</el-menu-item>
                     </el-sub-menu>
                 </el-menu>
             </el-header>
@@ -30,12 +29,10 @@
                                 <el-page-header @back="onBack">
                                     <template #content>
                                         <div class="flex items-center">
-
                                             <span class="text-large font-600 mr-3"> HOST_NAME </span>
                                             <span class="text-sm mr-2" style="color: var(--el-text-color-regular)">
                                                 {{ HOME_MAIN.HOSTNAME }}
                                             </span>
-
                                             <el-tag>{{ HOME_MAIN.START_ONE }}</el-tag>
                                         </div>
                                     </template>
@@ -44,8 +41,15 @@
                                             <el-button>{{ HOME_MAIN.RESET_ONE }}</el-button>
                                             <el-button>{{ HOME_MAIN.START_ONE }}</el-button>
                                             <el-button type="primary" class="ml-2">{{ HOME_MAIN.SAVE }}</el-button>
-                                            <el-button type="primary" class="ml-2">{{ HOME_MAIN.SUBMIT_ONE
-                                                }}</el-button>
+                                            <!-- <div class="submit_items"> -->
+                                            <el-button type="primary" class="ml-2" @click="openDialog">{{
+                                                HOME_MAIN.SUBMIT_ONE
+                                            }}
+                                                <Dialog v-model="dialogVisible" @cancelDialog="handleCancel"
+                                                    @confirmDialog="handleConfirm">
+                                                </Dialog>
+                                            </el-button>
+                                            <!-- </div>  -->
                                             <el-button type="primary" class="ml-2">{{ HOME_MAIN.CREATE_ONE
                                                 }}</el-button>
                                         </div>
@@ -69,7 +73,6 @@
                                                 style="width: 100%" />
                                         </el-form-item>
                                     </el-col>
-
                                     <el-col :span="8">
                                         <el-form-item label="数据类型">
                                             <el-select v-model="formInline.string" placeholder="Short String" clearable
@@ -113,7 +116,6 @@
                                     </el-col>
                                 </el-row>
                             </el-form>
-
                         </el-main>
                         <el-footer>
                         </el-footer>
@@ -124,9 +126,10 @@
     </div>
 </template>
 <script setup>
-import { reactive } from 'vue';
+import { ref, reactive } from 'vue';
 import { ChromeFilled } from '@element-plus/icons-vue';
 import SideBar from "@/components/SideBar.vue";
+import Dialog from '@/components/Dialog.vue';
 import { HOME_MAIN } from "@/constants/MainPage.constants.js";
 import TheBreadcrumb from '@/components/TheBreadcrumb.vue';
 import { ElNotification as notify } from 'element-plus';
@@ -192,7 +195,15 @@ const formInline = reactive({
     description: '',
     originValue: '',
     checkRules: ''
-})
+});
+const dialogVisible = ref(true);
+const handleCancel = () => {
+    alert('dialogVisible.value = false;')
+};
+const handleConfirm = () => {
+    alert('dialogVisible.value = true;')
+};
+
 </script>
 <style scoped>
 .el-menu--horizontal>.el-menu-item:nth-child(1) {
