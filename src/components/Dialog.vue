@@ -27,11 +27,12 @@ const emit = defineEmits(['confirmDialog', 'cancelDialog']);
       emit('cancelDialog');
     };
 
-const dialogVisible = ref(true);
+const dialogVisible = defineModel(false);
+
 const handleClose = () => {
     ElMessageBox.confirm('HOME_MAIN.SUBMIT_ITEMS')
         .then(() => {
-            done()
+            dialogVisible.value = false;
         })
         .catch(() => {
         })

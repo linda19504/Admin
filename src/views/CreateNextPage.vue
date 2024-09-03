@@ -42,7 +42,7 @@
                                             <el-button>{{ HOME_MAIN.START_ONE }}</el-button>
                                             <el-button type="primary" class="ml-2">{{ HOME_MAIN.SAVE }}</el-button>
                                             <!-- <div class="submit_items"> -->
-                                            <el-button type="primary" class="ml-2" @click="openDialog">{{
+                                            <el-button type="primary" class="ml-2"@click="openDialog">{{
                                                 HOME_MAIN.SUBMIT_ONE
                                             }}
                                                 <Dialog v-model="dialogVisible" @cancelDialog="handleCancel"
@@ -203,7 +203,10 @@ const handleCancel = () => {
 const handleConfirm = () => {
     alert('dialogVisible.value = true;')
 };
-
+const openDialog = ()=>{
+    console.log=("openDialog")
+    dialogVisible.value = true;
+}
 </script>
 <style scoped>
 .el-menu--horizontal>.el-menu-item:nth-child(1) {
