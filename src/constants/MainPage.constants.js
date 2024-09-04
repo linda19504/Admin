@@ -23,5 +23,5 @@ export const HOME_MAIN = {
     SAVE:'保存',
     SUBMIT_ONE:'提交',
     CREATE_ONE:'提交并创建下一个页面',
-    SUBMIT_ITEMS:'是否提交',
+    SUBMIT_ITEMS:'是否提交数据？',
 };

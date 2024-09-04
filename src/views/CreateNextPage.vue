@@ -41,19 +41,16 @@
                                             <el-button>{{ HOME_MAIN.RESET_ONE }}</el-button>
                                             <el-button>{{ HOME_MAIN.START_ONE }}</el-button>
                                             <el-button type="primary" class="ml-2">{{ HOME_MAIN.SAVE }}</el-button>
-                                            <!-- <div class="submit_items"> -->
-                                            <el-button type="primary" class="ml-2"@click="openDialog">{{
-                                                HOME_MAIN.SUBMIT_ONE
+                                            <el-button type="primary" class="ml-2" @click="dialogVisible = true">{{
+                                                HOME_MAIN. SUBMIT_ONE
                                             }}
-                                                <Dialog v-model="dialogVisible" @cancelDialog="handleCancel"
-                                                    @confirmDialog="handleConfirm">
+                                                <Dialog v-model="dialogVisible"  >
                                                 </Dialog>
                                             </el-button>
-                                            <!-- </div>  -->
                                             <el-button type="primary" class="ml-2">{{ HOME_MAIN.CREATE_ONE
-                                                }}</el-button>
+                                                }}</el-button>  
                                         </div>
-                                    </template>
+                                    </template>                                  
                                 </el-page-header>
                             </div>
                         </el-header>
@@ -196,17 +193,16 @@ const formInline = reactive({
     originValue: '',
     checkRules: ''
 });
-const dialogVisible = ref(true);
-const handleCancel = () => {
-    alert('dialogVisible.value = false;')
-};
-const handleConfirm = () => {
-    alert('dialogVisible.value = true;')
-};
-const openDialog = ()=>{
-    console.log=("openDialog")
-    dialogVisible.value = true;
-}
+const dialogVisible = ref(false);
+// const handleCancel = () => {
+//     dialogVisible.value = false;
+// };
+// const handleConfirm = () => {
+//     dialogVisible.value = false;
+// };
+// const openDialog = ()=>{
+//     dialogVisible.value = true;
+// };
 </script>
 <style scoped>
 .el-menu--horizontal>.el-menu-item:nth-child(1) {
