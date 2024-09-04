@@ -24,4 +24,6 @@ export const HOME_MAIN = {
     SUBMIT_ONE:'提交',
     CREATE_ONE:'提交并创建下一个页面',
     SUBMIT_ITEMS:'是否提交数据？',
+    CONFIRM:'确认',
+    CANCEL:'取消',
 };

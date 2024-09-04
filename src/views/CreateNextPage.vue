@@ -44,8 +44,6 @@
                                             <el-button type="primary" class="ml-2" @click="dialogVisible = true">{{
                                                 HOME_MAIN. SUBMIT_ONE
                                             }}
-                                                <Dialog v-model="dialogVisible"  >
-                                                </Dialog>
                                             </el-button>
                                             <el-button type="primary" class="ml-2">{{ HOME_MAIN.CREATE_ONE
                                                 }}</el-button>  
@@ -120,6 +118,8 @@
                 </el-main>
             </el-container>
         </el-container>
+        <Dialog v-model="dialogVisible"   @cancelDialog="handleCancel" @confirmDialog="handleConfirm">
+        </Dialog>
     </div>
 </template>
 <script setup>
@@ -194,12 +194,12 @@ const formInline = reactive({
     checkRules: ''
 });
 const dialogVisible = ref(false);
-// const handleCancel = () => {
-//     dialogVisible.value = false;
-// };
-// const handleConfirm = () => {
-//     dialogVisible.value = false;
-// };
+const handleCancel = () => {
+    dialogVisible.value = false;
+};
+const handleConfirm = () => {
+    dialogVisible.value = false;
+};
 // const openDialog = ()=>{
 //     dialogVisible.value = true;
 // };

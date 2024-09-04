@@ -5,9 +5,9 @@
         </span>
         <template #footer>
             <div class="dialog-footer">
-                <el-button  @click="dialogVisible = false">取消</el-button>
-                <el-button type="primary"  @click="dialogVisible = false">
-                    确认
+                <el-button  @click="cancelDialog"> {{ HOME_MAIN.CANCEL }}</el-button>
+                <el-button type="primary"  @click="confirmDialog">
+                    {{ HOME_MAIN.CONFIRM }}
                 </el-button>
             </div>
         </template>
@@ -16,17 +16,16 @@
 <script setup>
 import { defineEmits } from 'vue';
 import { HOME_MAIN } from "@/constants/MainPage.constants.js";
-// const emit = defineEmits(['confirmDialog', 'cancelDialog']);
-    // const confirmDialog = () => {
-    //   emit('confirmDialog');
-    //   dialogVisible.value = false;
+const emit = defineEmits(['confirmDialog', 'cancelDialog']);
+    const confirmDialog = () => {
+      emit('confirmDialog');
+      dialogVisible.value = false;
 
-    // };
-    // const cancelDialog = () => {
-    //     dialogVisible.value = true;
-    //    emit('cancelDialog');
-    // };
-
+    };
+    const cancelDialog = () => {
+        dialogVisible.value = false;
+       emit('cancelDialog');
+    };
 const dialogVisible = defineModel(false);
 
 // const handleClose = () => {
