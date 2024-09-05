@@ -1,27 +1,50 @@
 <template>
   <div class="loginPage">
-    <div class="title_icon" >
-      <el-icon>
-        <ChromeFilled />
-      </el-icon>
-      <span class="title_name">{{ HOME_MAIN.TITLE }}</span>
+    <div class="common-layout">
+      <div class="ContainerImage">
+      <img src="../assets/bg.png" class="BackgroundImage"/>
     </div>
-    <img src="../assets/icon.png" alt="" class="IconImage" />
-    <div class="loginForm">
-      <form @submit.prevent>
-        <input type="email" placeholder="邮箱" v-model="email" />
-        <input v-if="!isLogin" type="text" placeholder="用户名" v-model="username" />
-        <input type="password" placeholder="密码" v-model="password" />
-        <button type="submit" class="loginButton" @click="isLogin ? login() : register()">
-          {{ isLogin ? '登录' : '注册' }}
-        </button>
-        <p @click="isLogin = !isLogin" class="info">
-          {{ isLogin ? '还没有账号？点击注册' : '已有账号？点击登录' }}
-        </p>
-        <div v-if="!isLogin" class="agreement">
-          <input type="checkbox" v-model="agreementChecked" />勾选表示同意隐私协议和使用规范
-        </div>
-      </form>
+      <el-container>
+        <el-header>
+          <el-menu
+            :default-active="activeIndex"
+            class="el-menu-demo"
+            mode="horizontal"
+            :ellipsis="false"
+            @select="handleSelect"
+          >
+            <el-menu-item index="0">
+              <el-icon>
+                <ChromeFilled />
+              </el-icon>
+            </el-menu-item>
+            <span class="title_name">{{ HOME_MAIN.TITLE }}</span>
+          </el-menu>
+        </el-header>
+        <el-container>
+          <el-aside width="400px">
+            <img src="../assets/icon.png" alt="" class="IconImage"/>
+          </el-aside>
+          <el-main>
+            <div class="loginForm">
+              <form @submit.prevent>
+                <input type="email" placeholder="邮箱" v-model="email" />
+                <input v-if="!isLogin" type="text" placeholder="用户名" v-model="username" />
+                <input type="password" placeholder="密码" v-model="password" />
+                <button type="submit" class="loginButton" @click="isLogin ? login() : register()">
+                  {{ isLogin ? '登录' : '注册' }}
+                </button>
+                <p @click="isLogin = !isLogin" class="info">  
+                  {{ isLogin ? '还没有账号？点击注册' : '已有账号？点击登录' }}
+                </p>
+                <div v-if="!isLogin" class="agreement">
+                  <input type="checkbox" v-model="agreementChecked" />勾选表示同意隐私协议和使用规范
+                </div>
+              </form>
+            </div>
+          </el-main>
+        </el-container>
+      </el-container>
     </div>
   </div>
 </template>
@@ -37,6 +60,7 @@ const username = ref('')
 const password = ref('')
 const agreementChecked = ref(false)
 const userStore = useUserStore()
+const activeIndex = ref('1')
 
 async function register() {
   if (!agreementChecked.value) {
@@ -64,11 +88,11 @@ async function login() {
   background: #f8f9fb;
   padding: 0 10vw;
 }
-.title_icon{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap; 
-    width:auto;
+.title_icon {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: auto;
 }
 .phoneImage {
   max-width: 400px;
@@ -88,6 +112,7 @@ async function login() {
   place-items: center;
   row-gap: 52px;
   width: 380px;
+  margin-left:350px;
 }
 
 .loginForm > form {
@@ -97,10 +122,48 @@ async function login() {
   height: 100%;
 }
 
+img{
+  position:relative;
+  height: auto; 
+  padding-bottom: 74px;
+  padding-left:auto;
+}
+.ContainerImage{
+  width: 100%;
+  height: 300px; 
+  /* background-image: url('your-image.jpg'); */
+  background-size: 100% auto; 
+  background-repeat: no-repeat; 
+  background-position: center;
+}
+.BackgroundImage{
+  width:100%;
+  height:300px;
+  opacity: 0.5;
+  background-image: url('../assets/bg.png');
+  background-size: cover; 
+  background-position: center; 
+  margin: 0; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom:45px;
+  /* height: 28rem;
+    width: 20rem;
+    box-sizing: border-box;
+    padding: 1.5rem;
+    border-top-right-radius: 3rem;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column; */
+}
 input {
   background: #fafafa;
   border-radius: 4px;
   border: none;
+  padding:5px;
 }
 
 input::placeholder {
@@ -125,5 +188,11 @@ input::placeholder {
   display: flex;
   align-items: center;
   gap: 6px;
+}
+.el-menu--horizontal > .el-menu-item:nth-child(1) {
+  margin-right: auto;
+}
+.el-container{
+  position:absolute;
 }
 </style>

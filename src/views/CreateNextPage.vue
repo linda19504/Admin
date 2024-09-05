@@ -136,7 +136,7 @@ const props = defineProps({
         type: Number,
         default: "",
     },
-});
+}); 
 // const options = {
 //     methods: "get",
 //     url: `api/models/${model_id}`

@@ -14,6 +14,7 @@ const items = ref([]);
 //     items.value = useRoute().path.split('/').splice(1).map(item => ({
 //         name: item || route.path.split('/'),
 //         to: { path: route.path },
+
 //     }));
 // };
 const Breadcrumbs = () => {
