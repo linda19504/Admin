@@ -1,29 +1,18 @@
 <template>
   <div class="loginPage">
     <div class="common-layout">
-      <div class="ContainerImage">
-      <img src="../assets/bg.png" class="BackgroundImage"/>
-    </div>
       <el-container>
         <el-header>
-          <el-menu
-            :default-active="activeIndex"
-            class="el-menu-demo"
-            mode="horizontal"
-            :ellipsis="false"
-            @select="handleSelect"
-          >
-            <el-menu-item index="0">
-              <el-icon>
-                <ChromeFilled />
-              </el-icon>
-            </el-menu-item>
+          <div class="title" >
+            <el-icon>
+              <ChromeFilled />
+            </el-icon>
             <span class="title_name">{{ HOME_MAIN.TITLE }}</span>
-          </el-menu>
+          </div>
         </el-header>
         <el-container>
           <el-aside width="400px">
-            <img src="../assets/icon.png" alt="" class="IconImage"/>
+            <img class="IconImage" src="../assets/icon.png"  />
           </el-aside>
           <el-main>
             <div class="loginForm">
@@ -34,7 +23,7 @@
                 <button type="submit" class="loginButton" @click="isLogin ? login() : register()">
                   {{ isLogin ? '登录' : '注册' }}
                 </button>
-                <p @click="isLogin = !isLogin" class="info">  
+                <p @click="isLogin = !isLogin" class="info">
                   {{ isLogin ? '还没有账号？点击注册' : '已有账号？点击登录' }}
                 </p>
                 <div v-if="!isLogin" class="agreement">
@@ -74,125 +63,81 @@ async function register() {
 async function login() {
   await userStore.login(email.value, password.value)
   // router.replace("/");
-}
+}  
+
 </script>
 <style scoped>
 .loginPage {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  gap: 5vw;
-  width: 100vw;
-  height: 100vh;
-  max-width: 100%;
-  background: #f8f9fb;
-  padding: 0 10vw;
-}
-.title_icon {
+  margin:0;
+  padding:0;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  width: auto;
+  background: #f8f9fb;
+  height: 600px;
+  opacity: 1;
+  background-image: url('../assets/bg.png');
+  background-size: cover;
+  background-position: center;
+  background-position: center bottom;
 }
-.phoneImage {
-  max-width: 400px;
-  position: relative;
-  top: 36px;
-  justify-self: end;
+.IconImage {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  background-size: cover; 
+  background-attachment: fixed;
+  background-position: center;
+  height: 450px; 
+  width:auto;
+  background-position: center center;
 }
-
+.title{
+  color: #016fad;
+  font-size:x-large;
+}
 .loginForm {
-  justify-self: start;
   box-shadow: 0px 4px 48px rgba(0, 0, 0, 0.06);
   border-radius: 32px;
   background: white;
-  padding: 74px 60px;
-
-  display: grid;
+  padding: 65px 60px;
+  display: flex;
+  justify-self: start;
   place-items: center;
   row-gap: 52px;
   width: 380px;
-  margin-left:350px;
+  margin-left: 350px;
 }
-
 .loginForm > form {
   display: grid;
   row-gap: 24px;
   width: 100%;
   height: 100%;
 }
-
-img{
-  position:relative;
-  height: auto; 
-  padding-bottom: 74px;
-  padding-left:auto;
-}
-.ContainerImage{
-  width: 100%;
-  height: 300px; 
-  /* background-image: url('your-image.jpg'); */
-  background-size: 100% auto; 
-  background-repeat: no-repeat; 
-  background-position: center;
-}
-.BackgroundImage{
-  width:100%;
-  height:300px;
-  opacity: 0.5;
-  background-image: url('../assets/bg.png');
-  background-size: cover; 
-  background-position: center; 
-  margin: 0; 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 10px;
-  text-align: center;
-  margin-bottom:45px;
-  /* height: 28rem;
-    width: 20rem;
-    box-sizing: border-box;
-    padding: 1.5rem;
-    border-top-right-radius: 3rem;
-    background-color: #fff;
-    display: flex;
-    flex-direction: column; */
-}
 input {
   background: #fafafa;
   border-radius: 4px;
   border: none;
-  padding:5px;
+  padding: 10px;
 }
-
 input::placeholder {
   color: #9e9e9e;
 }
-
 .loginButton {
   background: linear-gradient(89.93deg, #00c2ff 0.06%, #0047ff 105.68%);
   padding: 12px 0;
   color: white;
   border: none;
 }
-
 .info {
   color: #1da0ff;
   text-align: center;
   cursor: pointer;
 }
-
 .agreement {
-  color: #a1a1a1;
   display: flex;
+  color: #a1a1a1;
   align-items: center;
   gap: 6px;
-}
-.el-menu--horizontal > .el-menu-item:nth-child(1) {
-  margin-right: auto;
-}
-.el-container{
-  position:absolute;
 }
 </style>
