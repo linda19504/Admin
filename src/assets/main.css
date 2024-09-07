@@ -1,16 +1,77 @@
 .fullscreen {
     position: absolute;
-    top: 0;
-    bottom: 0;
     left: 0;
     right: 0;
+    top: 0;
+    bottom: 0;
 }
 
 .h-max {
-    
     height: 100%;
 }
 
 .w-max {
     width: 100%;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-item-grow {
+    flex-grow: 1
+}
+
+.flex-item-no-grow {
+    flex-grow: 0
+}
+
+.flex-start {
+    justify-content: flex-start;
+}
+
+.flex-center {
+    justify-content: center;
+}
+
+.flex-end {
+    justify-content: flex-end;
+}
+
+.flex-align-start {
+    align-items: flex-start;
+}
+
+.flex-align-center {
+    align-items: center;
+}
+
+.flex-align-end {
+    align-items: flex-end;
+}
+
+.m-0 {
+    margin: 0px;
+}
+
+.m-auto {
+    margin: auto;
+}
+
+.p-0 {
+    padding: 0px;
+}
+
+.p-50 {
+    padding: 50px;
+}
+
+.p-100 {
+    padding: 100px;
 }

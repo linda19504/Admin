@@ -15,7 +15,10 @@ import axios from 'axios';
 </script>
 
 <template>
-  <RouterView />
+  <div class="fullscreen">
+    <RouterView />
+  </div>
+
   <!-- <div v-if="loading">loading....</div>
   <noteList v-else :notes="note"></noteList>  -->
 </template>
