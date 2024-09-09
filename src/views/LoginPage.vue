@@ -1,12 +1,12 @@
 <template>
-  <div class="h-max ">
+  <div class="h-max">
     <div class="title">
       <el-icon>
         <ChromeFilled />
       </el-icon>
       <span class="title_name">{{ HOME_MAIN.TITLE }}</span>
     </div>
-    <div class="h-max flex-col flex-center ">
+    <div class="h-max flex-col flex-center">
       <div class="flex-row flex-center flex-align-center background">
         <div class="flex-item-no-grow p-100">
           <img class="IconImage" src="../assets/icon.png" />
@@ -23,9 +23,9 @@
               <p @click="isLogin = !isLogin" class="info">
                 {{ isLogin ? '还没有账号？点击注册' : '已有账号？点击登录' }}
               </p>
-              <div v-if="!isLogin" class="agreement">
+              <!-- <div v-if="!isLogin" class="agreement">
                 <input type="checkbox" v-model="agreementChecked" />勾选表示同意隐私协议和使用规范
-              </div>
+              </div> -->
             </form>
           </div>
         </div>
@@ -34,33 +34,76 @@
   </div>
 </template>
 <script setup>
-import { ref } from 'vue'
-import { useUserStore } from '@/stores/user.js'
-import { ChromeFilled } from '@element-plus/icons-vue'
-import { HOME_MAIN } from '@/constants/MainPage.constants.js'
+import { ref } from 'vue';
+import axios from 'axios';
+import { useUserStore } from '@/stores/user.js';
+import { ChromeFilled } from '@element-plus/icons-vue';
+import { HOME_MAIN } from '@/constants/MainPage.constants.js';
 
 const isLogin = ref(true)
 const email = ref('')
 const username = ref('')
 const password = ref('')
-const agreementChecked = ref(false)
+// const agreementChecked = ref(false)
 const userStore = useUserStore()
 const activeIndex = ref('1')
 
 async function register() {
-  if (!agreementChecked.value) {
-    alert('请先阅读并同意隐私协议和使用规范')
-    return
-  }
-  await userStore.register(email.value, username.value, password.value)
-  // router.replace("/");
+  // if (!agreementChecked.value) {
+  //   alert('请先阅读并同意隐私协议和使用规范')
+  //   return
+  // }
+  // await userStore.register(email.value, username.value, password.value)
+  let data = JSON.stringify({
+  "username": username.value,
+  "email": email.value,
+  "password": password.value
+});
+
+let config = {
+  method: 'post',
+  maxBodyLength: Infinity,
+  url: '/api/auth/local/register',
+  headers: { 
+    'Content-Type': 'application/json'
+  },
+  data : data
+};
+
+axios.request(config)
+.then((response) => {
+  console.log(JSON.stringify(response.data));
+})
+.catch((error) => {
+  console.log(error);
+});
 }
 
 async function login() {
-  await userStore.login(email.value, password.value)
-  // router.replace("/");
-}
+  // await userStore.login(email.value, password.value)
+  let data = JSON.stringify({
+    identifier: email.value,
+    password: password.value
+  })
 
+  let config = {
+    method: 'post',
+    maxBodyLength: Infinity,
+    url: '/api/auth/local',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    data: data
+  }
+
+  axios.request(config)
+    .then((response) => {
+      console.log(JSON.stringify(response.data))
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+}
 </script>
 <style scoped>
 .background {
@@ -107,10 +150,10 @@ async function login() {
   /* row-gap: 52px; */
   width: 380px;
   /* margin-left: 350px; */
-  margin: auto
+  margin: auto;
 }
 
-.loginForm>form {
+.loginForm > form {
   display: grid;
   row-gap: 24px;
   width: 100%;
