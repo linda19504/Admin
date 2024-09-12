@@ -19,7 +19,7 @@
                 </el-menu>
             </el-header>
             <el-container class="h-max">
-                <SideBar></SideBar>
+                <SideBar ></SideBar>
                 <el-main>
                     <el-container>
                         <el-header>
@@ -41,12 +41,8 @@
                                             <el-button>{{ HOME_MAIN.RESET_ONE }}</el-button>
                                             <el-button>{{ HOME_MAIN.START_ONE }}</el-button>
                                             <el-button type="primary" class="ml-2">{{ HOME_MAIN.SAVE }}</el-button>
-                                            <el-button type="primary" class="ml-2" @click="dialogVisible = true">{{
-                                                HOME_MAIN. SUBMIT_ONE
-                                            }}
-                                            </el-button>
-                                            <el-button type="primary" class="ml-2">{{ HOME_MAIN.CREATE_ONE
-                                                }}</el-button>  
+                                            <el-button type="primary" class="ml-2" @click="dialogVisible = true">{{HOME_MAIN. SUBMIT_ONE}}</el-button>
+                                            <el-button type="primary" class="ml-2">{{ HOME_MAIN.CREATE_ONE}}</el-button>  
                                         </div>
                                     </template>                                  
                                 </el-page-header>

@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import HomeMainPage from'@/views/HomeMainPage.vue';
+import AdminPage from '@/views/AdminPage.vue';
 import CreateNextPage from'@/views/CreateNextPage.vue';
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -16,7 +17,12 @@ const router = createRouter({
       component: () => import('@/views/PageList.vue'),   
       meta: { breadcrumb: '' } 
     },
-
+    {
+      path: '/AdminPage', 
+      name: '我的申请单',
+      component: () => import('@/views/AdminPage.vue'),   
+      meta: { breadcrumb: '' } 
+    },
     {
       path:'/home',
       name:'通用平台',
@@ -30,6 +36,7 @@ const router = createRouter({
             return { model_id: parseInt(route.params.model_id) }
           },
         }
+       
         // {
         //   path: "setting/model/:model_id(\\d+)/detail/:setting_id(\\d+)",
         //   name: "SettingDetail",

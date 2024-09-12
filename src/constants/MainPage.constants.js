@@ -1,6 +1,5 @@
 
-export const HOME_MAIN = {
-   
+export const HOME_MAIN = {  
     TITLE:'软固件接口管理系统',
     MAIN_PAGE:'首页',
     LOG:'登录',
@@ -26,4 +25,7 @@ export const HOME_MAIN = {
     SUBMIT_ITEMS:'是否提交数据？',
     CONFIRM:'确认',
     CANCEL:'取消',
+    CREATOR:'创建者:慕容紫英',
+    CREATETIME:'创建时间',
+    LATESTUPDATETIME:'最后更新时间'
 };
