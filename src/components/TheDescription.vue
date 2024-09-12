@@ -1,19 +1,21 @@
 <template>
   <div class="el_description_name">
-    <el-row :gutter="20">
-
+    <el-row gutter="1rem" class="p-half-rem">
       <el-col :span="12">      
             <el-avatar class="IconImage" src="/public/profile.png" />         
             {{ HOME_MAIN.CREATOR }}
       </el-col>
       <el-col :span="12"><div class="grid-content ep-bg-purple" /></el-col>
     </el-row>
-    
-    <el-row :gutter="20">
-      <el-col :span="8"><div class="grid-content ep-bg-purple" />{{ HOME_MAIN.CREATETIME }}</el-col>
-      <el-col :span="8"><div class="grid-content ep-bg-purple" /></el-col>
-      <el-col :span="8"><div class="grid-content ep-bg-purple" />{{ HOME_MAIN.LATESTUPDATETIME }}</el-col>
-    </el-row>
+
+    <el-row gutter="1rem" class="p-half-rem">
+    <el-col :span="12">
+      <TheProfile :label="'2024/9/12'">{{ HOME_MAIN.CREATETIME }}</TheProfile>
+    </el-col>
+    <el-col :span="12">
+      <TheProfile :label="'2024/9/12'">{{ HOME_MAIN.LATESTUPDATETIME }}</TheProfile>
+    </el-col>
+  </el-row>
   </div>
 
   <el-descriptions class="margin-top" :column="3" :size="size" border>
@@ -107,6 +109,9 @@ const blockMargin = computed(() => {
 </script>
 
 <style scoped>
+.p-half-rem {
+  padding: 0.5rem;
+}
 .grid-content{
   display:flex;
   flex-direction: row;

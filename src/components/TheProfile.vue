@@ -1,19 +1,20 @@
 <template>
   <div class="flex-row flex-align-item-start flex-gap-1rem">
-    <span class="blod color-deepgray">{{ profile }}</span>
+    <span class="blod color-deepgray">{{ label }}</span>
     <div class="flex-col color-deepgray">
       <slot></slot>
     </div>
   </div>
 </template>
 <script setup>
+import { defineProps } from 'vue';
   const props = defineProps({
     // name: 'label',
-    profile: {
+    label: {
       type: String,
-      defalut: ''
+      default: " "
     }
-  })
+  });
 </script>
 <style scope>
   .flex-row {
