@@ -17,10 +17,10 @@
 
     <el-row gutter="1rem" class="p-half-rem">
       <el-col :span="12">
-        <TheProfile label="创建时间">{{ }}</TheProfile>
+        <TheProfile>  </TheProfile>
       </el-col>
       <el-col :span="12">
-        <TheProfile label="最后更新时间">{{ }}</TheProfile>
+        <TheProfile :label="'2024/9/12'"></TheProfile>
       </el-col>
     </el-row>
   </div>
@@ -89,7 +89,8 @@
 import { computed, ref } from 'vue'
 import { Iphone, Location, OfficeBuilding, Tickets, User } from '@element-plus/icons-vue'
 import type { ComponentSize } from 'element-plus'
-import TheProfile from './TheProfile.vue'
+import TheProfile from './TheProfile.vue' 
+
 
 
 defineProps({
@@ -159,15 +160,5 @@ const blockMargin = computed(() => {
   border-radius: 4px;
   min-height: 36px;
 }
-/* .demo-type {
-  display: flex;
-}
-.demo-type > div {
-  flex: 1;
-  text-align: center;
-}
 
-.demo-type > div:not(:last-child) {
-  border-right: 1px solid var(--el-border-color);
-} */
 </style>
