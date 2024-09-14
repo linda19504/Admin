@@ -14,5 +14,12 @@ export default {
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Primary = {
-  args: {}
+  args: {
+    args: {
+      avatar_url: '/avatar.png',
+      username: '慕容紫英',
+      email: 'murogziying@gmail.com'
+    }
+
+  }
 }

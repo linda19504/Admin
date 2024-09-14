@@ -3,8 +3,6 @@
     <el-row gutter="1rem" class="p-half-rem">
       <el-col :span="12">
         <TheProfile label="创建者">
-          <!-- <el-avatar class="IconImage" src="/public/profile.png" />         
-            {{ HOME_MAIN.CREATOR }} -->
           <TheAvatar
             :avatar_url="creater.avatar_url"
             :username="creater.username"
@@ -12,15 +10,23 @@
           ></TheAvatar>
         </TheProfile>
       </el-col>
-      <el-col :span="12"><div class="grid-content ep-bg-purple" /></el-col>
+      <el-col :span="12">
+        <TheProfile label="审批者">
+          <TheAvatar
+            :avatar_url="approvers.avatar_url"
+            :username="approvers.username"
+            :email="approvers.email"
+          ></TheAvatar>
+        </TheProfile>
+      </el-col>
     </el-row>
 
     <el-row gutter="1rem" class="p-half-rem">
       <el-col :span="12">
-        <TheProfile>  </TheProfile>
+        <TheProfile label="创建时间"> {{ create_date }} </TheProfile>
       </el-col>
       <el-col :span="12">
-        <TheProfile :label="'2024/9/12'"></TheProfile>
+        <TheProfile label="最后更新时间">{{ last_updated_date }}</TheProfile>
       </el-col>
     </el-row>
   </div>
@@ -85,26 +91,37 @@
   </el-descriptions>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { computed, ref } from 'vue'
 import { Iphone, Location, OfficeBuilding, Tickets, User } from '@element-plus/icons-vue'
-import type { ComponentSize } from 'element-plus'
-import TheProfile from './TheProfile.vue' 
-
-
-
+import TheProfile from './TheProfile.vue'
+import TheAvatar from './TheAvatar.vue'
 defineProps({
-
   creater: {
     default: {
       avatar_url: '',
       username: '',
       email: ''
     }
-  }
-  
+  },
+  approvers: {
+    default: [
+      {
+        avatar_url: '',
+        username: '',
+        email: ''
+      },
+      {
+        avatar_url: '',
+        username: '',
+        email: ''
+      }
+    ]
+  },
+  create_date: { default: '' },
+  last_updated_date: { default: '' }
 })
-const size = ref<ComponentSize>('default')
+const size = ref('default')
 const iconStyle = computed(() => {
   const marginMap = {
     large: '8px',
@@ -160,5 +177,4 @@ const blockMargin = computed(() => {
   border-radius: 4px;
   min-height: 36px;
 }
-
 </style>

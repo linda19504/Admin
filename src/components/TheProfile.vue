@@ -8,8 +8,7 @@
 </template>
 <script setup>
 import { defineProps } from 'vue';
-  const props = defineProps({
-    // name: 'label',
+const props = defineProps({
     label: {
       type: String,
       default: " "

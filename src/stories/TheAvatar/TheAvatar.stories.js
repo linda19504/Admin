@@ -1,29 +1,42 @@
-{/* <template>
-  <div class="flex-row">
-   <el-space>
-    <el-avatar 
-    :icon="UserFilled" 
-    size="small" 
-    :src="avatar_url"
-    />
-    {{ username }} {{ email }}
-   </el-space>
-  </div>
-</template>
-<script setup>
-import { UserFilled } from '@element-plus/icons-vue'
+// import { fn } from '@storybook/test'
+import TheAvatar from '@/components/TheAvatar.vue'
 
-
-defineProps({
-  avatar_url: { default: '' },
-  username: { default: '' },
-  email: { default: '' }
-})
-</script>
-<style scope>
-.flex-row {
-    display: flex;
-    flex-direction: row;
+// More on how to set up stories at: https://storybook.js.org/docs/writing-stories
+export default {
+  title: 'Components/TheAvatar',
+  component: TheAvatar,
+  tags: ['autodocs'],
+  args: {
+    label: 'test label',
+    default: 'hello',
   }
-</style>
- */}
+}
+
+// More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
+export const Primary = {
+  args: {
+    avatar_url: '/avatar.png',
+    username: '慕容紫英',
+    email: 'murogziying@gmail.com'},
+  approvers: [
+        {
+          avatar_url: '/avatar.png',
+          username: '慕容紫英',
+          email: 'murogziying@gmail.com'
+        },
+        {
+          avatar_url: '/avatar.png',
+          username: '慕容紫英',
+          email: 'murogziying@gmail.com'
+        }
+      ],
+
+      create_date: '2024年3月5日 10:00',
+      last_updated_date: '2024年3月8日 10:00'
+    }
+  
+
+
+
+
+
