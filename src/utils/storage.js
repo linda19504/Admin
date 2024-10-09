@@ -12,3 +12,5 @@ export function saveUser(user) {
 export function getUser() {
   return JSON.parse(localStorage.getItem('user'))
 }
+
+

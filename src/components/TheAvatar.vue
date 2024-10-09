@@ -5,6 +5,7 @@
     :icon="UserFilled" 
     size="small" 
     :src="avatar_url"
+    :size="size"
     />
     {{ username }} {{ email }}
    </el-space>
@@ -15,7 +16,9 @@ import { UserFilled } from '@element-plus/icons-vue'
 defineProps({
   avatar_url: { default: '' },
   username: { default: '' },
-  email: { default: '' }
+  email: { default: '' },
+  size:{default: ''}
+   
 })
 </script>
 <style scope>

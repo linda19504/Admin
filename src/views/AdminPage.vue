@@ -9,18 +9,39 @@
         @select="handleSelect"
       >
         <el-menu-item index="0">
-          <el-icon>
+          <!-- <el-icon>
             <ChromeFilled />
-          </el-icon>
+          </el-icon> -->
           <span class="title_name">{{ HOME_MAIN.TITLE }}</span>
         </el-menu-item>
         <el-menu-item index="1">{{ HOME_MAIN.MAIN_PAGE }}</el-menu-item>
-        <el-sub-menu index="2">
-          <template #title>{{ HOME_MAIN.LOG }}</template>
-          <el-menu-item index="2-1">{{ HOME_MAIN.LOG_IN }}</el-menu-item>
-          <el-menu-item index="2-2">{{ HOME_MAIN.LOG_OUT }}</el-menu-item>
-        </el-sub-menu>
+        <el-menu-item index="1">{{ HOME_MAIN.ADMIN }}</el-menu-item>
+        <el-dropdown>
+          <span class="el-dropdown-link">
+            <TheAvatar :size="50" :avatar_url="userInfo.avatar_url" />  
+            <el-icon class="header-icon el-icon--right">                        
+              <arrow-down />
+            </el-icon>
+          </span>
+          <template #dropdown>
+            <el-dropdown-menu>
+              <el-dropdown-item :command="0" @click="switchRolesAction('admin')">
+                {{ currentRoles === 'admin' ? '当前角色' : '切换角色' }}：管理员
+              </el-dropdown-item> 
+              <el-dropdown-item :command="0" divided @click="switchRolesAction('other')">
+                {{ currentRoles === 'other' ? '当前角色' : '切换角色' }}：普通用户
+              </el-dropdown-item>
+              <el-dropdown-item :command="3" divided @click="modifyPassword">
+                <el-icon><Edit /></el-icon>修改密码
+              </el-dropdown-item>
+              <el-dropdown-item :command="4" divided @click="logOut">
+                <el-icon><SwitchButton /></el-icon>退出登录
+              </el-dropdown-item>
+            </el-dropdown-menu>
+          </template>
+        </el-dropdown>
       </el-menu>
+      <el-icon class="header-icon" name="el-icon-arrow-down"></el-icon>
     </el-header>
     <el-container class="h-max">
       <SideBar></SideBar>
@@ -29,7 +50,7 @@
           <el-header>
             <TheBreadcrumb></TheBreadcrumb>
           </el-header>
-          
+
           <el-main>
             <TheDescription></TheDescription>
           </el-main>
@@ -40,34 +61,101 @@
   </el-container>
 </template>
 <script setup>
-import { ref, reactive } from 'vue';
-import { ChromeFilled } from '@element-plus/icons-vue';
-import SideBar from "@/components/SideBar.vue";
-import TheBreadcrumb from '@/components/TheBreadcrumb.vue';
-import { HOME_MAIN } from "@/constants/MainPage.constants.js";
-import TheDescription from '@/components/TheDescription.vue';
-const formInline = reactive({
-    user: '',
-});
+ import { useRouter } from 'vue-router'
+import { ref, computed } from 'vue'
+import { useUserStore } from '@/stores/userinfo.js'
+import { Edit, SwitchButton } from '@element-plus/icons-vue'
+import SideBar from '@/components/SideBar.vue'
+import TheBreadcrumb from '@/components/TheBreadcrumb.vue'
+import { HOME_MAIN } from '@/constants/MainPage.constants.js'
+import TheDescription from '@/components/TheDescription.vue'
+import TheAvatar from '@/components/TheAvatar.vue'
+import { ElMessage, ElMessageBox } from 'element-plus'
+
+const router =useRouter()
+const person = ref()
+const UserStore = useUserStore()
+const userInfo = computed(() => UserStore.userInfo)
+const modifyPassword =()=>{person.value.show()} 
+
+const currentRoles = computed({
+    get() {
+      return UserStore.roles[0]
+    },
+    set(val) {
+      ;(async () => {
+        await UserStore.getInfo([val])
+        router.push({
+          path: '/',
+        })
+        location.reload()
+      })()
+    },
+  })
+
+const logOut = async () => {
+    ElMessageBox.confirm('您是否确认退出登录?', '温馨提示', {
+      confirmButtonText: '确定',
+      cancelButtonText: '取消',
+      type: 'warning',
+    })
+      .then(async () => {
+        await UserStore.logout()
+        console.log('logout')
+        await router.push({ path: '/LoginPage' })
+        console.log('logoutagain')
+        
+        // TagsViewStore.clearVisitedView()
+        // PermissionStore.clearRoutes()
+        ElMessage({
+          type: 'success',
+          message: '退出登录成功！',
+        })
+      }) 
+      .catch(() => {})
+  }
 </script>
 <style scoped>
-.el-menu--horizontal>.el-menu-item:nth-child(1) {
-    margin-right: auto;
+.span {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 6px;
+}                    
+.el-dropdown-link {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  outline: none;
+  border: none;
+}
+.el-dropdown{
+  margin-right: 15px;
+  justify-content:flex-end;
+}
+.title_name{
+    font-family: 'Arial', sans-serif;
+    font-size: 1.5em;
+    font-weight: bold;
+    line-height: 3.5;
+    color: #5b5a5a;
+}
+.el-menu--horizontal > .el-menu-item:nth-child(1) {
+  margin-right: auto;
 }
 
-.example-pagination-block+.example-pagination-block {
-    margin-top: 10px;
+.example-pagination-block + .example-pagination-block {
+  margin-top: 10px;
 }
 
 .example-pagination-block .example-demonstration {
-    margin-bottom: 16px;
+  margin-bottom: 16px;
 }
 
 .demo-form-inline .el-input {
-    --el-input-width: 220px;
+  --el-input-width: 220px;
 }
 
 .demo-form-inline .el-select {
-    --el-select-width: 220px;
+  --el-select-width: 220px;
 }
 </style>

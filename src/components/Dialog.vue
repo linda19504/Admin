@@ -20,7 +20,6 @@ const emit = defineEmits(['confirmDialog', 'cancelDialog']);
     const confirmDialog = () => {
       emit('confirmDialog');
       dialogVisible.value = false;
-
     };
     const cancelDialog = () => {
         dialogVisible.value = false;
