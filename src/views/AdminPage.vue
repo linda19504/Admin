@@ -18,8 +18,8 @@
         <el-menu-item index="1">{{ HOME_MAIN.ADMIN }}</el-menu-item>
         <el-dropdown>
           <span class="el-dropdown-link">
-            <TheAvatar :size="50" :avatar_url="userInfo.avatar_url" />  
-            <el-icon class="header-icon el-icon--right">                        
+            <TheAvatar :size="50" :avatar_url="userInfo.avatar_url" />
+            <el-icon class="header-icon el-icon--right">
               <arrow-down />
             </el-icon>
           </span>
@@ -27,7 +27,7 @@
             <el-dropdown-menu>
               <el-dropdown-item :command="0" @click="switchRolesAction('admin')">
                 {{ currentRoles === 'admin' ? '当前角色' : '切换角色' }}：管理员
-              </el-dropdown-item> 
+              </el-dropdown-item>
               <el-dropdown-item :command="0" divided @click="switchRolesAction('other')">
                 {{ currentRoles === 'other' ? '当前角色' : '切换角色' }}：普通用户
               </el-dropdown-item>
@@ -40,6 +40,7 @@
             </el-dropdown-menu>
           </template>
         </el-dropdown>
+        <PersonalDialog ref="person" />
       </el-menu>
       <el-icon class="header-icon" name="el-icon-arrow-down"></el-icon>
     </el-header>
@@ -61,7 +62,7 @@
   </el-container>
 </template>
 <script setup>
- import { useRouter } from 'vue-router'
+import { useRouter } from 'vue-router'
 import { ref, computed } from 'vue'
 import { useUserStore } from '@/stores/userinfo.js'
 import { Edit, SwitchButton } from '@element-plus/icons-vue'
@@ -71,56 +72,56 @@ import { HOME_MAIN } from '@/constants/MainPage.constants.js'
 import TheDescription from '@/components/TheDescription.vue'
 import TheAvatar from '@/components/TheAvatar.vue'
 import { ElMessage, ElMessageBox } from 'element-plus'
+import { useTagsViewStore } from '@/stories/modules/tagsView'
+import PersonalDialog from '@/components//PersonalDialog.vue'
 
-const router =useRouter()
+const router = useRouter()
 const person = ref()
 const UserStore = useUserStore()
+const TagsViewStore = useTagsViewStore()
 const userInfo = computed(() => UserStore.userInfo)
-const modifyPassword =()=>{person.value.show()} 
-
+const modifyPassword = () => {
+  person.value.show()
+}
 const currentRoles = computed({
-    get() {
-      return UserStore.roles[0]
-    },
-    set(val) {
-      ;(async () => {
-        await UserStore.getInfo([val])
-        router.push({
-          path: '/',
-        })
-        location.reload()
-      })()
-    },
-  })
-
-const logOut = async () => {
-    ElMessageBox.confirm('您是否确认退出登录?', '温馨提示', {
-      confirmButtonText: '确定',
-      cancelButtonText: '取消',
-      type: 'warning',
-    })
-      .then(async () => {
-        await UserStore.logout()
-        console.log('logout')
-        await router.push({ path: '/LoginPage' })
-        console.log('logoutagain')
-        
-        // TagsViewStore.clearVisitedView()
-        // PermissionStore.clearRoutes()
-        ElMessage({
-          type: 'success',
-          message: '退出登录成功！',
-        })
-      }) 
-      .catch(() => {})
+  get() {
+    return UserStore.roles[0]
+  },
+  set(val) {
+    ;(async () => {
+      await UserStore.getInfo([val])
+      router.push({
+        path: '/'
+      })
+      location.reload()
+    })()
   }
+})
+const logOut = async () => {
+  ElMessageBox.confirm('您是否确认退出登录?', '温馨提示', {
+    confirmButtonText: '确定',
+    cancelButtonText: '取消',
+    type: 'warning'
+  })
+    .then(async () => {
+      await UserStore.logout()
+      await router.push({ path: '/LoginPage' })
+      TagsViewStore.clearVisitedView()
+      // PermissionStore.clearRoutes()
+      ElMessage({
+        type: 'success',
+        message: '退出登录成功！'
+      })
+    })
+    .catch(() => {})
+}
 </script>
 <style scoped>
 .span {
   display: flex;
   justify-content: flex-end;
   margin-right: 6px;
-}                    
+}
 .el-dropdown-link {
   cursor: pointer;
   display: flex;
@@ -128,16 +129,16 @@ const logOut = async () => {
   outline: none;
   border: none;
 }
-.el-dropdown{
+.el-dropdown {
   margin-right: 15px;
-  justify-content:flex-end;
+  justify-content: flex-end;
 }
-.title_name{
-    font-family: 'Arial', sans-serif;
-    font-size: 1.5em;
-    font-weight: bold;
-    line-height: 3.5;
-    color: #5b5a5a;
+.title_name {
+  font-family: 'Arial', sans-serif;
+  font-size: 1.5em;
+  font-weight: bold;
+  line-height: 3.5;
+  color: #5b5a5a;
 }
 .el-menu--horizontal > .el-menu-item:nth-child(1) {
   margin-right: auto;

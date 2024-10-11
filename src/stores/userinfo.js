@@ -40,7 +40,7 @@ export const useUserStore = defineStore({
       })
     },
   },
- 
+
   persist: {
     key: 'userState',
     storage: window.localStorage,
