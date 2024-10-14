@@ -5,7 +5,7 @@
         </span>
         <template #footer>
             <div class="dialog-footer">
-                <el-button  @click="cancelDialog"> {{ HOME_MAIN.CANCEL }}</el-button>
+                <el-button @click="cancelDialog"> {{ HOME_MAIN.CANCEL }}</el-button>
                 <el-button type="primary"  @click="confirmDialog">
                     {{ HOME_MAIN.CONFIRM }}
                 </el-button>

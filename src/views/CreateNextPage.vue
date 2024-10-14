@@ -1,7 +1,7 @@
 <template>
     <div class="common-layout fullscreen">
         <el-container class="h-max">
-            <el-header>
+            <!-- <el-header>
                 <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" :ellipsis="false"
                     @select="handleSelect">
                     <el-menu-item index="0">
@@ -19,9 +19,53 @@
                         <el-menu-item index="2-1">{{ HOME_MAIN.LOG_IN }}</el-menu-item>
                         <el-menu-item index="2-2">{{ HOME_MAIN.LOG_OUT }}</el-menu-item>
                     </el-sub-menu>
-                </el-menu>
-                
-            </el-header>
+                </el-menu>   
+            </el-header> -->
+            <el-header>
+      <el-menu
+        :default-active="activeIndex"
+        class="el-menu-demo"
+        mode="horizontal"
+        :ellipsis="false"
+        @select="handleSelect"
+      >
+        <el-menu-item index="0">
+          <!-- <el-icon>
+            <ChromeFilled />
+          </el-icon> -->
+          <span class="title_name">{{ HOME_MAIN.TITLE }}</span>
+        </el-menu-item>
+        <!-- <el-menu-item index="1">{{ HOME_MAIN.MAIN_PAGE }}</el-menu-item> -->
+        <!-- <el-menu-item index="1">{{ HOME_MAIN.ADMIN }}</el-menu-item> -->
+        <el-dropdown>
+          <span class="el-dropdown-link">
+            <TheAvatar :size="50" :avatar_url="userInfo.avatar_url" />
+            <el-text>{{userInfo.username }}</el-text>
+            <el-icon class="header-icon el-icon--right">
+              <arrow-down />
+            </el-icon>
+          </span>
+          <template #dropdown>
+            <el-dropdown-menu>
+              <el-dropdown-item :command="0" @click="switchRolesAction('admin')">
+                {{ currentRoles === 'admin' ? '当前角色' : '切换角色' }}：管理员
+              </el-dropdown-item>
+              <el-dropdown-item :command="0" divided @click="switchRolesAction('other')">
+                {{ 4 === 'other' ? '当前角色' : '切换角色' }}：普通用户
+              </el-dropdown-item>
+              <el-dropdown-item :command="3" divided @click="modifyPassword">
+                <el-icon><Edit /></el-icon>修改密码
+              </el-dropdown-item>
+              <el-dropdown-item :command="4" divided @click="logOut">
+                <el-icon><SwitchButton /></el-icon>退出登录
+              </el-dropdown-item>
+            </el-dropdown-menu>
+          </template>
+        </el-dropdown>
+        <PersonalDialog ref="person" />
+      </el-menu>
+      <el-icon class="header-icon" name="el-icon-arrow-down"></el-icon>
+    </el-header>
             <el-container class="h-max">
                 <SideBar ></SideBar>
                 <el-main>
@@ -124,13 +168,14 @@
 </template>
 <script setup>
 import { ref, reactive } from 'vue';
-import { ChromeFilled } from '@element-plus/icons-vue';
+import { useUserStore } from '@/stores/userinfo.js'
 import SideBar from "@/components/SideBar.vue";
 import Dialog from '@/components/Dialog.vue';
 import { HOME_MAIN } from "@/constants/MainPage.constants.js";
 import TheBreadcrumb from '@/components/TheBreadcrumb.vue';
 import { ElNotification as notify } from 'element-plus';
-
+import TheAvatar from '@/components/TheAvatar.vue';
+import PersonalDialog from '@/components//PersonalDialog.vue';
 const props = defineProps({
     model_id: {
         type: Number,

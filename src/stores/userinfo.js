@@ -4,7 +4,7 @@ export const useUserStore = defineStore({
   id: 'userState',
   state: () => ({
     token: null,
-    userInfo: { avatar_url:"/public/avatar_one.png"},
+    userInfo: { avatar_url:"/public/avatar_one.png",username:"Linda"},
     roles: localStorage.roles ? JSON.parse(localStorage.roles) : [],
   }),
   getters: {},

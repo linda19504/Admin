@@ -14,11 +14,12 @@
           </el-icon> -->
           <span class="title_name">{{ HOME_MAIN.TITLE }}</span>
         </el-menu-item>
-        <el-menu-item index="1">{{ HOME_MAIN.MAIN_PAGE }}</el-menu-item>
-        <el-menu-item index="1">{{ HOME_MAIN.ADMIN }}</el-menu-item>
+        <!-- <el-menu-item index="1">{{ HOME_MAIN.MAIN_PAGE }}</el-menu-item> -->
+        <!-- <el-menu-item index="1">{{ HOME_MAIN.ADMIN }}</el-menu-item> -->
         <el-dropdown>
           <span class="el-dropdown-link">
             <TheAvatar :size="50" :avatar_url="userInfo.avatar_url" />
+            <el-text>{{ userInfo.username }}</el-text>
             <el-icon class="header-icon el-icon--right">
               <arrow-down />
             </el-icon>
@@ -29,7 +30,7 @@
                 {{ currentRoles === 'admin' ? '当前角色' : '切换角色' }}：管理员
               </el-dropdown-item>
               <el-dropdown-item :command="0" divided @click="switchRolesAction('other')">
-                {{ currentRoles === 'other' ? '当前角色' : '切换角色' }}：普通用户
+                {{ 4 === 'other' ? '当前角色' : '切换角色' }}：普通用户
               </el-dropdown-item>
               <el-dropdown-item :command="3" divided @click="modifyPassword">
                 <el-icon><Edit /></el-icon>修改密码
