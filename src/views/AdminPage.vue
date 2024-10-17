@@ -4,6 +4,7 @@
       <el-menu
         :default-active="activeIndex"
         class="el-menu-demo"
+        
         mode="horizontal"
         :ellipsis="false"
         @select="handleSelect"

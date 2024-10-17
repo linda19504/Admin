@@ -1,34 +1,31 @@
 <template>
-    <el-breadcrumb separator="/">
-        <el-breadcrumb-item :to="{ path: '/' }">主页</el-breadcrumb-item>
-        <el-breadcrumb-item v-for="(item, index) in items" :key="index">{{ item.name }}</el-breadcrumb-item>
-    </el-breadcrumb>
-
+  <el-breadcrumb separator="/">
+    <el-breadcrumb-item :to="{ path: '/' }">主页</el-breadcrumb-item>
+    <el-breadcrumb-item v-for="(item, index) in items" :key="index">
+        <a v-if="index!==items.length-1" @click.prevent="handleLink(items)">{{item.name}}</a>
+        <span v-else >{{item.name}}</span>
+    </el-breadcrumb-item>
+   
+  </el-breadcrumb>
 </template>
 <script setup>
-import { useRoute } from 'vue-router';
-import { ref, watch, onMounted } from 'vue';
+import { computed } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+// import { ref, watch, onMounted } from 'vue';
+
 const route = useRoute();
-const items = ref([]);
-// const updateBreadcrumbs = () => {
-//     items.value = useRoute().path.split('/').splice(1).map(item => ({
-//         name: item || route.path.split('/'),
-//         to: { path: route.path },
-
-//     }));
-// };
-const Breadcrumbs = () => {
-    items.value = useRoute().matched.map(route => ({
-        name: route.meta.breadcrumb || route.name,
-        to: { path: route.path },
-    }));
-};
-watch(() => useRoute(), () => {
-    Breadcrumbs();
+const router = useRouter();
+const items = computed(() => {
+return useRoute().matched.map((route) => ({
+    name: route.meta.breadcrumb || route.name,
+    to: { path: route.path }
+  }))
 });
-
-onMounted(() => {
-    Breadcrumbs();
-});
+const handleLink = (item) => {
+  router.push({
+    path: item.to
+  })
+}
 </script>
-<style></style>
+<style>
+</style>
