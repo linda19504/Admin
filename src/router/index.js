@@ -19,10 +19,15 @@ const router = createRouter({
     },
     {
       path: '/AdminPage', 
-      name: '我的申请单',
+      name: 'AdminPage',
       component: () => import('@/views/AdminPage.vue'),   
-      meta: { breadcrumb: '' } 
+      meta: { breadcrumb: '我的申请单' }
+
     },
+
+
+
+    
     {
       path: '/CreateNextPage', 
       name: '新建',

@@ -62,7 +62,7 @@
       </el-main>
     </el-container>
   </el-container>
-</template>
+</template> 
 <script setup>
 import { useRouter } from 'vue-router'
 import { ref, computed } from 'vue'
@@ -71,7 +71,7 @@ import { Edit, SwitchButton } from '@element-plus/icons-vue'
 import SideBar from '@/components/SideBar.vue'
 import TheBreadcrumb from '@/components/TheBreadcrumb.vue'
 import { HOME_MAIN } from '@/constants/MainPage.constants.js'
-import TheDescription from '@/components/TheDescription.vue'
+// import TheDescription from ' @/components/TheDescription.vue'
 import TheAvatar from '@/components/TheAvatar.vue'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { useTagsViewStore } from '@/stories/modules/tagsView'
