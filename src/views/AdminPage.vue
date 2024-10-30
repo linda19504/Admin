@@ -4,7 +4,6 @@
       <el-menu
         :default-active="activeIndex"
         class="el-menu-demo"
-        
         mode="horizontal"
         :ellipsis="false"
         @select="handleSelect"
@@ -45,6 +44,9 @@
         <PersonalDialog ref="person" />
       </el-menu>
       <el-icon class="header-icon" name="el-icon-arrow-down"></el-icon>
+      <div class="right-btn">
+        <MoreButton />
+      </div>
     </el-header>
     <el-container class="h-max">
       <SideBar></SideBar>
@@ -53,7 +55,6 @@
           <el-header>
             <TheBreadcrumb></TheBreadcrumb>
           </el-header>
-
           <el-main>
             <TheDescription></TheDescription>
           </el-main>
@@ -62,7 +63,7 @@
       </el-main>
     </el-container>
   </el-container>
-</template> 
+</template>
 <script setup>
 import { useRouter } from 'vue-router'
 import { ref, computed } from 'vue'
@@ -71,12 +72,11 @@ import { Edit, SwitchButton } from '@element-plus/icons-vue'
 import SideBar from '@/components/SideBar.vue'
 import TheBreadcrumb from '@/components/TheBreadcrumb.vue'
 import { HOME_MAIN } from '@/constants/MainPage.constants.js'
-// import TheDescription from ' @/components/TheDescription.vue'
+import TheDescription from '@/components/TheDescription.vue'
 import TheAvatar from '@/components/TheAvatar.vue'
 import { ElMessage, ElMessageBox } from 'element-plus'
-import { useTagsViewStore } from '@/stories/modules/tagsView'
-import PersonalDialog from '@/components//PersonalDialog.vue'
-
+import { useTagsViewStore } from '@/stores/tagsView.js'
+import PersonalDialog from '@/components/PersonalDialog.vue'
 const router = useRouter()
 const person = ref()
 const UserStore = useUserStore()
@@ -94,6 +94,7 @@ const currentRoles = computed({
       await UserStore.getInfo([val])
       router.push({
         path: '/'
+      
       })
       location.reload()
     })()
@@ -119,6 +120,10 @@ const logOut = async () => {
 }
 </script>
 <style scoped>
+ .right-btn {
+      height: 100%;
+      flex-shrink: 0;
+    }
 .span {
   display: flex;
   justify-content: flex-end;

@@ -184,7 +184,7 @@ const props = defineProps({
 }); 
 // const options = {
 //     methods: "get",
-//     url: `api/models/${model_id}`
+//     url: `api/models/${model_id}`  
 // }
 const handleSelect = (key, keyPath) => {
     console.log(key, keyPath)
