@@ -1,13 +1,8 @@
 <template>
   <el-container class="h-max">
     <el-header>
-      <el-menu
-        :default-active="activeIndex"
-        class="el-menu-demo"
-        mode="horizontal"
-        :ellipsis="false"
-        @select="handleSelect"
-      >
+      <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" :ellipsis="false"
+        @select="handleSelect">
         <el-menu-item index="0">
           <!-- <el-icon>
             <ChromeFilled />
@@ -33,16 +28,24 @@
                 {{ 4 === 'other' ? '当前角色' : '切换角色' }}：普通用户
               </el-dropdown-item>
               <el-dropdown-item :command="3" divided @click="modifyPassword">
-                <el-icon><Edit /></el-icon>修改密码
+                <el-icon>
+                  <Edit />
+                </el-icon>修改密码
               </el-dropdown-item>
               <el-dropdown-item :command="4" divided @click="logOut">
-                <el-icon><SwitchButton /></el-icon>退出登录
+                <el-icon>
+                  <SwitchButton />
+                </el-icon>退出登录
               </el-dropdown-item>
             </el-dropdown-menu>
           </template>
         </el-dropdown>
         <PersonalDialog ref="person" />
-        <MoreButton/>
+        <el-menu-item>
+          <template #title>
+            <MoreButton />
+          </template>
+        </el-menu-item>
       </el-menu>
       <!-- <el-icon class="header-icon" name="el-icon-arrow-down"></el-icon> -->
 
@@ -91,11 +94,11 @@ const currentRoles = computed({
     return UserStore.roles[0]
   },
   set(val) {
-    ;(async () => {
+    ; (async () => {
       await UserStore.getInfo([val])
       router.push({
         path: '/'
-      
+
       })
       location.reload()
     })()
@@ -117,19 +120,21 @@ const logOut = async () => {
         message: '退出登录成功！'
       })
     })
-    .catch(() => {})
+    .catch(() => { })
 }
 </script>
 <style scoped>
- .right-btn {
-      height: 100%;
-      flex-shrink: 0;
-    }
+.right-btn {
+  height: 100%;
+  flex-shrink: 0;
+}
+
 .span {
   display: flex;
   justify-content: flex-end;
   margin-right: 6px;
 }
+
 .el-dropdown-link {
   cursor: pointer;
   display: flex;
@@ -137,10 +142,12 @@ const logOut = async () => {
   outline: none;
   border: none;
 }
+
 .el-dropdown {
   margin-right: 15px;
   justify-content: flex-end;
 }
+
 .title_name {
   font-family: 'Arial', sans-serif;
   font-size: 1.5em;
@@ -148,11 +155,12 @@ const logOut = async () => {
   line-height: 3.5;
   color: #5b5a5a;
 }
-.el-menu--horizontal > .el-menu-item:nth-child(1) {
+
+.el-menu--horizontal>.el-menu-item:nth-child(1) {
   margin-right: auto;
 }
 
-.example-pagination-block + .example-pagination-block {
+.example-pagination-block+.example-pagination-block {
   margin-top: 10px;
 }
 
