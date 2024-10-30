@@ -42,11 +42,10 @@
           </template>
         </el-dropdown>
         <PersonalDialog ref="person" />
+        <MoreButton/>
       </el-menu>
-      <el-icon class="header-icon" name="el-icon-arrow-down"></el-icon>
-      <div class="right-btn">
-        <MoreButton />
-      </div>
+      <!-- <el-icon class="header-icon" name="el-icon-arrow-down"></el-icon> -->
+
     </el-header>
     <el-container class="h-max">
       <SideBar></SideBar>
@@ -77,6 +76,8 @@ import TheAvatar from '@/components/TheAvatar.vue'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { useTagsViewStore } from '@/stores/tagsView.js'
 import PersonalDialog from '@/components/PersonalDialog.vue'
+import MoreButton from '@/components/MoreButton.vue'
+
 const router = useRouter()
 const person = ref()
 const UserStore = useUserStore()

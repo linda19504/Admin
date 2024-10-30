@@ -49,7 +49,7 @@ const closeAllTab = async () => {
 </script>
 <style lang="scss" scoped>
   .more {
-    background-color: $primaryColor;
+    // background-color: $primaryColor;
     color: white;
     .tags-view-item {
       display: flex;
