@@ -252,6 +252,11 @@ const handleConfirm = () => {
 // };
 </script>
 <style scoped>
+.el-dropdown-link{
+    display: flex;
+    flex-direction:row;
+
+}
 .el-menu--horizontal>.el-menu-item:nth-child(1) {
     margin-right: auto;
 }
