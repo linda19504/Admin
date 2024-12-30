@@ -167,7 +167,7 @@
     </div>
 </template>
 <script setup>
-import { ref, reactive } from 'vue';
+import { ref, reactive, computed } from 'vue';
 import { useUserStore } from '@/stores/userinfo.js'
 import SideBar from "@/components/SideBar.vue";
 import Dialog from '@/components/Dialog.vue';
@@ -186,7 +186,8 @@ const props = defineProps({
 //     methods: "get",
 //     url: `api/models/${model_id}`  
 // }
-const store = useUserStore();
+const userStore = useUserStore();
+const userInfo = computed(() => userStore.userInfo)
 const handleSelect = (key, keyPath) => {
     console.log(key, keyPath)
 };
