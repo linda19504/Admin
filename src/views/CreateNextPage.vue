@@ -162,7 +162,7 @@
                 </el-main>
             </el-container>
         </el-container>
-        <Dialog v-model="dialogVisible"   @cancelDialog="handleCancel" @confirmDialog="handleConfirm">
+        <Dialog v-model="dialogVisible" @cancelDialog="handleCancel" @confirmDialog="handleConfirm">
         </Dialog>
     </div>
 </template>
@@ -175,7 +175,7 @@ import { HOME_MAIN } from "@/constants/MainPage.constants.js";
 import TheBreadcrumb from '@/components/TheBreadcrumb.vue';
 import { ElNotification as notify } from 'element-plus';
 import TheAvatar from '@/components/TheAvatar.vue';
-import PersonalDialog from '@/components//PersonalDialog.vue';
+import PersonalDialog from '@/components/PersonalDialog.vue';
 const props = defineProps({
     model_id: {
         type: Number,
@@ -186,6 +186,7 @@ const props = defineProps({
 //     methods: "get",
 //     url: `api/models/${model_id}`  
 // }
+const store = useUserStore();
 const handleSelect = (key, keyPath) => {
     console.log(key, keyPath)
 };
