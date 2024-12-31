@@ -19,7 +19,7 @@ defineProps({
   email: { default: '' },
   size:{default: ''}
    
-})
+}) 
 </script>
 <style scope>
 .flex-row {

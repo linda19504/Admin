@@ -284,6 +284,13 @@ const handleConfirm = () => {
   flex-wrap: nowrap;
   justify-content: end;
 }
+.title_name {
+  font-family: 'Arial', sans-serif;
+  font-size: 1.5em;
+  font-weight: bold;
+  line-height: 3.5;
+  color: #5b5a5a;
+}
 .el-menu--horizontal > .el-menu-item:nth-child(1) {
   margin-right: auto;
 }
