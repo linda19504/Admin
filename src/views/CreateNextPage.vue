@@ -255,7 +255,13 @@ const handleConfirm = () => {
 .el-dropdown-link{
     display: flex;
     flex-direction:row;
+    flex-wrap: nowrap;
+    justify-content:end;
 
+}
+. header-icon el-icon--right{
+    display:block;
+    height:100%;
 }
 .el-menu--horizontal>.el-menu-item:nth-child(1) {
     margin-right: auto;
