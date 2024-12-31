@@ -57,7 +57,7 @@
                   <el-icon><Edit /></el-icon>修改密码
                 </el-dropdown-item>
                 <el-dropdown-item :command="4" divided @click="logOut">
-                  <el-icon><SwitchButton /></el-icon>退出登录
+                  <el-icon><SwitchButton/></el-icon>退出登录
                 </el-dropdown-item>
               </el-dropdown-menu>
             </template>
@@ -201,6 +201,8 @@ import TheBreadcrumb from '@/components/TheBreadcrumb.vue'
 import { ElNotification as notify } from 'element-plus'
 import TheAvatar from '@/components/TheAvatar.vue'
 import PersonalDialog from '@/components/PersonalDialog.vue'
+import { Edit, SwitchButton } from '@element-plus/icons-vue'
+import { ElMessage, ElMessageBox } from 'element-plus'
 const props = defineProps({
   model_id: {
     type: Number,
@@ -213,6 +215,10 @@ const props = defineProps({
 // }
 const userStore = useUserStore()
 const userInfo = computed(() => userStore.userInfo)
+const person = ref ()
+const modifyPassword = () => {
+  person.value.show()
+}
 const handleSelect = (key, keyPath) => {
   console.log(key, keyPath)
 }
@@ -274,6 +280,24 @@ const handleConfirm = () => {
 // const openDialog = ()=>{
 //     dialogVisible.value = true;
 // };
+const logOut = async () => {
+  ElMessageBox.confirm('您是否确认退出登录?', '温馨提示', {
+    confirmButtonText: '确定',
+    cancelButtonText: '取消',
+    type: 'warning'
+  })
+    .then(async () => {
+      await UserStore.logout()
+      await router.push({ path: '/LoginPage' })
+      TagsViewStore.clearVisitedView()
+      // PermissionStore.clearRoutes()
+      ElMessage({
+        type: 'success',
+        message: '退出登录成功！'
+      })
+    })
+    .catch(() => { })
+}
 </script>
 <style scoped>
 .el-dropdown-link {

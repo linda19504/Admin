@@ -13,6 +13,7 @@ export const useSettingStore = defineStore({
       this.withoutAnimation = false
     },
     setReload() {
+
       this.isReload = false
       setTimeout(() => {
         this.isReload = true
