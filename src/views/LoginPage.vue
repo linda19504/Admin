@@ -40,7 +40,6 @@ import { useUserStore } from '@/stores/user.js';
 import { ChromeFilled } from '@element-plus/icons-vue';
 import { HOME_MAIN } from '@/constants/MainPage.constants.js';
 
-
 const isLogin = ref(true)
 const email = ref('')
 const username = ref('')

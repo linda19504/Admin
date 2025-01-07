@@ -19,15 +19,22 @@ const router = createRouter({
     },
     {
       path: '/AdminPage', 
-      name: '我的申请单',
+      name: '我的申请',
       component: () => import('@/views/AdminPage.vue'),   
-      meta: { title: '我的申请单' }, },
+      meta: { title: '我的申请' }, },
     {
       path: '/CreateNextPage', 
       name: '新建',
       component: () => import('@/views/CreateNextPage.vue'),   
       meta: { breadcrumb: '' } 
     },
+    {
+      path:'/MySubmitFile',
+      name:'我的提交',
+      component:()=>import('@/views/MySubmitFile.vue'),
+      meta:{title:'我的提交'}
+
+    }
     // {
     //   path:'/home',
     //   name:'通用平台',
