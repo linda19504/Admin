@@ -31,7 +31,7 @@
     </el-row>
   </div>
 
-  <el-descriptions class="margin-top" :column="3" :size="size" border>
+  <el-descriptions class="margin-top" :column="3" :size="size" border direction="vertical">
     <el-descriptions-item>
       <template #label>
         <div class="cell-item">
@@ -59,7 +59,15 @@
       </template>
       Short String
     </el-descriptions-item>
-    <el-descriptions-item>
+    <el-descriptions-item :span="3">
+      <template #label>
+        <div class="cell-item">
+          描述
+        </div>
+      </template>
+      主机名
+    </el-descriptions-item>
+    <el-descriptions-item :span="3">
       <template #label>
         <div class="cell-item">
           描述
