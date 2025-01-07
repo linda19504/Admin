@@ -38,57 +38,45 @@
           <el-icon :style="iconStyle">
             <user />
           </el-icon>
-          Sstting_ID
+          Setting_ID
         </div>
       </template>
-      <div>const</div>
-      kooriookami
+      <div>HOST_NAME</div>
     </el-descriptions-item>
     <el-descriptions-item>
       <template #label>
         <div class="cell-item">
-          <el-icon :style="iconStyle">
-            <iphone />
-          </el-icon>
-          Telephone
+          名称
         </div>
       </template>
-      18100000000
+      主机名
     </el-descriptions-item>
     <el-descriptions-item>
       <template #label>
         <div class="cell-item">
-          <el-icon :style="iconStyle">
-            <location />
-          </el-icon>
-          Place
+         数据类型
         </div>
       </template>
-      Suzhou
+      Short String
     </el-descriptions-item>
     <el-descriptions-item>
       <template #label>
         <div class="cell-item">
-          <el-icon :style="iconStyle">
-            <tickets />
-          </el-icon>
-          Remarks
+          描述
         </div>
       </template>
-      <el-tag size="small">School</el-tag>
+      主机名
     </el-descriptions-item>
-    <el-descriptions-item>
+    <!-- <el-descriptions-item>
       <template #label>
         <div class="cell-item">
-          <el-icon :style="iconStyle">
-            <office-building />
-          </el-icon>
           Address
         </div>
       </template>
       No.1188, Wuzhong Avenue, Wuzhong District, Suzhou, Jiangsu Province
-    </el-descriptions-item>
+    </el-descriptions-item> -->
   </el-descriptions>
+
 </template>
 
 <script setup>
