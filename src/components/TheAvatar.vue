@@ -3,7 +3,7 @@
    <el-space>
     <el-avatar 
     :icon="UserFilled" 
-    size="small" 
+     size="small" 
     :src="avatar_url"
     :size="size"
     />
@@ -14,9 +14,9 @@
 <script setup>
 import { UserFilled } from '@element-plus/icons-vue'
 defineProps({
-  avatar_url: { default: '' },
-  username: { default: '' },
-  email: { default: '' },
+  avatar_url: { default: '/avatar_one.png'},
+  username: { default: '玉置浩二' },
+  email: { default: '(tamaki_hoji@email.com)' },
   size:{default: ''}
    
 }) 

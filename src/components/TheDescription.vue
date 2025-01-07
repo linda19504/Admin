@@ -38,7 +38,7 @@
           <el-icon :style="iconStyle">
             <user />
           </el-icon>
-          Username
+          Sstting_ID
         </div>
       </template>
       <div>const</div>
@@ -98,28 +98,25 @@ import TheProfile from './TheProfile.vue'
 import TheAvatar from './TheAvatar.vue'
 defineProps({
   creater: {
-    default: {
-      avatar_url: '',
-      username: '',
-      email: ''
-    }
+    default: [
+      {
+      avatar_url: '/avatar_one.png',
+      username: '慕容紫英',
+      email: '（morongziying@email.com）'
+      }
+    ]
   },
   approvers: {
     default: [
       {
-        avatar_url: '',
-        username: '',
-        email: ''
+        avatar_url: '/avatar_one.png',
+        username: '玉置浩二',
+        email: '（tamaki_hoji@email.com）'
       },
-      {
-        avatar_url: '',
-        username: '',
-        email: ''
-      }
     ]
   },
-  create_date: { default: '' },
-  last_updated_date: { default: '' }
+  create_date: { default: '2023年10月7日' },
+  last_updated_date: { default: '2024年1月7日' }
 })
 const size = ref('default')
 const iconStyle = computed(() => {

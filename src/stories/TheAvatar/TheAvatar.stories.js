@@ -15,24 +15,24 @@ export default {
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Primary = {
   args: {
-    avatar_url: '/avatar.png',
-    username: '慕容紫英',
-    email: 'murogziying@gmail.com'},
+    avatar_url: '',
+    username: '',
+    email: ''},
   approvers: [
         {
-          avatar_url: '/avatar.png',
-          username: '慕容紫英',
-          email: 'murogziying@gmail.com'
+          avatar_url: '',
+          username: '',
+          email: ''
         },
         {
-          avatar_url: '/avatar.png',
-          username: '慕容紫英',
-          email: 'murogziying@gmail.com'
+          avatar_url: '',
+          username: '',
+          email: ''
         }
       ],
 
-      create_date: '2024年3月5日 10:00',
-      last_updated_date: '2024年3月8日 10:00'
+      create_date: '',
+      last_updated_date: ''
     }
   
 

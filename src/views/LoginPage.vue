@@ -1,9 +1,9 @@
 <template>
   <div class="h-max">
     <div class="title">
-      <el-icon>
+      <!-- <el-icon>
         <ChromeFilled />
-      </el-icon>
+      </el-icon> -->
       <span class="title_name">{{ HOME_MAIN.TITLE }}</span>
     </div>
     <div class="h-max flex-col flex-center">
@@ -189,5 +189,11 @@ input::placeholder {
   color: #a1a1a1;
   align-items: center;
   gap: 6px;
+}
+.title_name{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: start;
 }
 </style>

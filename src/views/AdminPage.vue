@@ -4,9 +4,6 @@
       <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" :ellipsis="false"
         @select="handleSelect">
         <el-menu-item index="0">
-          <!-- <el-icon>
-            <ChromeFilled />
-          </el-icon> -->
           <span class="title_name">{{ HOME_MAIN.TITLE }}</span>
         </el-menu-item>
         <!-- <el-menu-item index="1">{{ HOME_MAIN.MAIN_PAGE }}</el-menu-item> -->
@@ -41,14 +38,12 @@
           </template>
         </el-dropdown>
         <PersonalDialog ref="person" />
-        <el-menu-item>
+        <!-- <el-menu-item>
           <template #title>
             <MoreButton />
           </template>
-        </el-menu-item>
+        </el-menu-item> -->
       </el-menu>
-      <!-- <el-icon class="header-icon" name="el-icon-arrow-down"></el-icon> -->
-
     </el-header>
     <el-container class="h-max">
       <SideBar></SideBar>
@@ -79,7 +74,7 @@ import TheAvatar from '@/components/TheAvatar.vue'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { useTagsViewStore } from '@/stores/tagsView.js'
 import PersonalDialog from '@/components/PersonalDialog.vue'
-import MoreButton from '@/components/MoreButton.vue'
+// import MoreButton from '@/components/MoreButton.vue'
 
 const router = useRouter()
 const person = ref()
