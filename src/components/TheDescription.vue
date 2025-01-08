@@ -20,7 +20,6 @@
         </TheProfile>
       </el-col>
     </el-row>
-
     <el-row gutter="1rem" class="p-half-rem">
       <el-col :span="12">
         <TheProfile label="创建时间"> {{ create_date }} </TheProfile>
@@ -30,8 +29,7 @@
       </el-col>
     </el-row>
   </div>
-
-  <el-descriptions class="margin-top" :column="3" :size="size" border>
+  <el-descriptions class="margin-top" :column="3" :size="size" border direction="vertical">
     <el-descriptions-item>
       <template #label>
         <div class="cell-item">
@@ -45,52 +43,81 @@
     </el-descriptions-item>
     <el-descriptions-item>
       <template #label>
-        <div class="cell-item">
-          名称
-        </div>
+        <div class="cell-item">名称</div>
       </template>
       主机名
     </el-descriptions-item>
     <el-descriptions-item>
       <template #label>
-        <div class="cell-item">
-         数据类型
-        </div>
+        <div class="cell-item">数据类型</div>
       </template>
       Short String
     </el-descriptions-item>
-    <el-descriptions-item>
+    <el-descriptions-item :span="4">
       <template #label>
-        <div class="cell-item">
-          描述
-        </div>
+        <div class="cell-item">描述</div>
       </template>
       主机名
     </el-descriptions-item>
-    <!-- <el-descriptions-item>
+    <el-descriptions-item :span="4">
       <template #label>
-        <div class="cell-item">
-          Address
-        </div>
+        <div class="cell-item">初始值</div>
       </template>
-      No.1188, Wuzhong Avenue, Wuzhong District, Suzhou, Jiangsu Province
-    </el-descriptions-item> -->
+      Pantum Printer
+    </el-descriptions-item>
+    <el-descriptions-item :span="4">
+      <template #label>
+        <div class="cell-item">校验规则</div>
+      </template>
+      [A-Z][A-Z_0-9]*
+    </el-descriptions-item>
   </el-descriptions>
-
+  <br />
+  <el-timeline style="max-width: 600px">
+    <el-timeline-item :timestamp=dynamicTimestamp1 placement="top">
+      <el-card>
+        <el-space>
+          <el-avatar :icon="UserFilled" size="small" :src="avatar_url" :size="size" />
+          {{ username }} {{ email }}
+        </el-space>
+      </el-card>
+    </el-timeline-item>
+    <el-timeline-item :timestamp=dynamicTimestamp2 placement="top">
+      <el-card>
+        <el-space>
+          <el-avatar :icon="UserFilled" size="small" :src="avatar_url" :size="size" />
+          {{ username }} {{ email }}
+        </el-space>
+      </el-card>
+      
+    </el-timeline-item>
+    <el-timeline-item timestamp="2018/4/2" placement="top">
+      <el-card>
+        <h4>Update Github template</h4>
+        <p>Tom committed 2018/4/2 20:46</p>
+      </el-card>
+    </el-timeline-item>
+  </el-timeline>
 </template>
 
 <script setup>
 import { computed, ref } from 'vue'
-import { Iphone, Location, OfficeBuilding, Tickets, User } from '@element-plus/icons-vue'
+import { User } from '@element-plus/icons-vue'
 import TheProfile from './TheProfile.vue'
 import TheAvatar from './TheAvatar.vue'
+import { UserFilled } from '@element-plus/icons-vue'
+
 defineProps({
+  avatar_url: { default: '/avatar_one.png' },
+  username: { default: '玉置浩二' },
+  email: { default: '(tamaki_hoji@email.com)' },
+  size: { default: '' },
   creater: {
     default: [
       {
-      avatar_url: '/avatar_one.png',
-      username: '慕容紫英',
-      email: '（morongziying@email.com）'
+        avatar_url: '/avatar_one.png',
+        username: '慕容紫英',
+        email: '（morongziying@email.com）'
       }
     ]
   },
@@ -100,12 +127,23 @@ defineProps({
         avatar_url: '/avatar_one.png',
         username: '玉置浩二',
         email: '（tamaki_hoji@email.com）'
-      },
+      }
     ]
   },
   create_date: { default: '2023年10月7日' },
   last_updated_date: { default: '2024年1月7日' }
 })
+const timelineData = () => {
+  [
+    { timestamp: dynamicTimestamp1, placement: 'top', content: 'Event 1' },
+    { timestamp: dynamicTimestamp2, placement: 'bottom', content: 'Event 2' },
+    { timestamp: dynamicTimestamp3, placement: 'top', content: 'Event 3' }
+  ]
+}
+const dynamicTimestamp1 = ref('2023-01-01')
+const dynamicTimestamp2 = ref('2023-02-01')
+const dynamicTimestamp3 = ref('2023-03-01')
+
 const size = ref('default')
 const iconStyle = computed(() => {
   const marginMap = {
@@ -130,6 +168,9 @@ const blockMargin = computed(() => {
 </script>
 
 <style scoped>
+.break-line {
+  white-space: pre-wrap;
+}
 .p-half-rem {
   padding: 0.5rem;
 }
