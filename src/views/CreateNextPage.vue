@@ -39,7 +39,7 @@
           <!-- <el-menu-item index="1">{{ HOME_MAIN.ADMIN }}</el-menu-item> -->
           <el-dropdown>
             <span class="el-dropdown-link">
-              <TheAvatar :size="50" :avatar_url="userInfo.avatar_url" />
+              <TheAvatar :size="50" :avatar_url="userInfo.avatar_url" :showName="false" />
               <el-text>{{ userInfo.username }}</el-text>
               <el-icon class="header-icon el-icon--right">
                 <arrow-down />
