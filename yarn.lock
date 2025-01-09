@@ -2954,6 +2954,11 @@ function-bind@^1.1.2:
   resolved "https://registry.npmmirror.com/function-bind/-/function-bind-1.1.2.tgz"
   integrity sha512-7XHNxH7qX9xG5mIwxkhumTox/MIRNcOgDrxWsMt2pAr23WHp6MrRlN7FBSFpCpr+oVO0F744iUgR82nJMfG2SA==
 
+fuse.js@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.npmmirror.com/fuse.js/-/fuse.js-7.0.0.tgz#6573c9fcd4c8268e403b4fc7d7131ffcf99a9eb2"
+  integrity sha512-14F4hBIxqKvD4Zz/XjDc3y94mNZN6pRv3U13Udo0lNLCWRBUsrMv2xwcF/y/Z5sV6+FQW+/ow68cHpm4sunt8Q==
+
 gensync@^1.0.0-beta.2:
   version "1.0.0-beta.2"
   resolved "https://registry.npmmirror.com/gensync/-/gensync-1.0.0-beta.2.tgz"
@@ -5155,6 +5160,11 @@ vue-demi@*, vue-demi@^0.14.10:
   resolved "https://registry.npmmirror.com/vue-demi/-/vue-demi-0.14.10.tgz"
   integrity sha512-nMZBOwuzabUO0nLgIcc6rycZEebF6eeUfaiQx9+WSk8e29IbLvPU9feI6tqW4kTo3hvoYAJkMh8n8D0fuISphg==
 
+vue-demi@^0.11.4:
+  version "0.11.4"
+  resolved "https://registry.npmmirror.com/vue-demi/-/vue-demi-0.11.4.tgz#6101992fe4724cf5634018a16e953f3052e94e2a"
+  integrity sha512-/3xFwzSykLW2HiiLie43a+FFgNOcokbBJ+fzvFXd0r2T8MYohqvphUyDQ8lbAwzQ3Dlcrb1c9ykifGkhSIAk6A==
+
 vue-docgen-api@^4.75.1:
   version "4.79.2"
   resolved "https://registry.npmmirror.com/vue-docgen-api/-/vue-docgen-api-4.79.2.tgz"
@@ -5185,6 +5195,13 @@ vue-eslint-parser@^9.4.3:
     esquery "^1.4.0"
     lodash "^4.17.21"
     semver "^7.3.6"
+
+vue-fuse@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.npmmirror.com/vue-fuse/-/vue-fuse-4.1.1.tgz#2554e269b683055506ebb318de0ff2882c7f46e4"
+  integrity sha512-bhuTiniVK3HmTcxvksrzPgDWPFTEDYiWbJa01E7yT2lRPtE4BVb5cXUBUmqtb5rCkDOsLgMh1n9mRlHQImYNkA==
+  dependencies:
+    vue-demi "^0.11.4"
 
 vue-i18n@^9.13.1:
   version "9.14.0"

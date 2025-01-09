@@ -10,11 +10,8 @@
         <!-- <el-menu-item index="1">{{ HOME_MAIN.ADMIN }}</el-menu-item> -->
         <el-dropdown>
           <span class="el-dropdown-link">
-            <TheAvatar :size="50" 
-            :avatar_url="userInfo.avatar_url"
-            :username="userInfo.username"
-            :email="userInfo.email"
-            />
+            <TheAvatar :size="50" :avatar_url="userInfo.avatar_url" :username="userInfo.username"
+              :email="userInfo.email" />
             <!-- <el-text>{{ userInfo.Info }}</el-text> -->
             <el-icon class="header-icon el-icon--right">
               <arrow-down />
@@ -78,13 +75,14 @@ import TheAvatar from '@/components/TheAvatar.vue'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { useTagsViewStore } from '@/stores/tagsView.js'
 import PersonalDialog from '@/components/PersonalDialog.vue'
+import { storeToRefs } from 'pinia'
 // import MoreButton from '@/components/MoreButton.vue'
 
 const router = useRouter()
 const person = ref()
 const UserStore = useUserStore()
 const TagsViewStore = useTagsViewStore()
-const userInfo = computed(() => UserStore.userInfo)
+const { userInfo } = storeToRefs(UserStore)
 const modifyPassword = () => {
   person.value.show()
 }
@@ -123,8 +121,8 @@ const logOut = async () => {
 }
 const props = defineProps({
   avatar_url: { default: '' },
-  username:{default:''},
-  email:{default:''},  
+  username: { default: '' },
+  email: { default: '' },
 })
 </script>
 <style scoped>

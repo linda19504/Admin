@@ -3,20 +3,13 @@
     <el-row gutter="1rem" class="p-half-rem">
       <el-col :span="12">
         <TheProfile label="创建者">
-          <TheAvatar
-            :avatar_url="creater.avatar_url"
-            :username="creater.username"
-            :email="creater.email"
-          ></TheAvatar>
+          <TheAvatar :avatar_url="creater.avatar_url" :username="creater.username" :email="creater.email"></TheAvatar>
         </TheProfile>
       </el-col>
       <el-col :span="12">
         <TheProfile label="审批者">
-          <TheAvatar
-            :avatar_url="approvers.avatar_url"
-            :username="approvers.username"
-            :email="approvers.email"
-          ></TheAvatar>
+          <TheAvatar :avatar_url="approvers.avatar_url" :username="approvers.username" :email="approvers.email">
+          </TheAvatar>
         </TheProfile>
       </el-col>
     </el-row>
@@ -74,14 +67,8 @@
   </el-descriptions>
   <br />
   <el-timeline style="max-width: 600px">
-    <el-timeline-item
-      :timestamp="dynamicTimestamp1"
-      v-for="(activity, index) in activities"
-      :key="timeline1_ + index"
-      :color="activity.color"
-      :hollow="activity.hollow"
-      placement="top"
-    >
+    <el-timeline-item :timestamp="dynamicTimestamp1" v-for="(activity, index) in activities" :key="timeline1_ + index"
+      :color="activity.color" :hollow="activity.hollow" placement="top">
       <el-card>
         <el-space>
           <el-avatar :src="avatar_url" :size="size" />
@@ -89,17 +76,12 @@
         </el-space>
       </el-card>
     </el-timeline-item>
-    <el-timeline-item
-      :timestamp="dynamicTimestamp2"
-      v-for="(activity, index) in activities"
-      :key="timeline2_ + index"
-      :icon="activity.icon"
-      placement="top"
-    >
+    <el-timeline-item :timestamp="dynamicTimestamp2" v-for="(activity, index) in activities" :key="timeline2_ + index"
+      :icon="activity.icon" placement="top">
       <el-card>
         <el-space>
           <el-avatar :src="avatar_url_one" :size="size" />
-          {{username_one }} {{ email_one }}
+          {{ username_one }} {{ email_one }}
         </el-space>
       </el-card>
     </el-timeline-item>
@@ -121,6 +103,18 @@ import TheProfile from './TheProfile.vue'
 import TheAvatar from './TheAvatar.vue'
 import { UserFilled } from '@element-plus/icons-vue'
 import { MoreFilled } from '@element-plus/icons-vue'
+const creater = ref(
+  {
+    avatar_url: 'avatar_one.png',
+    username: '慕容紫英',
+    email: 'murong_ziying@gmail.coms'
+  }
+)
+const approvers = ref({
+  avatar_url: 'avatar_two.jpg',
+  username: '玉置浩二',
+  email: 'yuzhi_hasoer@gmail.coms'
+})
 
 defineProps({
   avatar_url: { default: '/avatar_one.png' },
@@ -134,24 +128,6 @@ defineProps({
   email_two: { default: '(Ono Risa@email.com)' },
   size: { default: '' },
   icon: { default: '' },
-  creater: {
-    default: [
-      {
-        avatar_url: '',
-        username: '',
-        email: ''
-      }
-    ]
-  },
-  approvers: {
-    default: [
-      {
-        avatar_url: '',
-        username: '',
-        email: ''
-      }
-    ]
-  },
   create_date: { default: '2023年10月7日' },
   last_updated_date: { default: '2024年1月7日' }
 })
@@ -209,9 +185,11 @@ const blockMargin = computed(() => {
 .break-line {
   white-space: pre-wrap;
 }
+
 .p-half-rem {
   padding: 0.5rem;
 }
+
 .grid-content {
   display: flex;
   flex-direction: row;
@@ -233,6 +211,7 @@ const blockMargin = computed(() => {
 .el-row:last-child {
   margin-bottom: 0;
 }
+
 .el-col {
   border-radius: 4px;
 }
