@@ -71,7 +71,7 @@
       :color="activity.color" :hollow="activity.hollow" placement="top">
       <el-card>
         <el-space>
-          <el-avatar :src="avatar_url" :size="size" />
+          <TheAvatar :avatar_url="avatar_url" :size="size" />
           {{ username }} {{ email }}
         </el-space>
       </el-card>
@@ -80,7 +80,7 @@
       :icon="activity.icon" placement="top">
       <el-card>
         <el-space>
-          <el-avatar :src="avatar_url_one" :size="size" />
+          <TheAvatar :avatar_url="avatar_url_one" :size="size" />
           {{ username_one }} {{ email_one }}
         </el-space>
       </el-card>
@@ -88,7 +88,7 @@
     <el-timeline-item :timestamp="dynamicTimestamp3" placement="top">
       <el-card>
         <el-space>
-          <el-avatar :src="avatar_url_two" :size="size" />
+          <TheAvatar :avatar_url="avatar_url_two" :size="size" />
           {{ username_two }} {{ email_two }}
         </el-space>
       </el-card>
