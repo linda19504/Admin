@@ -54,7 +54,21 @@
             <TheBreadcrumb></TheBreadcrumb>
           </el-header>
           <el-main>
-            <TheDescription></TheDescription>
+            <TheDescription 
+              :size="descriptionData.size"
+              :create_date="descriptionData.create_date"
+              :last_updated_date="descriptionData.last_updated_date"
+              :creater="descriptionData.creater"
+              :approvers="descriptionData.approvers"
+            ></TheDescription>
+            <br />
+            <TimelineList
+              :timestamps="[descriptionData.dynamicTimestamp1, descriptionData.dynamicTimestamp2, descriptionData.dynamicTimestamp3]"
+              :avatars="[descriptionData.avatar_url, descriptionData.avatar_url_one, descriptionData.avatar_url_two]"
+              :usernames="[descriptionData.username, descriptionData.username_one, descriptionData.username_two]"
+              :emails="[descriptionData.email, descriptionData.email_one, descriptionData.email_two]"
+              :size="descriptionData.size"
+            />
           </el-main>
           <el-footer> </el-footer>
         </el-container>
@@ -77,6 +91,37 @@ import { useTagsViewStore } from '@/stores/tagsView.js'
 import PersonalDialog from '@/components/PersonalDialog.vue'
 import { storeToRefs } from 'pinia'
 // import MoreButton from '@/components/MoreButton.vue'
+import { User } from "@element-plus/icons-vue"
+import TimelineList from '@/components/TimelineList.vue'
+
+// 新增的数据
+const descriptionData = ref({
+  size: 'default',
+  dynamicTimestamp1: '2023-01-01',
+  dynamicTimestamp2: '2023-02-01',
+  dynamicTimestamp3: '2023-03-01',
+  avatar_url: '/avatar_one.png',
+  avatar_url_one: '/avatar_two.jpg',
+  avatar_url_two: '/avatar_three.jpg',
+  username: '玉置浩二',
+  username_one: '山口百惠',
+  username_two: '小野丽莎',
+  email: '(tamaki_hoji@email.com)',
+  email_one: '(Yamaguchi Yuuko@email.com)',
+  email_two: '(Ono Risa@email.com)',
+  create_date: '2023年10月7日',
+  last_updated_date: '2024年1月7日',
+  creater: {
+    avatar_url: 'avatar_one.png',
+    username: '慕容紫英',
+    email: 'murong_ziying@gmail.coms'
+  },
+  approvers: {
+    avatar_url: 'avatar_two.jpg',
+    username: '玉置浩二',
+    email: 'yuzhi_hasoer@gmail.coms'
+  }
+})
 
 const router = useRouter()
 const person = ref()
