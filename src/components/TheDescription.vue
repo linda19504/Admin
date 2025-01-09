@@ -3,12 +3,20 @@
     <el-row gutter="1rem" class="p-half-rem">
       <el-col :span="12">
         <TheProfile label="创建者">
-          <TheAvatar :avatar_url="creater.avatar_url" :username="creater.username" :email="creater.email"></TheAvatar>
+          <TheAvatar
+            :avatar_url="creater.avatar_url"
+            :username="creater.username"
+            :email="creater.email"
+          ></TheAvatar>
         </TheProfile>
       </el-col>
       <el-col :span="12">
         <TheProfile label="审批者">
-          <TheAvatar :avatar_url="approvers.avatar_url" :username="approvers.username" :email="approvers.email">
+          <TheAvatar
+            :avatar_url="approvers.avatar_url"
+            :username="approvers.username"
+            :email="approvers.email"
+          >
           </TheAvatar>
         </TheProfile>
       </el-col>
@@ -66,119 +74,65 @@
     </el-descriptions-item>
   </el-descriptions>
   <br />
-  <el-timeline style="max-width: 600px">
-    <el-timeline-item :timestamp="dynamicTimestamp1" v-for="(activity, index) in activities" :key="timeline1_ + index"
-      :color="activity.color" :hollow="activity.hollow" placement="top">
-      <el-card>
-        <el-space>
-          <TheAvatar :avatar_url="avatar_url" :size="size" />
-          {{ username }} {{ email }}
-        </el-space>
-      </el-card>
-    </el-timeline-item>
-    <el-timeline-item :timestamp="dynamicTimestamp2" v-for="(activity, index) in activities" :key="timeline2_ + index"
-      :icon="activity.icon" placement="top">
-      <el-card>
-        <el-space>
-          <TheAvatar :avatar_url="avatar_url_one" :size="size" />
-          {{ username_one }} {{ email_one }}
-        </el-space>
-      </el-card>
-    </el-timeline-item>
-    <el-timeline-item :timestamp="dynamicTimestamp3" placement="top">
-      <el-card>
-        <el-space>
-          <TheAvatar :avatar_url="avatar_url_two" :size="size" />
-          {{ username_two }} {{ email_two }}
-        </el-space>
-      </el-card>
-    </el-timeline-item>
-  </el-timeline>
+  <TimelineList
+    :timestamps="[dynamicTimestamp1, dynamicTimestamp2, dynamicTimestamp3]"
+    :avatars="[avatar_url, avatar_url_one, avatar_url_two]"
+    :usernames="[props.username, props.username_one, props.username_two]"
+    :emails="[props.email, props.email_one, props.email_two]"
+    :size="size"
+  />
 </template>
 
 <script setup>
-import { computed, ref } from 'vue'
-import { User } from '@element-plus/icons-vue'
-import TheProfile from './TheProfile.vue'
-import TheAvatar from './TheAvatar.vue'
-import { UserFilled } from '@element-plus/icons-vue'
-import { MoreFilled } from '@element-plus/icons-vue'
-const creater = ref(
-  {
-    avatar_url: 'avatar_one.png',
-    username: '慕容紫英',
-    email: 'murong_ziying@gmail.coms'
-  }
-)
+import { computed, ref } from "vue";
+import { User } from "@element-plus/icons-vue";
+import TheProfile from "./TheProfile.vue";
+import TheAvatar from "./TheAvatar.vue";
+import TimelineList from "./TimelineList.vue";
+
+const avatar_url = ref("/avatar_one.png");
+const avatar_url_one = ref("/avatar_two.jpg");
+const avatar_url_two = ref("/avatar_three.jpg");
+
+const props = defineProps({
+  username: { default: "玉置浩二" },
+  username_one: { default: "山口百惠" },
+  username_two: { default: "小野丽莎" },
+  email: { default: "(tamaki_hoji@email.com)" },
+  email_one: { default: "(Yamaguchi Yuuko@email.com)" },
+  email_two: { default: "(Ono Risa@email.com)" },
+  size: { default: "" },
+  icon: { default: "" },
+  create_date: { default: "2023年10月7日" },
+  last_updated_date: { default: "2024年1月7日" },
+});
+
+const size = ref("default");
+const dynamicTimestamp1 = ref("2023-01-01");
+const dynamicTimestamp2 = ref("2023-02-01");
+const dynamicTimestamp3 = ref("2023-03-01");
+
+const creater = ref({
+  avatar_url: "avatar_one.png",
+  username: "慕容紫英",
+  email: "murong_ziying@gmail.coms",
+});
 const approvers = ref({
-  avatar_url: 'avatar_two.jpg',
-  username: '玉置浩二',
-  email: 'yuzhi_hasoer@gmail.coms'
-})
+  avatar_url: "avatar_two.jpg",
+  username: "玉置浩二",
+  email: "yuzhi_hasoer@gmail.coms",
+});
 
-defineProps({
-  avatar_url: { default: '/avatar_one.png' },
-  avatar_url_one: { default: '/avatar_two.jpg' },
-  avatar_url_two: { default: '/avatar_three.jpg' },
-  username: { default: '玉置浩二' },
-  username_one: { default: '山口百惠' },
-  username_two: { default: '小野丽莎' },
-  email: { default: '(tamaki_hoji@email.com)' },
-  email_one: { default: '(Yamaguchi Yuuko@email.com)' },
-  email_two: { default: '(Ono Risa@email.com)' },
-  size: { default: '' },
-  icon: { default: '' },
-  create_date: { default: '2023年10月7日' },
-  last_updated_date: { default: '2024年1月7日' }
-})
-const size = ref('default')
-const activities = [
-  {
-    content: 'Custom icon',
-    type: 'primary',
-    color: '#409EFF',
-    hollow: true,
-    size: 'small'
-  },
-  {
-    content: 'Custom icon',
-    type: 'primary',
-    MoreFilled,
-    hollow: true,
-    size: 'small'
-  }
-]
-
-const timelineData = () => {
-  ;[
-    { timestamp: dynamicTimestamp1, placement: 'top', content: 'Event 1' },
-    { timestamp: dynamicTimestamp2, placement: 'bottom', content: 'Event 2' },
-    { timestamp: dynamicTimestamp3, placement: 'top', content: 'Event 3' }
-  ]
-}
-const dynamicTimestamp1 = ref('2023-01-01')
-const dynamicTimestamp2 = ref('2023-02-01')
-const dynamicTimestamp3 = ref('2023-03-01')
 const iconStyle = computed(() => {
   const marginMap = {
-    large: '8px',
-    default: '6px',
-    small: '4px'
-  }
+    large: "8px",
+    default: "6px",
+    small: "4px",
+  };
   return {
-    marginRight: marginMap[size.value] || marginMap.default
-  }
-})
-const blockMargin = computed(() => {
-  const marginMap = {
-    large: '32px',
-    default: '28px',
-    small: '24px'
-  }
-  return {
-    marginTop: marginMap[size.value] || marginMap.default
-  }
-})
+    marginRight: marginMap[size.value] || marginMap.default,
+  };
+});
 </script>
 
 <style scoped>
