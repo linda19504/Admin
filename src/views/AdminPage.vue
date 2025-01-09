@@ -1,8 +1,13 @@
 <template>
   <el-container class="h-max">
     <el-header>
-      <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" :ellipsis="false"
-        @select="handleSelect">
+      <el-menu
+        :default-active="activeIndex"
+        class="el-menu-demo"
+        mode="horizontal"
+        :ellipsis="false"
+        @select="handleSelect"
+      >
         <el-menu-item index="0">
           <span class="title_name">{{ HOME_MAIN.TITLE }}</span>
         </el-menu-item>
@@ -10,8 +15,13 @@
         <!-- <el-menu-item index="1">{{ HOME_MAIN.ADMIN }}</el-menu-item> -->
         <el-dropdown>
           <span class="el-dropdown-link">
-            <TheAvatar :size="50" :avatar_url="userInfo.avatar_url" :username="userInfo.username"
-              :email="userInfo.email" />
+            <TheAvatar
+              :size="50"
+              :avatar_url="userInfo.avatar_url"
+              :username="userInfo.username"
+              :email="userInfo.email"
+              :showName="false"
+            />
             <!-- <el-text>{{ userInfo.Info }}</el-text> -->
             <el-icon class="header-icon el-icon--right">
               <arrow-down />
@@ -20,20 +30,20 @@
           <template #dropdown>
             <el-dropdown-menu>
               <el-dropdown-item :command="0" @click="switchRolesAction('admin')">
-                {{ currentRoles === 'admin' ? '当前角色' : '切换角色' }}：管理员
+                {{ currentRoles === "admin" ? "当前角色" : "切换角色" }}：管理员
               </el-dropdown-item>
               <el-dropdown-item :command="0" divided @click="switchRolesAction('other')">
-                {{ 4 === 'other' ? '当前角色' : '切换角色' }}：普通用户
+                {{ 4 === "other" ? "当前角色" : "切换角色" }}：普通用户
               </el-dropdown-item>
               <el-dropdown-item :command="3" divided @click="modifyPassword">
                 <el-icon>
-                  <Edit />
-                </el-icon>修改密码
+                  <Edit /> </el-icon
+                >修改密码
               </el-dropdown-item>
               <el-dropdown-item :command="4" divided @click="logOut">
                 <el-icon>
-                  <SwitchButton />
-                </el-icon>退出登录
+                  <SwitchButton /> </el-icon
+                >退出登录
               </el-dropdown-item>
             </el-dropdown-menu>
           </template>
@@ -54,7 +64,7 @@
             <TheBreadcrumb></TheBreadcrumb>
           </el-header>
           <el-main>
-            <TheDescription 
+            <TheDescription
               :size="descriptionData.size"
               :create_date="descriptionData.create_date"
               :last_updated_date="descriptionData.last_updated_date"
@@ -74,107 +84,106 @@
   </el-container>
 </template>
 <script setup>
-import { useRouter } from 'vue-router'
-import { ref, computed } from 'vue'
-import { useUserStore } from '@/stores/userinfo.js'
-import { Edit, SwitchButton } from '@element-plus/icons-vue'
-import SideBar from '@/components/SideBar.vue'
-import TheBreadcrumb from '@/components/TheBreadcrumb.vue'
-import { HOME_MAIN } from '@/constants/MainPage.constants.js'
-import TheDescription from '@/components/TheDescription.vue'
-import TheAvatar from '@/components/TheAvatar.vue'
-import { ElMessage, ElMessageBox } from 'element-plus'
-import { useTagsViewStore } from '@/stores/tagsView.js'
-import PersonalDialog from '@/components/PersonalDialog.vue'
-import { storeToRefs } from 'pinia'
+import { useRouter } from "vue-router";
+import { ref, computed } from "vue";
+import { useUserStore } from "@/stores/userinfo.js";
+import { Edit, SwitchButton } from "@element-plus/icons-vue";
+import SideBar from "@/components/SideBar.vue";
+import TheBreadcrumb from "@/components/TheBreadcrumb.vue";
+import { HOME_MAIN } from "@/constants/MainPage.constants.js";
+import TheDescription from "@/components/TheDescription.vue";
+import TheAvatar from "@/components/TheAvatar.vue";
+import { ElMessage, ElMessageBox } from "element-plus";
+import { useTagsViewStore } from "@/stores/tagsView.js";
+import PersonalDialog from "@/components/PersonalDialog.vue";
+import { storeToRefs } from "pinia";
 // import MoreButton from '@/components/MoreButton.vue'
-import { User } from "@element-plus/icons-vue"
-import TimelineList from '@/components/TimelineList.vue'
+import { User } from "@element-plus/icons-vue";
+import TimelineList from "@/components/TimelineList.vue";
 
 // 新增的数据
 const descriptionData = ref({
-  size: 'default',
-  create_date: '2023年10月7日',
-  last_updated_date: '2024年1月7日',
+  size: "default",
+  create_date: "2023年10月7日",
+  last_updated_date: "2024年1月7日",
   creater: {
-    avatar_url: 'avatar_one.png',
-    username: '慕容紫英',
-    email: 'murong_ziying@gmail.coms'
+    avatar_url: "avatar_one.png",
+    username: "慕容紫英",
+    email: "murong_ziying@gmail.coms",
   },
   approvers: {
-    avatar_url: 'avatar_two.jpg',
-    username: '玉置浩二',
-    email: 'yuzhi_hasoer@gmail.coms'
+    avatar_url: "avatar_two.jpg",
+    username: "玉置浩二",
+    email: "yuzhi_hasoer@gmail.coms",
   },
   // 新增时间轴活动数组
   timelineActivities: [
     {
-      timestamp: '2023-01-01',
-      avatar_url: '/avatar_one.png',
-      username: '玉置浩二',
-      email: 'tamaki_hoji@email.com'
+      timestamp: "2023-01-01",
+      avatar_url: "/avatar_one.png",
+      username: "玉置浩二",
+      email: "tamaki_hoji@email.com",
     },
     {
-      timestamp: '2023-02-01',
-      avatar_url: '/avatar_two.jpg',
-      username: '山口百惠',
-      email: 'Yamaguchi Yuuko@email.com'
+      timestamp: "2023-02-01",
+      avatar_url: "/avatar_two.jpg",
+      username: "山口百惠",
+      email: "Yamaguchi Yuuko@email.com",
     },
     {
-      timestamp: '2023-03-01',
-      avatar_url: '/avatar_three.jpg',
-      username: '小野丽莎',
-      email: 'Ono Risa@email.com'
-    }
-  ]
-})
+      timestamp: "2023-03-01",
+      avatar_url: "/avatar_three.jpg",
+      username: "小野丽莎",
+      email: "Ono Risa@email.com",
+    },
+  ],
+});
 
-const router = useRouter()
-const person = ref()
-const UserStore = useUserStore()
-const TagsViewStore = useTagsViewStore()
-const { userInfo } = storeToRefs(UserStore)
+const router = useRouter();
+const person = ref();
+const UserStore = useUserStore();
+const TagsViewStore = useTagsViewStore();
+const { userInfo } = storeToRefs(UserStore);
 const modifyPassword = () => {
-  person.value.show()
-}
+  person.value.show();
+};
 const currentRoles = computed({
   get() {
-    return UserStore.roles[0]
+    return UserStore.roles[0];
   },
   set(val) {
-    ; (async () => {
-      await UserStore.getInfo([val])
+    (async () => {
+      await UserStore.getInfo([val]);
       router.push({
-        path: '/'
-
-      })
-      location.reload()
-    })()
-  }
-})
+        path: "/",
+      });
+      location.reload();
+    })();
+  },
+});
 const logOut = async () => {
-  ElMessageBox.confirm('您是否确认退出登录?', '温馨提示', {
-    confirmButtonText: '确定',
-    cancelButtonText: '取消',
-    type: 'warning'
+  ElMessageBox.confirm("您是否确认退出登录?", "温馨提示", {
+    confirmButtonText: "确定",
+    cancelButtonText: "取消",
+    type: "warning",
   })
     .then(async () => {
-      await UserStore.logout()
-      await router.push({ path: '/LoginPage' })
-      TagsViewStore.clearVisitedView()
+      await UserStore.logout();
+      await router.push({ path: "/LoginPage" });
+      TagsViewStore.clearVisitedView();
       // PermissionStore.clearRoutes()
       ElMessage({
-        type: 'success',
-        message: '退出登录成功！'
-      })
+        type: "success",
+        message: "退出登录成功！",
+      });
     })
-    .catch(() => { })
-}
+    .catch(() => {});
+};
 const props = defineProps({
-  avatar_url: { default: '' },
-  username: { default: '' },
-  email: { default: '' },
-})
+  avatar_url: { default: "" },
+  username: { default: "" },
+  email: { default: "" },
+});
 </script>
 <style scoped>
 .right-btn {
@@ -202,18 +211,18 @@ const props = defineProps({
 }
 
 .title_name {
-  font-family: 'Arial', sans-serif;
+  font-family: "Arial", sans-serif;
   font-size: 1.5em;
   font-weight: bold;
   line-height: 3.5;
   color: #5b5a5a;
 }
 
-.el-menu--horizontal>.el-menu-item:nth-child(1) {
+.el-menu--horizontal > .el-menu-item:nth-child(1) {
   margin-right: auto;
 }
 
-.example-pagination-block+.example-pagination-block {
+.example-pagination-block + .example-pagination-block {
   margin-top: 10px;
 }
 
