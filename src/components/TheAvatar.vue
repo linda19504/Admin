@@ -2,7 +2,7 @@
   <div class="flex-row">
     <el-space>
       <el-avatar size="normal" :src="avatar_url"/>
-      {{ username }} {{ email }}
+      {{ username }} ({{ email }})
     </el-space>
   </div>
 </template>

@@ -106,9 +106,9 @@ const descriptionData = ref({
   username: '玉置浩二',
   username_one: '山口百惠',
   username_two: '小野丽莎',
-  email: '(tamaki_hoji@email.com)',
-  email_one: '(Yamaguchi Yuuko@email.com)',
-  email_two: '(Ono Risa@email.com)',
+  email: 'tamaki_hoji@email.com',
+  email_one: 'Yamaguchi Yuuko@email.com',
+  email_two: 'Ono Risa@email.com',
   create_date: '2023年10月7日',
   last_updated_date: '2024年1月7日',
   creater: {
