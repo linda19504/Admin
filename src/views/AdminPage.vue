@@ -10,11 +10,8 @@
         <!-- <el-menu-item index="1">{{ HOME_MAIN.ADMIN }}</el-menu-item> -->
         <el-dropdown>
           <span class="el-dropdown-link">
-            <TheAvatar 
-              :avatar-url="userInfo.avatarUrl" 
-              :username="userInfo.username"
-              :email="userInfo.email" 
-            />
+            <TheAvatar :size="50" :avatar_url="userInfo.avatar_url" :username="userInfo.username"
+              :email="userInfo.email" />
             <!-- <el-text>{{ userInfo.Info }}</el-text> -->
             <el-icon class="header-icon el-icon--right">
               <arrow-down />
@@ -58,16 +55,16 @@
           </el-header>
           <el-main>
             <TheDescription 
-              :size="pageData.size"
-              :create-date="pageData.createDate"
-              :last-updated-date="pageData.lastUpdatedDate"
-              :creater="pageData.creator"
-              :approvers="pageData.approvers"
-            />
+              :size="descriptionData.size"
+              :create_date="descriptionData.create_date"
+              :last_updated_date="descriptionData.last_updated_date"
+              :creater="descriptionData.creater"
+              :approvers="descriptionData.approvers"
+            ></TheDescription>
             <br />
             <TimelineList
-              :activities="pageData.timelineItems"
-              :size="pageData.size"
+              :activities="descriptionData.timelineActivities"
+              :size="descriptionData.size"
             />
           </el-main>
           <el-footer> </el-footer>
@@ -95,38 +92,39 @@ import { User } from "@element-plus/icons-vue"
 import TimelineList from '@/components/TimelineList.vue'
 
 // 新增的数据
-const pageData = ref({
+const descriptionData = ref({
   size: 'default',
-  createDate: '2023年10月7日',
-  lastUpdatedDate: '2024年1月7日',
-  creator: {
-    avatarUrl: 'avatar_one.png',
+  create_date: '2023年10月7日',
+  last_updated_date: '2024年1月7日',
+  creater: {
+    avatar_url: 'avatar_one.png',
     username: '慕容紫英',
-    email: 'murong_ziying@gmail.com'
+    email: 'murong_ziying@gmail.coms'
   },
   approvers: {
-    avatarUrl: 'avatar_two.jpg',
+    avatar_url: 'avatar_two.jpg',
     username: '玉置浩二',
-    email: 'yuzhi_hasoer@gmail.com'
+    email: 'yuzhi_hasoer@gmail.coms'
   },
-  timelineItems: [
+  // 新增时间轴活动数组
+  timelineActivities: [
     {
       timestamp: '2023-01-01',
-      avatarUrl: '/avatar_one.png',
+      avatar_url: '/avatar_one.png',
       username: '玉置浩二',
       email: 'tamaki_hoji@email.com'
     },
     {
       timestamp: '2023-02-01',
-      avatarUrl: '/avatar_two.jpg',
+      avatar_url: '/avatar_two.jpg',
       username: '山口百惠',
-      email: 'yamaguchi_yuuko@email.com'
+      email: 'Yamaguchi Yuuko@email.com'
     },
     {
       timestamp: '2023-03-01',
-      avatarUrl: '/avatar_three.jpg',
+      avatar_url: '/avatar_three.jpg',
       username: '小野丽莎',
-      email: 'ono_risa@email.com'
+      email: 'Ono Risa@email.com'
     }
   ]
 })
