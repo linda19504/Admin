@@ -63,10 +63,26 @@
             ></TheDescription>
             <br />
             <TimelineList
-              :timestamps="[descriptionData.dynamicTimestamp1, descriptionData.dynamicTimestamp2, descriptionData.dynamicTimestamp3]"
-              :avatars="[descriptionData.avatar_url, descriptionData.avatar_url_one, descriptionData.avatar_url_two]"
-              :usernames="[descriptionData.username, descriptionData.username_one, descriptionData.username_two]"
-              :emails="[descriptionData.email, descriptionData.email_one, descriptionData.email_two]"
+              :activities="[
+                {
+                  timestamp: descriptionData.dynamicTimestamp1,
+                  avatar_url: descriptionData.avatar_url,
+                  username: descriptionData.username,
+                  email: descriptionData.email
+                },
+                {
+                  timestamp: descriptionData.dynamicTimestamp2,
+                  avatar_url: descriptionData.avatar_url_one,
+                  username: descriptionData.username_one,
+                  email: descriptionData.email_one
+                },
+                {
+                  timestamp: descriptionData.dynamicTimestamp3,
+                  avatar_url: descriptionData.avatar_url_two,
+                  username: descriptionData.username_two,
+                  email: descriptionData.email_two
+                }
+              ]"
               :size="descriptionData.size"
             />
           </el-main>

@@ -1,7 +1,7 @@
 <template>
   <el-timeline style="max-width: 600px">
     <el-timeline-item
-      v-for="(activity, index) in activities"
+      v-for="(activity, index) in timelineActivities"
       :key="index"
       :timestamp="activity.timestamp"
       :color="activity.color"
@@ -27,21 +27,9 @@ import { computed } from "vue";
 import TheAvatar from "./TheAvatar.vue";
 
 const props = defineProps({
-  timestamps: {
+  activities: {
     type: Array,
-    required: true,
-  },
-  avatars: {
-    type: Array,
-    required: true,
-  },
-  usernames: {
-    type: Array,
-    required: true,
-  },
-  emails: {
-    type: Array,
-    required: true,
+    required: true
   },
   size: {
     type: String,
@@ -49,14 +37,11 @@ const props = defineProps({
   },
 });
 
-const activities = computed(() =>
-  props.timestamps.map((timestamp, index) => ({
-    timestamp,
+const timelineActivities = computed(() =>
+  props.activities.map(activity => ({
+    ...activity,
     color: "#409EFF",
     hollow: true,
-    avatar_url: props.avatars[index],
-    username: props.usernames[index],
-    email: props.emails[index],
   }))
 );
 </script>
