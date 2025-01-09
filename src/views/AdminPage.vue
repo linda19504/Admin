@@ -63,26 +63,7 @@
             ></TheDescription>
             <br />
             <TimelineList
-              :activities="[
-                {
-                  timestamp: descriptionData.dynamicTimestamp1,
-                  avatar_url: descriptionData.avatar_url,
-                  username: descriptionData.username,
-                  email: descriptionData.email
-                },
-                {
-                  timestamp: descriptionData.dynamicTimestamp2,
-                  avatar_url: descriptionData.avatar_url_one,
-                  username: descriptionData.username_one,
-                  email: descriptionData.email_one
-                },
-                {
-                  timestamp: descriptionData.dynamicTimestamp3,
-                  avatar_url: descriptionData.avatar_url_two,
-                  username: descriptionData.username_two,
-                  email: descriptionData.email_two
-                }
-              ]"
+              :activities="descriptionData.timelineActivities"
               :size="descriptionData.size"
             />
           </el-main>
@@ -113,18 +94,6 @@ import TimelineList from '@/components/TimelineList.vue'
 // 新增的数据
 const descriptionData = ref({
   size: 'default',
-  dynamicTimestamp1: '2023-01-01',
-  dynamicTimestamp2: '2023-02-01',
-  dynamicTimestamp3: '2023-03-01',
-  avatar_url: '/avatar_one.png',
-  avatar_url_one: '/avatar_two.jpg',
-  avatar_url_two: '/avatar_three.jpg',
-  username: '玉置浩二',
-  username_one: '山口百惠',
-  username_two: '小野丽莎',
-  email: 'tamaki_hoji@email.com',
-  email_one: 'Yamaguchi Yuuko@email.com',
-  email_two: 'Ono Risa@email.com',
   create_date: '2023年10月7日',
   last_updated_date: '2024年1月7日',
   creater: {
@@ -136,7 +105,28 @@ const descriptionData = ref({
     avatar_url: 'avatar_two.jpg',
     username: '玉置浩二',
     email: 'yuzhi_hasoer@gmail.coms'
-  }
+  },
+  // 新增时间轴活动数组
+  timelineActivities: [
+    {
+      timestamp: '2023-01-01',
+      avatar_url: '/avatar_one.png',
+      username: '玉置浩二',
+      email: 'tamaki_hoji@email.com'
+    },
+    {
+      timestamp: '2023-02-01',
+      avatar_url: '/avatar_two.jpg',
+      username: '山口百惠',
+      email: 'Yamaguchi Yuuko@email.com'
+    },
+    {
+      timestamp: '2023-03-01',
+      avatar_url: '/avatar_three.jpg',
+      username: '小野丽莎',
+      email: 'Ono Risa@email.com'
+    }
+  ]
 })
 
 const router = useRouter()
