@@ -74,34 +74,39 @@
   </el-descriptions>
   <br />
   <el-timeline style="max-width: 600px">
-    <el-timeline-item 
-    :timestamp=dynamicTimestamp1 
-    v-for="(activity, index) in activities"
-    :key="index"
-    :icon="acticity.icon"
-    :color="activity.color"
-    :hollow="activity.hollow"  
-     placement="top">
+    <el-timeline-item
+      :timestamp="dynamicTimestamp1"
+      v-for="(activity, index) in activities"
+      :key="timeline1_ + index"
+      :color="activity.color"
+      :hollow="activity.hollow"
+      placement="top"
+    >
       <el-card>
         <el-space>
-          <el-avatar :icon="UserFilled" size="small" :src="avatar_url" :size="size" />
+          <el-avatar :src="avatar_url" :size="size" />
           {{ username }} {{ email }}
         </el-space>
       </el-card>
     </el-timeline-item>
-    <el-timeline-item :timestamp=dynamicTimestamp2 placement="top">
+    <el-timeline-item
+      :timestamp="dynamicTimestamp2"
+      v-for="(activity, index) in activities"
+      :key="timeline2_ + index"
+      :icon="activity.icon"
+      placement="top"
+    >
       <el-card>
         <el-space>
-          <el-avatar :icon="UserFilled" size="small" :src="avatar_url_one" :size="size" />
-          {{ username_one }} {{ email_one }}
+          <el-avatar :src="avatar_url_one" :size="size" />
+          {{username_one }} {{ email_one }}
         </el-space>
       </el-card>
-     
     </el-timeline-item>
-    <el-timeline-item :timestamp=dynamicTimestamp3 placement="top">
+    <el-timeline-item :timestamp="dynamicTimestamp3" placement="top">
       <el-card>
         <el-space>
-          <el-avatar :icon="UserFilled" size="small" :src="avatar_url_two" :size="size" />
+          <el-avatar :src="avatar_url_two" :size="size" />
           {{ username_two }} {{ email_two }}
         </el-space>
       </el-card>
@@ -119,31 +124,31 @@ import { MoreFilled } from '@element-plus/icons-vue'
 
 defineProps({
   avatar_url: { default: '/avatar_one.png' },
-  avatar_url_one:{default: '/avatar_two.jpg' },
-  avatar_url_two:{default: '/avatar_three.jpg' },
+  avatar_url_one: { default: '/avatar_two.jpg' },
+  avatar_url_two: { default: '/avatar_three.jpg' },
   username: { default: '玉置浩二' },
-  username_one:{default:'山口百惠'},
-  username_two:{default:'小野丽莎'},
+  username_one: { default: '山口百惠' },
+  username_two: { default: '小野丽莎' },
   email: { default: '(tamaki_hoji@email.com)' },
   email_one: { default: '(Yamaguchi Yuuko@email.com)' },
   email_two: { default: '(Ono Risa@email.com)' },
   size: { default: '' },
-  icon:{default:''},
+  icon: { default: '' },
   creater: {
     default: [
       {
-        avatar_url: '/avatar_one.png',
-        username: '慕容紫英',
-        email: '（morongziying@email.com）'
+        avatar_url: '',
+        username: '',
+        email: ''
       }
     ]
   },
   approvers: {
     default: [
       {
-        avatar_url: '/avatar_one.png',
-        username: '玉置浩二',
-        email: '（tamaki_hoji@email.com）'
+        avatar_url: '',
+        username: '',
+        email: ''
       }
     ]
   },
@@ -151,14 +156,25 @@ defineProps({
   last_updated_date: { default: '2024年1月7日' }
 })
 const size = ref('default')
-const activity = [{
+const activities = [
+  {
     content: 'Custom icon',
-    timestamp: '2018-04-12 20:46',
     type: 'primary',
-    icon: MoreFilled,
-}]
+    color: '#409EFF',
+    hollow: true,
+    size: 'small'
+  },
+  {
+    content: 'Custom icon',
+    type: 'primary',
+    MoreFilled,
+    hollow: true,
+    size: 'small'
+  }
+]
+
 const timelineData = () => {
-  [
+  ;[
     { timestamp: dynamicTimestamp1, placement: 'top', content: 'Event 1' },
     { timestamp: dynamicTimestamp2, placement: 'bottom', content: 'Event 2' },
     { timestamp: dynamicTimestamp3, placement: 'top', content: 'Event 3' }

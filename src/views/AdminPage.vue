@@ -10,8 +10,12 @@
         <!-- <el-menu-item index="1">{{ HOME_MAIN.ADMIN }}</el-menu-item> -->
         <el-dropdown>
           <span class="el-dropdown-link">
-            <TheAvatar :size="50" :avatar_url="userInfo.avatar_url" />
-            <el-text>{{ userInfo.username }}</el-text>
+            <TheAvatar :size="50" 
+            :avatar_url="userInfo.avatar_url"
+            :username="userInfo.username"
+            :email="userInfo.email"
+            />
+            <!-- <el-text>{{ userInfo.Info }}</el-text> -->
             <el-icon class="header-icon el-icon--right">
               <arrow-down />
             </el-icon>
@@ -117,6 +121,11 @@ const logOut = async () => {
     })
     .catch(() => { })
 }
+const props = defineProps({
+  avatar_url: { default: '' },
+  username:{default:''},
+  email:{default:''},  
+})
 </script>
 <style scoped>
 .right-btn {
