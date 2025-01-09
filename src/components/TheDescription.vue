@@ -29,7 +29,7 @@
       </el-col>
     </el-row>
   </div>
-  <el-descriptions class="margin-top" :column="3" :size="size" border direction="vertical">
+  <el-descriptions class="margin-top" :column="3" :size="size" border>
     <el-descriptions-item>
       <template #label>
         <div class="cell-item">
@@ -53,7 +53,7 @@
       </template>
       Short String
     </el-descriptions-item>
-    <el-descriptions-item :span="4">
+    <el-descriptions-item>
       <template #label>
         <div class="cell-item">描述</div>
       </template>
@@ -74,7 +74,14 @@
   </el-descriptions>
   <br />
   <el-timeline style="max-width: 600px">
-    <el-timeline-item :timestamp=dynamicTimestamp1 placement="top">
+    <el-timeline-item 
+    :timestamp=dynamicTimestamp1 
+    v-for="(activity, index) in activities"
+    :key="index"
+    :icon="acticity.icon"
+    :color="activity.color"
+    :hollow="activity.hollow"  
+     placement="top">
       <el-card>
         <el-space>
           <el-avatar :icon="UserFilled" size="small" :src="avatar_url" :size="size" />
@@ -85,16 +92,18 @@
     <el-timeline-item :timestamp=dynamicTimestamp2 placement="top">
       <el-card>
         <el-space>
-          <el-avatar :icon="UserFilled" size="small" :src="avatar_url" :size="size" />
-          {{ username }} {{ email }}
+          <el-avatar :icon="UserFilled" size="small" :src="avatar_url_one" :size="size" />
+          {{ username_one }} {{ email_one }}
         </el-space>
       </el-card>
-      
+     
     </el-timeline-item>
-    <el-timeline-item timestamp="2018/4/2" placement="top">
+    <el-timeline-item :timestamp=dynamicTimestamp3 placement="top">
       <el-card>
-        <h4>Update Github template</h4>
-        <p>Tom committed 2018/4/2 20:46</p>
+        <el-space>
+          <el-avatar :icon="UserFilled" size="small" :src="avatar_url_two" :size="size" />
+          {{ username_two }} {{ email_two }}
+        </el-space>
       </el-card>
     </el-timeline-item>
   </el-timeline>
@@ -106,12 +115,20 @@ import { User } from '@element-plus/icons-vue'
 import TheProfile from './TheProfile.vue'
 import TheAvatar from './TheAvatar.vue'
 import { UserFilled } from '@element-plus/icons-vue'
+import { MoreFilled } from '@element-plus/icons-vue'
 
 defineProps({
   avatar_url: { default: '/avatar_one.png' },
+  avatar_url_one:{default: '/avatar_two.jpg' },
+  avatar_url_two:{default: '/avatar_three.jpg' },
   username: { default: '玉置浩二' },
+  username_one:{default:'山口百惠'},
+  username_two:{default:'小野丽莎'},
   email: { default: '(tamaki_hoji@email.com)' },
+  email_one: { default: '(Yamaguchi Yuuko@email.com)' },
+  email_two: { default: '(Ono Risa@email.com)' },
   size: { default: '' },
+  icon:{default:''},
   creater: {
     default: [
       {
@@ -133,6 +150,13 @@ defineProps({
   create_date: { default: '2023年10月7日' },
   last_updated_date: { default: '2024年1月7日' }
 })
+const size = ref('default')
+const activity = [{
+    content: 'Custom icon',
+    timestamp: '2018-04-12 20:46',
+    type: 'primary',
+    icon: MoreFilled,
+}]
 const timelineData = () => {
   [
     { timestamp: dynamicTimestamp1, placement: 'top', content: 'Event 1' },
@@ -143,8 +167,6 @@ const timelineData = () => {
 const dynamicTimestamp1 = ref('2023-01-01')
 const dynamicTimestamp2 = ref('2023-02-01')
 const dynamicTimestamp3 = ref('2023-03-01')
-
-const size = ref('default')
 const iconStyle = computed(() => {
   const marginMap = {
     large: '8px',
