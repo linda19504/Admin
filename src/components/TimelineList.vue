@@ -1,7 +1,7 @@
 <template>
   <el-timeline style="max-width: 600px">
     <el-timeline-item
-      v-for="(activity, index) in timelineActivities"
+      v-for="(activity, index) in timelineItems"
       :key="index"
       :timestamp="activity.timestamp"
       :color="activity.color"
@@ -11,7 +11,7 @@
       <el-card>
         <el-space>
           <TheAvatar
-            :avatar_url="activity.avatar_url"
+            :avatar-url="activity.avatarUrl"
             :size="size"
             :username="activity.username"
             :email="activity.email"
@@ -37,7 +37,7 @@ const props = defineProps({
   },
 });
 
-const timelineActivities = computed(() =>
+const timelineItems = computed(() =>
   props.activities.map(activity => ({
     ...activity,
     color: "#409EFF",
