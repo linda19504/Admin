@@ -1,26 +1,6 @@
 <template>
   <div class="common-layout fullscreen">
     <el-container class="h-max">
-      <!-- <el-header>
-                <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" :ellipsis="false"
-                    @select="handleSelect">
-                    <el-menu-item index="0">
-                        <el-icon>
-                            <ChromeFilled />
-                        </el-icon>
-                        <span class="title_name">{{ HOME_MAIN.TITLE }}</span>
-                    </el-menu-item>
-                    <el-menu-item>
-                        
-                    </el-menu-item>
-                    <el-menu-item index="1">{{ HOME_MAIN.MAIN_PAGE }}</el-menu-item>
-                    <el-sub-menu index="2">
-                        <template #title>{{ HOME_MAIN.LOG }}</template>
-                        <el-menu-item index="2-1">{{ HOME_MAIN.LOG_IN }}</el-menu-item>
-                        <el-menu-item index="2-2">{{ HOME_MAIN.LOG_OUT }}</el-menu-item>
-                    </el-sub-menu>
-                </el-menu>   
-            </el-header> -->
       <el-header>
         <el-menu
           :default-active="activeIndex"
@@ -209,10 +189,6 @@ const props = defineProps({
     default: ''
   }
 })
-// const options = {
-//     methods: "get",
-//     url: `api/models/${model_id}`
-// }
 const userStore = useUserStore()
 const userInfo = computed(() => userStore.userInfo)
 const person = ref ()

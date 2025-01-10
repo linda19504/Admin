@@ -76,6 +76,7 @@
               :activities="descriptionData.timelineActivities"
               :size="descriptionData.size"
             />
+            <TheEditor/>
           </el-main>
           <el-footer> </el-footer>
         </el-container>
@@ -97,9 +98,8 @@ import { ElMessage, ElMessageBox } from "element-plus";
 import { useTagsViewStore } from "@/stores/tagsView.js";
 import PersonalDialog from "@/components/PersonalDialog.vue";
 import { storeToRefs } from "pinia";
-// import MoreButton from '@/components/MoreButton.vue'
-import { User } from "@element-plus/icons-vue";
 import TimelineList from "@/components/TimelineList.vue";
+import TheEditor from "@/components/TheEditor.vue";
 
 // 新增的数据
 const descriptionData = ref({

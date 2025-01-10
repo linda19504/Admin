@@ -1754,6 +1754,11 @@
   dependencies:
     vue-demi "*"
 
+"@wangeditor/editor-for-vue@^5.1.12":
+  version "5.1.12"
+  resolved "https://registry.npmmirror.com/@wangeditor/editor-for-vue/-/editor-for-vue-5.1.12.tgz#f7d5f239b39cdfc01d31151488de8443fe6edc64"
+  integrity sha512-0Ds3D8I+xnpNWezAeO7HmPRgTfUxHLMd9JKcIw+QzvSmhC5xUHbpCcLU+KLmeBKTR/zffnS5GQo6qi3GhTMJWQ==
+
 abbrev@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npmmirror.com/abbrev/-/abbrev-2.0.0.tgz"
