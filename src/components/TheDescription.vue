@@ -30,46 +30,16 @@
     </el-row>
   </div>
   <el-descriptions class="margin-top" :column="3" :size="size" border>
-    <el-descriptions-item>
+    <el-descriptions-item v-for="item in descriptionItems" :key="item.label" :span="item.span">
       <template #label>
         <div class="cell-item">
-          <el-icon :style="iconStyle">
-            <user />
+          <el-icon v-if="item.icon" :style="iconStyle">
+            <component :is="item.icon" />
           </el-icon>
-          Setting_ID
+          {{ item.label }}
         </div>
       </template>
-      <div>HOST_NAME</div>
-    </el-descriptions-item>
-    <el-descriptions-item>
-      <template #label>
-        <div class="cell-item">名称</div>
-      </template>
-      主机名
-    </el-descriptions-item>
-    <el-descriptions-item>
-      <template #label>
-        <div class="cell-item">数据类型</div>
-      </template>
-      Short String
-    </el-descriptions-item>
-    <el-descriptions-item>
-      <template #label>
-        <div class="cell-item">描述</div>
-      </template>
-      主机名
-    </el-descriptions-item>
-    <el-descriptions-item :span="4">
-      <template #label>
-        <div class="cell-item">初始值</div>
-      </template>
-      Pantum Printer
-    </el-descriptions-item>
-    <el-descriptions-item :span="4">
-      <template #label>
-        <div class="cell-item">校验规则</div>
-      </template>
-      [A-Z][A-Z_0-9]*
+      {{ item.value }}
     </el-descriptions-item>
   </el-descriptions>
 </template>
@@ -87,6 +57,15 @@ const props = defineProps({
   creater: { type: Object, required: true },
   approvers: { type: Object, required: true }
 });
+
+const descriptionItems = [
+  { label: 'Setting_ID', value: 'HOST_NAME', icon: User },
+  { label: '名称', value: '主机名' },
+  { label: '数据类型', value: 'Short String' },
+  { label: '描述', value: '主机名' },
+  { label: '初始值', value: 'Pantum Printer', span: 4 },
+  { label: '校验规则', value: '[A-Z][A-Z_0-9]*', span: 4 }
+];
 
 const iconStyle = computed(() => {
   const marginMap = {
