@@ -46,7 +46,6 @@
 
 <script setup>
 import { computed } from "vue";
-import { User } from "@element-plus/icons-vue";
 import TheProfile from "./TheProfile.vue";
 import TheAvatar from "./TheAvatar.vue";
 
@@ -55,17 +54,9 @@ const props = defineProps({
   create_date: { type: String, required: true },
   last_updated_date: { type: String, required: true },
   creater: { type: Object, required: true },
-  approvers: { type: Object, required: true }
+  approvers: { type: Object, required: true },
+  descriptionItems: { type: Array, required: true }
 });
-
-const descriptionItems = [
-  { label: 'Setting_ID', value: 'HOST_NAME', icon: User },
-  { label: '名称', value: '主机名' },
-  { label: '数据类型', value: 'Short String' },
-  { label: '描述', value: '主机名' },
-  { label: '初始值', value: 'Pantum Printer', span: 4 },
-  { label: '校验规则', value: '[A-Z][A-Z_0-9]*', span: 4 }
-];
 
 const iconStyle = computed(() => {
   const marginMap = {

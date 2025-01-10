@@ -1,7 +1,7 @@
-import { createRouter, createWebHistory } from 'vue-router';
-import HomeMainPage from'@/views/HomeMainPage.vue';
-import AdminPage from '@/views/AdminPage.vue';
-import CreateNextPage from'@/views/CreateNextPage.vue';
+import { createRouter, createWebHistory } from 'vue-router'
+import HomeMainPage from '@/views/HomeMainPage.vue'
+import AdminPage from '@/views/AdminPage.vue'
+import CreateNextPage from '@/views/CreateNextPage.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -9,31 +9,31 @@ const router = createRouter({
       path: '/LoginPage',
       name: 'LoginPage',
       component: () => import('@/views/LoginPage.vue'),
-      meta: { breadcrumb: '' } 
+      meta: { breadcrumb: '' }
     },
     {
-      path: '/PageList', 
+      path: '/PageList',
       name: 'PageList',
-      component: () => import('@/views/PageList.vue'),   
-      meta: { breadcrumb: '' } 
+      component: () => import('@/views/PageList.vue'),
+      meta: { breadcrumb: '' }
     },
     {
-      path: '/AdminPage', 
+      path: '/AdminPage',
       name: '我的申请',
-      component: () => import('@/views/AdminPage.vue'),   
-      meta: { title: '我的申请' }, },
-    {
-      path: '/CreateNextPage', 
-      name: '新建',
-      component: () => import('@/views/CreateNextPage.vue'),   
-      meta: { breadcrumb: '' } 
+      component: () => import('@/views/AdminPage.vue'),
+      meta: { title: '我的申请' }
     },
     {
-      path:'/MySubmitFile',
-      name:'我的提交',
-      component:()=>import('@/views/MySubmitFile.vue'),
-      meta:{title:'我的提交'}
-
+      path: '/CreateNextPage',
+      name: '新建',
+      component: () => import('@/views/CreateNextPage.vue'),
+      meta: { breadcrumb: '' }
+    },
+    {
+      path: '/MySubmitFile',
+      name: '我的提交',
+      component: () => import('@/views/MySubmitFile.vue'),
+      meta: { title: '我的提交' }
     }
     // {
     //   path:'/home',
@@ -48,8 +48,7 @@ const router = createRouter({
     //         return { model_id: parseInt(route.params.model_id) }
     //       },
     //     }
-      ],                     
+  ]
 })
-
 
 export default router
