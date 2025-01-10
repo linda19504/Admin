@@ -1,26 +1,11 @@
 <script setup>
-import { RouterView } from 'vue-router';
-import { onMounted, ref } from 'vue';
-import axios from 'axios';
-
-// const notes = ref({});
-// const loading = ref(false);
-// onMounted(async () => {
-//   loading.value = true;
-//   const res = await axios.get('')
-//   notes.value = res.data
-//   loading.value = false;
-// })
-
+import TheEditor from"@/components/TheEditor.vue"
 </script>
 
 <template>
-  <div class="fullscreen">
-    <RouterView />
+  <div id="app">
+    <TheEditor></TheEditor>
   </div>
-
-  <!-- <div v-if="loading">loading....</div>
-  <noteList v-else :notes="note"></noteList>  -->
 </template>
 
 <style scoped>
