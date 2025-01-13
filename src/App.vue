@@ -1,10 +1,10 @@
 <script setup>
-import TheEditor from"@/components/TheEditor.vue"
+import wangeditor from"@/components/wangeditor.vue"
 </script>
 
 <template>
   <div id="app">
-    <TheEditor></TheEditor>
+    <wangeditor></wangeditor>
   </div>
 </template>
 
