@@ -77,7 +77,7 @@
               :size="descriptionData.size"
             />
           </el-main>
-          <TheEditor/>
+          <wangeditor/>
           <el-footer> </el-footer>
         </el-container>
       </el-main>
@@ -99,7 +99,7 @@ import { useTagsViewStore } from "@/stores/tagsView.js";
 import PersonalDialog from "@/components/PersonalDialog.vue";
 import { storeToRefs } from "pinia";
 import TimelineList from "@/components/TimelineList.vue";
-import TheEditor from "@/components/TheEditor.vue";
+import wangeditor from "@/components/wangeditor.vue";
 // 新增的数据
 const descriptionData = ref({
   size: "default",
