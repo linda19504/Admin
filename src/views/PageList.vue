@@ -20,7 +20,7 @@
             <div class="switch_button">
                 <el-switch v-model="value2" color="#E0E0E0" />
             </div>
-        </div>
+        </div> 
         <div class="search_container">
             <div class="input_container">
                 <el-input v-model="search_input" style="max-width: 600px" placeholder="Please input"
@@ -60,7 +60,6 @@
     </Modal>
     <!-- </TheTooltip> -->
 </template>
-
 <script setup>
 import { useI18n } from 'vue-i18n';
 import { Delete, Edit, Search, Upload, Plus } from '@element-plus/icons-vue';
