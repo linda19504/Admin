@@ -70,13 +70,13 @@
               :last_updated_date="descriptionData.last_updated_date"
               :creater="descriptionData.creater"
               :approvers="descriptionData.approvers"
+              :descriptionItems="descriptionData.descriptionItems"
             ></TheDescription>
             <br />
             <TimelineList
               :activities="descriptionData.timelineActivities"
               :size="descriptionData.size"
             />
-            <TheEditor/>
           </el-main>
           <el-footer> </el-footer>
         </el-container>
@@ -98,8 +98,8 @@ import { ElMessage, ElMessageBox } from "element-plus";
 import { useTagsViewStore } from "@/stores/tagsView.js";
 import PersonalDialog from "@/components/PersonalDialog.vue";
 import { storeToRefs } from "pinia";
+// import MoreButton from '@/components/MoreButton.vue'
 import TimelineList from "@/components/TimelineList.vue";
-import TheEditor from "@/components/TheEditor.vue";
 
 // 新增的数据
 const descriptionData = ref({
@@ -116,6 +116,14 @@ const descriptionData = ref({
     username: "玉置浩二",
     email: "yuzhi_hasoer@gmail.coms",
   },
+  descriptionItems: [
+    { label: 'Setting_ID', value: 'HOST_NAME', icon: 'User' },
+    { label: '名称', value: '主机名' },
+    { label: '数据类型', value: 'Short String' },
+    { label: '描述', value: '主机名' },
+    { label: '初始值', value: 'Pantum Printer', span: 4 },
+    { label: '校验规则', value: '[A-Z][A-Z_0-9]*', span: 4 }
+  ],
   // 新增时间轴活动数组
   timelineActivities: [
     {
@@ -179,11 +187,6 @@ const logOut = async () => {
     })
     .catch(() => {});
 };
-const props = defineProps({
-  avatar_url: { default: "" },
-  username: { default: "" },
-  email: { default: "" },
-});
 </script>
 <style scoped>
 .right-btn {
