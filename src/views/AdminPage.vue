@@ -76,8 +76,8 @@
               :activities="descriptionData.timelineActivities"
               :size="descriptionData.size"
             />
+            <TheEditor/>
           </el-main>
-          <TheEditor/>
           <el-footer> </el-footer>
         </el-container>
       </el-main>
@@ -100,6 +100,7 @@ import PersonalDialog from "@/components/PersonalDialog.vue";
 import { storeToRefs } from "pinia";
 import TimelineList from "@/components/TimelineList.vue";
 import TheEditor from "@/components/TheEditor.vue";
+
 // 新增的数据
 const descriptionData = ref({
   size: "default",
@@ -135,9 +136,9 @@ const descriptionData = ref({
       username: "小野丽莎",
       email: "Ono Risa@email.com",
     },
-  
   ],
 });
+
 const router = useRouter();
 const person = ref();
 const UserStore = useUserStore();

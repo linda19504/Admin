@@ -1,75 +1,133 @@
 <template>
-  <div class="m-wangEditor">
-    <Toolbar style="border-bottom: 1px solid #ccc" :editor="editorRef" :default-config="toolbarConfig" :mode="mode" />
-    <Editor
-      v-model="valueHtml"
-      class="editor-content'"
-      style="height: 300px; overflow-y: hidden"
-      :default-config="editorConfig"
-      :mode="mode"
-      @on-created="handleCreated"
-    />
-  </div>
+    <div style="border: 1px solid #ccc">
+      <Toolbar
+        style="border-bottom: 1px solid #ccc"
+        :editor="editorRef"
+        :defaultConfig="toolbarConfig"
+        :mode="mode"
+      />
+      <Editor
+        style="height: 500px; overflow-y: hidden;"
+        v-model="valueHtml"
+        :defaultConfig="editorConfig"
+        :mode="mode"
+        @onCreated="handleCreated"
+        @onChange="handleChange"
+        @onDestroyed="handleDestroyed"
+        @onFocus="handleFocus"
+        @onBlur="handleBlur"
+        @customAlert="customAlert"
+        @customPaste="customPaste"
+      />
+      <div style="margin-top: 10px;">
+            <textarea v-model="valueHtml" readonly style="width: 100%; height: 200px; outline: none;"></textarea>
+        </div>
+    </div>
+
 </template>
-<script setup>
-  // 引入 wangEditor
-  import { Editor, Toolbar } from '@wangeditor/editor-for-vue'
-  import '@wangeditor/editor/dist/css/style.css' // 引入 css
-  import { onBeforeUnmount, onMounted, watch, shallowRef, ref, computed } from 'vue'
-  let editors = null
-  // 编辑器实例，必须用 shallowRef
-  const editorRef = shallowRef()
-  const toolbarConfig = {}
-  const editorConfig = { placeholder: '请输入内容...' }
+<script>
+import '@wangeditor/editor/dist/css/style.css'
+import { onBeforeUnmount, ref, shallowRef, onMounted } from 'vue'
+import { Editor, Toolbar } from '@wangeditor/editor-for-vue'
 
-  // 内容 HTML
-  const mode = ref('default')
-  let emit = defineEmits(['update:modelValue'])
-  let props = defineProps({
-    modelValue: String,
-  })
+export default {
+  components: { Editor, Toolbar },
+  setup() {
+    // 编辑器实例，必须用 shallowRef
+    const editorRef = shallowRef()
 
-  const getEditorData = () => {
-    // 通过代码获取编辑器内容
-    let data = editors.txt.html()
-    alert(data)
+    // 内容 HTML
+    const valueHtml = ref('<p>hello</p>')
+
+    // 模拟 ajax 异步获取内容
+    onMounted(() => {
+      setTimeout(() => {
+        valueHtml.value = '<p>模拟 Ajax 异步设置内容</p>'
+      }, 1500)
+    })
+
+    const toolbarConfig = {}
+    const editorConfig = { placeholder: '请输入内容...' }
+
+    // 组件销毁时，也及时销毁编辑器
+    onBeforeUnmount(() => {
+      const editor = editorRef.value
+      if (editor == null) return
+      editor.destroy()
+    })
+
+    const handleCreated = (editor) => {
+      editorRef.value = editor
+    };
+    const handleChange = (editor) => {
+      console.log('change:', editor.getHtml());
+    };
+    const handleDestroyed = (editor) => {
+      console.log('destroyed', editor)
+    };
+    const handleFocus = (editor) => {
+        console.log('focus', editor)
+    };
+    const handleBlur = (editor) => {
+        console.log('blur', editor)
+    };
+    const customAlert = (info, type) => {
+        alert(`【自定义提示】${type} - ${info}`)
+    };
+    const customPaste = (editor, event, callback) => {
+        console.log('ClipboardEvent 粘贴事件对象', event)
+
+        // 自定义插入内容
+        editor.insertText('xxx')
+
+        // 返回值（注意，vue 事件的返回值，不能用 return）
+        callback(false) // 返回 false ，阻止默认粘贴行为
+        // callback(true) // 返回 true ，继续默认的粘贴行为
+    };
+    const insertText = () => {
+        const editor = editorRef.value
+        if (editor == null) return
+        editor.insertText('hello world')
+    };
+    const printHtml = () => {
+        const editor = editorRef.value
+        if (editor == null) return
+        console.log(editor.getHtml())
+    };
+    const disable = () => {
+        const editor = editorRef.value
+        if (editor == null) return
+        editor.disable()
+    };
+    return {
+      editorRef,
+      mode: 'default',
+      valueHtml,
+      toolbarConfig,
+      editorConfig,
+      handleCreated,
+      handleChange,
+      handleDestroyed,
+      handleFocus,
+      handleBlur,
+      customAlert,
+      customPaste,
+      insertText,
+      printHtml,
+      disable,
+    };
   }
-
-  const handleCreated = (editor) => {
-    editorRef.value = editor // 记录 editor 实例，重要！
-  }
-
-  const valueHtml = computed({
-    get() {
-      return props.modelValue
-    },
-    set(val) {
-      // 防止富文本内容为空时，校验失败
-      if (editorRef.value.isEmpty()) val = ''
-      emit('update:modelValue', val)
-    },
-  })
-
-  // 组件销毁时，也及时销毁编辑器
-  onBeforeUnmount(() => {
-    // 调用销毁 API 对当前编辑器实例进行销毁
-    const editor = editorRef.value
-    if (editor == null) {
-      return
-    }
-    editor.destroy()
-  })
+}
 </script>
-<style lang="scss" scoped>
-  .m-wangEditor {
-    z-index: 99;
-    width: 100%;
-    border: 1px solid #cccccc;
-    .editor-toolbar {
-      border-bottom: 1px solid #cccccc;
-    }
-    .editor-content {
-      overflow-y: hidden;
-    }
+<style>
+  #editor—wrapper {
+    border: 1px solid #ccc;
+    z-index: 100; /* 按需定义 */
+  }
+  #toolbar-container {
+    border-bottom: 1px solid #ccc;
+  }
+  #editor-container {
+    height: 500px;
   }
 </style>

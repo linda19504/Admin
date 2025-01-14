@@ -52,7 +52,7 @@ export const useTagsViewStore = defineStore({
       
       router.push(nextTab.path)//将页面导航到下一个视图对象的路径
       this.addVisitedView(nextTab)
-    },  
+    },
     delVisitedView(path) {
       return new Promise((resolve) => {
         this.visitedViews = this.visitedViews.filter((v) => {
