@@ -1,7 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeMainPage from '@/views/HomeMainPage.vue'
-import AdminPage from '@/views/AdminPage.vue'
-import CreateNextPage from '@/views/CreateNextPage.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -34,6 +31,12 @@ const router = createRouter({
       name: '我的提交',
       component: () => import('@/views/MySubmitFile.vue'),
       meta: { title: '我的提交' }
+    },
+    {
+      path: '/RichTextPage',
+      name: '富文本编辑器',
+      component: () => import('@/views/RichTextPage.vue'),
+      meta: { title: '富文本编辑器' }
     }
     // {
     //   path:'/home',
