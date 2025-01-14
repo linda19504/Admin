@@ -6,7 +6,7 @@
             <el-input v-model="dynamicValidateForm.title" />
           </el-form-item>
           <el-form-item prop="content" label="标题" :rules="[{ required: true, message: '请输入内容', trigger: 'blur' }]">
-            <wangeditor v-model="dynamicValidateForm.content" />
+            <TheEditor v-model="dynamicValidateForm.content" />
           </el-form-item>
           <el-form-item>
             <el-button type="primary" @click="submitForm(formRef)">保存</el-button>
@@ -37,8 +37,9 @@
   
   <script  setup>
     import { reactive, ref } from 'vue'
+    import { FormInstance } from 'element-plus'
     import { ElMessage } from 'element-plus'
-    import wangeditor from '@/components/wangeditor.vue'
+    import TheEditor from '@/components/TheEditor.vue'
   
     const formRef = ref()
     const dialogVisible = ref(false)

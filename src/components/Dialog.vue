@@ -14,6 +14,7 @@
     </el-dialog>
 </template>
 <script setup>
+import { defineEmits } from 'vue';
 import { HOME_MAIN } from "@/constants/MainPage.constants.js";
 const emit = defineEmits(['confirmDialog', 'cancelDialog']);
     const confirmDialog = () => {
