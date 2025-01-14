@@ -45,5 +45,16 @@ const editorOption = {
 
 :deep(.ql-container) {
   height: calc(100% - 42px);
-}
+}  
+.rich-text-editor {
+    z-index: 99;
+    width: 100%;
+    border: 1px solid #cccccc;
+    .editor-toolbar {
+      border-bottom: 1px solid #cccccc;
+    }
+    .editor-content {
+      overflow-y: hidden;
+    }
+  }
 </style>

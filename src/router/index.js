@@ -32,12 +32,18 @@ const router = createRouter({
       component: () => import('@/views/MySubmitFile.vue'),
       meta: { title: '我的提交' }
     },
+    // {
+    //   path: '/RichTextPage',
+    //   name: '富文本编辑器',
+    //   component: () => import('@/views/RichTextPage.vue'),
+    //   meta: { title: '富文本编辑器' }
+    // }
     {
-      path: '/RichTextPage',
-      name: '富文本编辑器',
-      component: () => import('@/views/RichTextPage.vue'),
-      meta: { title: '富文本编辑器' }
-    }
+      path: '/other/editor',
+      component: () => import('@/views/other/editor/index.vue'),
+      name: 'editor',
+      meta: { title: '富文本编辑器', roles: ['other'], icon: 'MenuIcon' },
+    },
     // {
     //   path:'/home',
     //   name:'通用平台',
