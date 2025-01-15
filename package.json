@@ -17,6 +17,7 @@
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.1",
     "@vueup/vue-quill": "^1.2.0",
+    "@wangeditor/editor-for-vue": "^5.1.12",
     "axios": "^1.7.7",
     "bulma": "^1.0.2",
     "classnames": "^2.5.1",
@@ -29,7 +30,8 @@
     "vue-fuse": "^4.1.1",
     "vue-i18n": "^9.13.1",
     "vue-router": "^4.3.0",
-    "vue3-cookies": "^1.0.6"
+    "vue3-cookies": "^1.0.6",
+    "wangeditor": "^4.7.15"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^1.9.0",

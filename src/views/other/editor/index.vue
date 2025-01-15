@@ -6,7 +6,7 @@
             <el-input v-model="dynamicValidateForm.title" />
           </el-form-item>
           <el-form-item prop="content" label="内容" :rules="[{ required: true, message: '请输入内容', trigger: 'blur' }]">
-            <RichTextEditor ref="richTextEditorRef" v-model="dynamicValidateForm.content" />
+            <WangEditor  v-model="dynamicValidateForm.content" />
           </el-form-item>
           <el-form-item>
             <el-button type="primary" @click="submitForm(formRef)">保存</el-button>
@@ -32,19 +32,20 @@
   <script setup>
   import { reactive, ref } from 'vue'
   import { ElMessage } from 'element-plus'
-  import RichTextEditor from '@/components/RichTextEditor/index.vue'
+  import WangEditor from '@/components/WangEditor/index.vue'
   
   const formRef = ref()
-  const richTextEditorRef = ref(null)
   const dialogVisible = ref(false)
-  const dynamicValidateForm = reactive({
+  const dynamicValidateForm = reactive
+  ({
     title: '',
     content: '',
   })
-  
+
   const submitForm = (formEl) => {
     if (!formEl) return
     formEl.validate((valid) => {
+      console.log('valid', valid)
       if (valid) {
         ElMessage.success('保存成功')
       } else {
@@ -53,10 +54,11 @@
       }
     })
   }
-  
+
   const preview = (formEl) => {
     if (!formEl) return
     formEl.validate((valid) => {
+      console.log('valid', valid)
       if (valid) {
         dialogVisible.value = true
       } else {
@@ -65,10 +67,9 @@
       }
     })
   }
-  
+
   const resetForm = (formEl) => {
     if (!formEl) return
     formEl.resetFields()
-    richTextEditorRef.value?.reset()
   }
   </script>
