@@ -6,7 +6,7 @@
             <el-input v-model="dynamicValidateForm.title" />
           </el-form-item>
           <el-form-item prop="content" label="内容" :rules="[{ required: true, message: '请输入内容', trigger: 'blur' }]">
-            <RichTextEditor v-model="dynamicValidateForm.content" />
+            <RichTextEditor ref="richTextEditorRef" v-model="dynamicValidateForm.content" />
           </el-form-item>
           <el-form-item>
             <el-button type="primary" @click="submitForm(formRef)">保存</el-button>
@@ -35,6 +35,7 @@
   import RichTextEditor from '@/components/RichTextEditor/index.vue'
   
   const formRef = ref()
+  const richTextEditorRef = ref(null)
   const dialogVisible = ref(false)
   const dynamicValidateForm = reactive({
     title: '',
@@ -68,6 +69,6 @@
   const resetForm = (formEl) => {
     if (!formEl) return
     formEl.resetFields()
+    richTextEditorRef.value?.reset()
   }
   </script>
-  

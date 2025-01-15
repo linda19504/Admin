@@ -1,6 +1,7 @@
 <template>
   <div class="rich-text-editor">
     <quill-editor
+      ref="quillEditorRef"
       v-model:content="content"
       :options="editorOption"
       contentType="html"
@@ -9,13 +10,27 @@
 </template>
 
 <script setup>
-import { defineModel } from 'vue'
+import { defineModel, ref } from 'vue'
 import { QuillEditor } from '@vueup/vue-quill'
 import '@vueup/vue-quill/dist/vue-quill.snow.css'
 
 const content = defineModel({
   type: String,
   default: ''
+})
+
+const quillEditorRef = ref(null)
+
+const reset = () => {
+  content.value = ''
+  if (quillEditorRef.value) {
+    quillEditorRef.value.setHTML('')
+    quillEditorRef.value.getQuill().setText('')
+  }
+}
+
+defineExpose({
+  reset
 })
 
 const editorOption = {
