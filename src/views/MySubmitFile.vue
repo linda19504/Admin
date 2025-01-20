@@ -69,9 +69,9 @@
               </el-button>
             </div>
             <div class="search_bar">
-              <el-form :inline="true" :model="formInline1">
+              <el-form :inline="true" :model="searchQuery">
                 <el-form-item label="主机名">
-                  <el-input v-model="formInline1.username" placeholder="请输入主机名" />
+                  <el-input v-model="handleSearch" placeholder="请输入主机名" />
                 </el-form-item>
                 <el-form-item>
                   <el-button type="primary" @click="onSubmit">搜索</el-button>
@@ -86,7 +86,7 @@
             row-key="id"
             border
           >
-            <el-table-column prop="label" label="接口" sortable  min-width="150" /> 
+            <el-table-column prop="label" label="接口" sortable min-width="150" />
             <el-table-column prop="name" label="名字" width="130" />
             <el-table-column prop="stringName" label="数据类型" width="150" />
             <el-table-column prop="description" label="描述" width="380" />
@@ -114,9 +114,9 @@
               </el-button>
             </div>
             <div class="search_bar">
-              <el-form :inline="true" :model="formInline1">
+              <el-form :inline="true" :model="searchQuery">
                 <el-form-item label="主机名">
-                  <el-input v-model="formInline1.username" placeholder="请输入主机名" />
+                  <el-input v-model="handleSearch" placeholder="请输入主机名" />
                 </el-form-item>
                 <el-form-item>
                   <el-button type="primary" @click="onSubmit">搜索</el-button>
@@ -131,7 +131,7 @@
             border
             height="200"
           >
-          <el-table-column prop="label" label="接口" sortable  min-width="150" /> 
+            <el-table-column prop="label" label="接口" sortable min-width="150" />
             <el-table-column prop="name" label="名字" width="130" />
             <el-table-column prop="stringName" label="数据类型" width="150" />
             <el-table-column prop="description" label="描述" width="380" />
@@ -159,18 +159,36 @@ import { useRouter } from 'vue-router'
 import { ref, reactive, computed } from 'vue'
 import { HOME_MAIN } from '@/constants/MainPage.constants.js'
 import TheAvatar from '@/components/TheAvatar.vue'
-import { ElMessage, ElMessageBox } from 'element-plus'
+import { ElMessage, ElMessageBox, resultProps } from 'element-plus'
 import { useUserStore } from '@/stores/userinfo.js'
-import { Timer } from '@element-plus/icons-vue'
+import axios from 'axios'
+// import fuse from'fuse.js'
+// import { Timer } from '@element-plus/icons-vue'
 
 const router = useRouter()
 const UserStore = useUserStore()
 const userInfo = computed(() => UserStore.userInfo)
 const loading = ref(false)
+const isLoading =ref()
 const person = ref()
-const formInline1 = reactive({
-  username: ''
+const searchQuery = reactive()
+const handleSearch =async()=>{
+  if(searchQuery.value.trim ==='')
+  searchQuery.value=[]
+}
+isLoading.value = true;
+try{
+const response = await axios.get('api/search',{
+  params:{
+    query:searchQuery.value
+  },
 })
+result.value = response.data
+}catch(error){
+  console.error('搜索失败', error);
+  results.value = [];
+}
+
 const onSubmit = () => {
   console.log('submit!')
   loading.value = true

@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.1",
+    "@types/path-browserify": "^1.0.3",
     "@vueup/vue-quill": "^1.2.0",
     "@wangeditor/editor-for-vue": "^5.1.12",
     "axios": "^1.7.7",
