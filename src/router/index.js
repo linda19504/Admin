@@ -10,8 +10,8 @@ const router = createRouter({
     },
     {
       path: '/PageList',
-      name: 'PageList',
-      component: () => import('@/views/PageList.vue'),
+      name: '我的列表',
+      component: () => import('@/views/MyPageList.vue'),
       meta: { breadcrumb: '' }
     },
     {
@@ -32,6 +32,12 @@ const router = createRouter({
       component: () => import('@/views/MySubmitFile.vue'),
       meta: { title: '我的提交' }
     },
+    // {
+    //   path: '/MyPageList',
+    //   name: '我的列表页',
+    //   component: () => import('@/views/MyPageList.vue'),
+    //   meta: { title: '我的列表页' }
+    // },
     // {
     //   path: '/RichTextPage',
     //   name: '富文本编辑器',

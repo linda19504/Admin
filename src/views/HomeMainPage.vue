@@ -21,21 +21,6 @@
       </div>
       <div class="tabs">
   
-        <div class="tab active">
-          <TheIcon icon="posts" />
-          <p>我的</p>
-        </div>
-  
-        <div class="tab">
-          <TheIcon icon="like" />
-          <p>赞过</p>
-        </div>
-  
-        <div class="tab">
-          <TheIcon icon="favorite" />
-          <p>收藏</p>
-        </div>
-  
       </div>
       <div class="tabContent">
         <p>162篇帖子</p>

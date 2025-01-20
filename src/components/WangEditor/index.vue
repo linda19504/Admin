@@ -1,6 +1,10 @@
 <template>
   <div class="m-wangEditor">
-    <Toolbar style="border-bottom: 1px solid #ccc" :editor="editorRef" :default-config="toolbarConfig" :mode="mode" />
+    <Toolbar 
+    style="border-bottom: 1px solid #ccc" 
+    :editor="editorRef" 
+    :default-config="toolbarConfig"
+    :mode="mode" />
     <Editor
       v-model="valueHtml"
       class="editor-content'"
@@ -17,12 +21,10 @@
   import '@wangeditor/editor/dist/css/style.css' 
   import { onBeforeUnmount,shallowRef, ref, computed } from 'vue'
   let editors = null
-  // 编辑器实例，必须用 shallowRef
   const editorRef = shallowRef()
   const toolbarConfig = {}
   const editorConfig = { placeholder: '请输入内容...' }
   const html = ref()
-  // 内容 HTML
   const mode = ref('default')
   let emit = defineEmits(['update:modelValue'])
   let props = defineProps({
@@ -36,7 +38,7 @@
   }
 
   const handleCreated = (editor) => {
-    editorRef.value = editor // 记录 editor 实例，重要！
+    editorRef.value = editor 
   }
 
   const valueHtml = computed({

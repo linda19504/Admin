@@ -307,6 +307,7 @@ const logOut = async () => {
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: end;
+  border:none;
 }
 .title_name {
   font-family: 'Arial', sans-serif;

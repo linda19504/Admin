@@ -2,7 +2,7 @@
   <div class="flex-row">
     <el-space>
       <el-avatar size="normal" :src="avatar_url" />
-      <template v-if="showName"> {{ username }} ({{ email }}) </template>
+      <template v-if="showName"> {{ username }} {{ email }} </template>
     </el-space>
   </div>
 </template>
