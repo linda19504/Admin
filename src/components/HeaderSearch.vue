@@ -1,4 +1,4 @@
-<!-- <template>
+<template>
   <div class="Search_demo">
     <el-tooltip effect="dark" bcontent="菜单搜索" placeholder="bottom">
       <el-icon class="bell header-icon" style="font-size: 22px" @click="handleSearch"
@@ -100,4 +100,4 @@ export default {
     }
   }
 }
-</style> -->
+</style>

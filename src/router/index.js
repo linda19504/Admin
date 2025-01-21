@@ -4,7 +4,7 @@ const router = createRouter({
   routes: [
     {
       path: '/LoginPage',
-      name: 'LoginPage',
+      name: '登录',
       component: () => import('@/views/LoginPage.vue'),
       meta: { breadcrumb: '' }
     },

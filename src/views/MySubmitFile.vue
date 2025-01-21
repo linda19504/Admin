@@ -114,12 +114,12 @@
               </el-button>
             </div>
             <div class="search_bar">
-              <el-form :inline="true" :model="searchQuery">
+              <el-form :inline="true">
                 <el-form-item label="主机名">
-                  <el-input v-model="handleSearch" placeholder="请输入主机名" />
+                  <el-input v-model="searchQuery" placeholder="请输入主机名" />
                 </el-form-item>
                 <el-form-item>
-                  <el-button type="primary" @click="onSubmit">搜索</el-button>
+                  <el-button type="primary" @click="handleSearch">搜索</el-button>
                 </el-form-item>
               </el-form>
             </div>
@@ -171,7 +171,7 @@ const userInfo = computed(() => UserStore.userInfo)
 const loading = ref(false)
 const isLoading =ref()
 const person = ref()
-const searchQuery = reactive()
+const searchQuery = ref()
 const handleSearch =async()=>{
   if(searchQuery.value.trim ==='')
   searchQuery.value=[]
