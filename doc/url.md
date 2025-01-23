@@ -24,6 +24,10 @@
 
   > 因为offset偏移量是50;limit一页显示的数量是50
 
+## setting 详情
+
+`/settings/:setting_id`
+
 ## 我的申请单
 
 - 显示第1页,一页显示50条:
@@ -37,6 +41,10 @@
   `/my-approvals/?limit=50,offset=0`
 
   > 因为offset偏移量是0;limit一页显示的数量是50
+
+## 审批单详情
+
+`/approvals/:approval_id`
 
 ## 用户信息
 
