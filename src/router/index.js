@@ -1,12 +1,20 @@
+// import { HomeFilled } from '@element-plus/icons-vue/dist/types'
 import { createRouter, createWebHistory } from 'vue-router'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
+    { path: '/', component: Home },
+    {
+      path: ':username(([a-z]+\\d+)/Setting/:userid(\\d+)?',
+      name: 我的设定,
+      component: () => import('@/views/UserDetail.vue'),
+      meta: { requiresAuth: true }
+    },
     {
       path: '/LoginPage',
       name: '登录',
       component: () => import('@/views/LoginPage.vue'),
-      meta: { breadcrumb: '' }
+      meta: { requiresAuth: true }
     },
     {
       path: '/PageList',
@@ -48,8 +56,8 @@ const router = createRouter({
       path: '/other/editor',
       component: () => import('@/views/other/editor/index.vue'),
       name: 'editor',
-      meta: { title: '富文本编辑器', roles: ['other'], icon: 'MenuIcon' },
-    },
+      meta: { title: '富文本编辑器', roles: ['other'], icon: 'MenuIcon' }
+    }
     // {
     //   path:'/home',
     //   name:'通用平台',
