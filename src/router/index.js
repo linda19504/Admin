@@ -4,7 +4,7 @@ import HomeMainPage from '@/views/HomeMainPage.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-    { path: '/', component: HomeMainPage },
+    { path: '/', component: HomeMainPage, alias: '/home' },
     {
       path: '/UserDetail',
       name: '我的设定',
@@ -12,7 +12,7 @@ const router = createRouter({
       meta: { requiresAuth: true }
     },
     {
-      path: '/LoginPage',
+      path: '/login',
       name: '登录',
       component: () => import('@/views/LoginPage.vue'),
       meta: { requiresAuth: true }
@@ -58,6 +58,50 @@ const router = createRouter({
       component: () => import('@/views/other/editor/index.vue'),
       name: 'editor',
       meta: { title: '富文本编辑器', roles: ['other'], icon: 'MenuIcon' }
+    },
+    {
+      path: '/settings',
+      name: '设置',
+      component: () => import('@/views/AdminPage.vue'),
+      props: (route) => ({
+        limit: parseInt(route.query.limit) || 50,
+        offset: parseInt(route.query.offset) || 0
+      })
+    },
+    {
+      path: '/my-requests',
+      name: '我的申请单',
+      component: () => import('@/views/AdminPage.vue'),
+      props: (route) => ({
+        limit: parseInt(route.query.limit) || 50,
+        offset: parseInt(route.query.offset) || 0
+      })
+    },
+    {
+      path: '/my-approvals',
+      name: '我的审批单',
+      component: () => import('@/views/AdminPage.vue'),
+      props: (route) => ({
+        limit: parseInt(route.query.limit) || 50,
+        offset: parseInt(route.query.offset) || 0
+      })
+    },
+    {
+      path: '/user-profile',
+      name: '用户信息',
+      component: () => import('@/views/Profile.vue')
+    },
+    {
+      path: '/settings/:setting_id',
+      name: '设置详情',
+      component: () => import('@/views/AdminPage.vue'),
+      props: true
+    },
+    {
+      path: '/approvals/:approval_id',
+      name: '审批单详情',
+      component: () => import('@/views/AdminPage.vue'),
+      props: true
     }
     // {
     //   path:'/home',
