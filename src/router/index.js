@@ -1,12 +1,13 @@
 // import { HomeFilled } from '@element-plus/icons-vue/dist/types'
 import { createRouter, createWebHistory } from 'vue-router'
+import Home from '@/views/HomeMainPage.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     { path: '/', component: Home },
     {
-      path: ':username(([a-z]+\\d+)/Setting/:userid(\\d+)?',
-      name: 我的设定,
+      path: '/UserDetail',
+      name: '我的设定',
       component: () => import('@/views/UserDetail.vue'),
       meta: { requiresAuth: true }
     },
