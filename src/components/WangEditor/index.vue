@@ -36,7 +36,7 @@
     let data = editors.txt.html()
     alert(data)
   }
-
+b
   const handleCreated = (editor) => {
     editorRef.value = editor 
   }

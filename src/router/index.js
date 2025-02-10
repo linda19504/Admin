@@ -36,6 +36,12 @@ const router = createRouter({
       meta: { breadcrumb: '' }
     },
     {
+      path: '/Upload',
+      name: '加载',
+      component: () => import('@/views/Upload.vue'),
+      meta: { breadcrumb: '' }
+    },
+    {
       path: '/MySubmitFile',
       name: '我的提交',
       component: () => import('@/views/MySubmitFile.vue'),
