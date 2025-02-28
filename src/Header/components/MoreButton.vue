@@ -32,6 +32,7 @@ const router = useRouter()
 const SettingStore = useSettingStore() 
 const TagsViewStore = useTagsViewStore()
 const refresh = ()=>{
+  
     SettingStore.setReload()
 }
 const closeCurrentTab=()=>{

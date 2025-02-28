@@ -12,10 +12,10 @@ export const useTagsViewStore = defineStore({
   actions: {
     setTabsMenuValue(val) {
       this.activeTabsValue = val
-    },//设置标签菜单的值
+    },//设置当前激活的标签菜单的值
     addView(view) {
       this.addVisitedView(view)
-    },
+    },//添加一个视图（路由页面）到已访问的视图列表中
     removeView(routes) {
       return new Promise((resolve, reject) => {
         this.visitedViews = this.visitedViews.filter((item) => !routes.includes(item.path))
@@ -25,7 +25,6 @@ export const useTagsViewStore = defineStore({
     addVisitedView(view) {
       this.setTabsMenuValue(view.path)//设置标签菜单的值
       if (this.visitedViews.some((v) => v.path === view.path)) return//检查 visitedViews 数组中是否已经存在与 view.path 相同的路由
-
       this.visitedViews.push(
         Object.assign({}, view, {
           title: view.meta.title || 'no-name',
@@ -34,7 +33,7 @@ export const useTagsViewStore = defineStore({
       if (view.meta.keepAlive) {
         this.cachedViews.push(view.name)
       }
-    },
+    },//将视图添加到已访问的视图列表中，并处理缓存逻辑
     delView(activeTabPath) {
       return new Promise((resolve) => {
         this.delVisitedView(activeTabPath)

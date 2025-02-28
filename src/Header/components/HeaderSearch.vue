@@ -30,7 +30,7 @@
   </div>
 </template>
 
-<script lang="ts" setup>
+<script setup>
   import { computed, onMounted, ref, watch } from 'vue'
   import path from 'path-browserify'
   import Fuse from 'fuse.js'

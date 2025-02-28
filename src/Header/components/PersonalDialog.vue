@@ -8,7 +8,7 @@
           <el-input v-model="ruleForm.password" type="password"></el-input>
         </el-form-item>
         <el-form-item label="新的密码" prop="configPassword">
-          <el-input v-model="ruleForm.configPassword" type="password"></el-input>
+          <el-input v-model=" ruleFormruleForm.configPassword" type="password"></el-input>
         </el-form-item>
       </el-form>
       <template #footer>

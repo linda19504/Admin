@@ -1,7 +1,7 @@
 <template>
   <el-upload
-    action=""
-    :before-upload="beforeUploadAction"
+    action="" 后端上传接口地址
+    :before-upload="beforeUploadAction"处理上传前的校验 
     :list-type="listType"
     :multiple="multiple"
     :on-preview="handlePictureCardPreview"
@@ -28,13 +28,14 @@ const props = defineProps({
     default:true,
   },
   listType:{
-    type:Boolean,
+    type:String,
     default:'picture-card',
   },
   showFileList:{
     type:Boolean,
     default:true,
   },
+
   })
   const dialogVisible = ref(false);
   const dialogImageUrl = ref('');

@@ -17,7 +17,7 @@ const router = createRouter({
       component: () => import('@/views/LoginPage.vue'),
       meta: { requiresAuth: true }
     },
-    {
+    { 
       path: '/PageList',
       name: '我的列表',
       component: () => import('@/views/MyPageList.vue'),
