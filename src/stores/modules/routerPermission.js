@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
-import { hasPermission, filterAsyncRoutes, filterKeepAlive } from '@/utils/permission.js'
+import { hasPermission, filterAsyncRoutes } from '@/utils/routers'
+import { filterKeepAlive, filterRoutes } from '@/utils/routers'
 export const usePermissionStore = defineStore({
     id :'permissonState',
     state:()=>({
