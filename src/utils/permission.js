@@ -1,4 +1,4 @@
-import { filterArgTypes } from "storybook/internal/preview-api"
+import path from 'path-browserify'
 
 //通过递归过滤异步路由表
 export function filterAsyncRoutes(routes, roles) {
@@ -7,7 +7,7 @@ export function filterAsyncRoutes(routes, roles) {
       const tmp = { ...route }//创建当前路由的浅拷贝（避免修改原始数据）
       if (hasPermission(roles, tmp)) {//检查当前角色是否有访问权限
         if (tmp.children) {//如果有子路由
-          tmp.children = filterAsyncRoutes(tmp.children, roles)//递归过滤子路由
+          tmp.children =   (tmp.children, roles)//递归过滤子路由
         }
         res.push(tmp)// 将符合条件的路由加入结果
       }

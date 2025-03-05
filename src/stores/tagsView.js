@@ -30,9 +30,9 @@ export const useTagsViewStore = defineStore({
           title: view.meta.title || 'no-name',
         }),//创建新对象（包含原始视图对象的属性）
       )
-      if (view.meta.keepAlive) {
+      if (view.meta.keepAlive) {//keepAlive为 Vue Router 中用于缓存组件的配置项
         this.cachedViews.push(view.name)
-      }
+      }//如果 keepAlive 为 true，则将当前视图的名称 (view.name) 添加到 cachedViews 数组中（cachedViews 用于存储需要缓存的组件名称，以便在切换路由时保持组件状态）
     },//将视图添加到已访问的视图列表中，并处理缓存逻辑
     delView(activeTabPath) {
       return new Promise((resolve) => {
@@ -73,16 +73,20 @@ export const useTagsViewStore = defineStore({
     clearVisitedView() {
       this.delAllViews()
     },
+    //这段代码通常用于实现标签页（Tabs）功能，允许用户关闭所有非固定的标签页
     delAllViews() {
       return new Promise((resolve) => {
-        this.visitedViews = this.visitedViews.filter((v) => v.meta.affix)
+        this.visitedViews = this.visitedViews.filter((v) => v.meta.affix)//保留meta.affix为true的视图
         this.cachedViews = this.visitedViews.filter((v) => v.meta.affix)
-        resolve([...this.visitedViews])
+        resolve([...this.visitedViews])//调用 resolve，将过滤后的 visitedViews 数组作为结果返回
       })
     },
+    //delOtherViews用于删除除了指定路径的视图和所有固定视图之外的其他视图
     delOtherViews(path) {
       this.visitedViews = this.visitedViews.filter((item) => {
         return item.path === path || item.meta.affix
+        //当前视图的路径与传入的 path 相同：item.path === path。
+        //当前视图是固定视图：item.meta.affix 为 true
       })
       this.cachedViews = this.visitedViews.filter((item) => {
         return item.path === path || item.meta.affix

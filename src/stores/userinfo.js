@@ -18,7 +18,7 @@ export const useUserStore = defineStore({
         resolve(username)
       })
     },
-    getRoles() {
+    getRoles() { 
       return new Promise((resolve, reject) => {
         this.roles = ['admin']
         localStorage.roles = JSON.stringify(this.roles)
