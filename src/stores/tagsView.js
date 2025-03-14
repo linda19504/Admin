@@ -63,10 +63,11 @@ export const useTagsViewStore = defineStore({
         resolve([...this.visitedViews])
       })
     },
+    //从缓存视图列表中删除指定视图
     delCachedView(view) {
       return new Promise((resolve) => {
         const index = this.cachedViews.indexOf(view.name)
-        index > -1 && this.cachedViews.splice(index, 1)
+        index > -1 && this.cachedViews.splice(index, 1)//使用逻辑与短路操作符 &&：只有当 index > -1（即找到元素）时才执行删除
         resolve([...this.cachedViews])
       })
     },

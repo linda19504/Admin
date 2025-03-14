@@ -1,6 +1,7 @@
 // import { HomeFilled } from '@element-plus/icons-vue/dist/types'
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeMainPage from '@/views/HomeMainPage.vue'
+import TheCard from '@/components/TheCard.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -46,6 +47,12 @@ const router = createRouter({
       name: '我的提交',
       component: () => import('@/views/MySubmitFile.vue'),
       meta: { title: '我的提交' }
+    },
+    {
+      path: '/TheCard',
+      name: '我的卡片',
+      component: () => import('@/components/TheCard.vue'),
+      meta: { title: '我的卡片' }
     },
     // {
     //   path: '/MyPageList',

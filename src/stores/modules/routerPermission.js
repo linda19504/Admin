@@ -11,11 +11,13 @@ export const usePermissionStore = defineStore({
         cacheRoutes:{},//缓存需要保存的路由信息  
     }),
     getters:{
-        //返回通过 filterKeepAlive 函数过滤后的 asyncRoutes
+        //返回 state.routes，即所有路由信息
          permission_routes:(state)=>{
             return state.routes
          },
-         //返回通过 filterKeepAlive 函数过滤后的 asyncRoutes
+       
+         //调用 filterKeepAlive(asyncRoutes)，返回需要缓存的路由
+         //过滤需要缓存的路由
          keepAliveRoutes:(state)=>{
             return filterKeepAlive(asyncRoutes)
          }

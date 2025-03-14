@@ -1,26 +1,21 @@
 // import { fn } from '@storybook/test'
-import TheProfile from '@/components/TheProfile.vue'
+import TheProfile from '@/Header/components/TheProfile.vue'
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 export default {
   title: 'Components/TheProfile',
   component: TheProfile,
   tags: ['autodocs'],
-  args: {
-    label: 'test label',
-    default: 'hello',
-  }
-}
+  arg: {
+    label:'默认标签'
+  },  
+};
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Primary = {
   args: {
-    args: {
-      avatar_url: '/avatar.png',
-      username: '慕容紫英',
-      email: 'murogziying@gmail.com'
-    }
+    label: '默认标签'
 
-  }
-}
+  },
+};
  

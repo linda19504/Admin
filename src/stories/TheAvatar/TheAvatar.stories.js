@@ -1,5 +1,5 @@
 // import { fn } from '@storybook/test'
-import TheAvatar from '@/components/TheAvatar.vue'
+import TheAvatar from '@/Header/components/TheAvatar.vue'
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 export default {
@@ -7,33 +7,25 @@ export default {
   component: TheAvatar,
   tags: ['autodocs'],
   args: {
-    label: 'test label',
-    default: 'hello',
-  }
+    avatar_url: '/avatar.png', 
+    username: 'John Doe L',
+    email: 'john.doe@example.com',
+    showName:'true',
+  },
 }
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Primary = {
   args: {
-    avatar_url: '',
-    username: '',
-    email: ''},
-  approvers: [
-        {
-          avatar_url: '',
-          username: '',
-          email: ''
-        },
-        {
-          avatar_url: '',
-          username: '',
-          email: ''
-        }
-      ],
-
-      create_date: '',
-      last_updated_date: ''
-    }
+    avatar_url: '/avatar.png',
+    username: 'John Doe L',
+    email: 'john.doe@example.com',
+    showName: '',
+  },
+};
+  
+   
+    
   
 
 
