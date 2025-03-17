@@ -5,8 +5,9 @@ export const useTagsViewStore = defineStore({
   id: 'tagsViewState',
   state: () => ({
     activeTabsValue: '/LoginPage',
-    visitedViews: [],
+    visitedViews: [ ],
     cachedViews: [],
+
   }),
   getters: {},
   actions: {

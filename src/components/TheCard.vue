@@ -1,13 +1,17 @@
 <template>
-  <div class="card-container"> 
+  <div class="card-container">
     <el-row :gutter="20">
-      <el-col v-for="card in cards" :key="card.id" :span="6" >
+      <el-col v-for="card in cards" :key="card.id" :span="6" @click="toggleCard(card.id)">
         <el-card title="cards" :shadow="cardShadow">
           <template #header>
-            <div class="card-header" @click="toggleCard(card.id)">{{ card.title }}</div>
-            <!-- <el-icon :class="['arrow-icon', { 'rotate-180': card.isOpen }]">
-              <ArrowDown />
-            </el-icon> -->
+            <div class="card-header">
+              {{ card.title }}
+            </div>
+          </template>
+          <template #context>
+            <div v-if="card.isOpen" class="card-content">
+              {{ card.content }}
+            </div>
           </template>
           <transition name="collapse">
             <div v-if="card.isOpen" class="card-content">
@@ -23,7 +27,6 @@
 import { ref, onMounted } from 'vue'
 import { useCardStore } from '@/stores/cardStore.js'
 import { storeToRefs } from 'pinia'
-// import { ArrowDown } from '@element-plus/icons-vue'
 
 const cardStore = useCardStore()
 const { cards } = storeToRefs(cardStore)
@@ -33,29 +36,6 @@ onMounted(() => {
     isOpen: false // 默认折叠
   }))
 })
-// const { isCardOpen } = storeToRefs(cardStore); // 将状态转换为响应式引用
-// const { toggleCards } = cardStore; // 获取 action
-// const props = defineProps({
-//   title: {
-//     type: String,
-//     required: true
-//   },
-//   content: {
-//     type: String,
-//     default: ''
-//   },
-//   cardShadow: {
-//     type: String,
-//     default: 'hover'
-//   }
-// })
-// const cardShadow = ref('hover');
-// const isCollapse = computed(()=>!SettingStore.isCollapse);
-// const isCollapsed = ref(false);
-// const handleCardClick = () => {
-//   console.log('卡片被点击:', props.title)
-// 可以实现跳转详情页等逻辑
-// };
 const toggleCard = (cardId) => {
   const card = cards.value.find((card) => card.id === cardId)
   if (card) {
@@ -68,7 +48,7 @@ const cardShadow = ref('hover')
 .card-container {
   display: flex;
   flex-direction: column;
-  gap:20px;
+  gap: 20px;
 }
 
 .keep-card {

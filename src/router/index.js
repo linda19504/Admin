@@ -54,6 +54,12 @@ const router = createRouter({
       component: () => import('@/components/TheCard.vue'),
       meta: { title: '我的卡片' }
     },
+    {
+      path: '/TheCards',
+      name: '我的卡片',
+      component: () => import('@/components/TheCards.vue'),
+      meta: { title: '我的卡片' }
+    },
     // {
     //   path: '/MyPageList',
     //   name: '我的列表页',

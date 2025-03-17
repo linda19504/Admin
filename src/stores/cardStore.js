@@ -4,9 +4,9 @@ import { defineStore } from 'pinia'
 export const useCardStore = defineStore('card', {
   state: () => ({
     cards: [
-       {id:1,title: 'Card 1',content: 'Content of Card 1 Content of Card 1'},
-       {id: 2, title: 'Card 2', content: 'Content of Card 2Content of Card 2' },
-       {id:3,title: 'Card 3',content: 'Content of Card 3Content of Card 3'},
+       {id:1,title: 'Card one',content: 'Content of Card one '},
+       {id: 2, title: 'Card two', content: 'Content of Card two' },
+       {id:3,title: 'Card three',content: 'Content of Card three'},
     ]  
   }),
   // actions: {
