@@ -1,30 +1,23 @@
 <template>
     <Teleport to="body">
-        <!-- <div v-show="onShow"> -->
-        <div @click="handleOverlayClick" class="reveal-overlay">
-        </div>
-        <div class="reveal-container">
-            <div class="my-modal">
-                <slot></slot>
+        <div v-show="onShow">
+            <div @click="handleOverlayClick" class="reveal-overlay">
+            </div>
+            <div class="reveal-container">
+                <div class="my-modal">
+                    <slot></slot>
+                </div>
             </div>
         </div>
-        <!-- </div> -->
     </Teleport>
 </template>
 <script setup>
-import { ref } from 'vue';
-import classnames from "classnames";
-import { useCloseStore } from '@/stores/close.js';
-import { storeToRefs } from 'pinia';
-const store = useCloseStore();
-// const onShow = ref();
-const closeStore = useCloseStore();
-const { close } = storeToRefs(closeStore);
-// const onShow = store.state.onShow;
-// const onShow = computed(() => store.state.onShow);
-
-async function handleOverlayClick() {
-    await store.closeClick(false);
+import { computed} from 'vue';
+import { useMainStore } from "@/store/index.js";
+const mainStore = useMainStore();
+const onShow = computed(() => mainStore.onShow);   
+function handleOverlayClick() {
+    mainStore.changeOnShow(false);   
 }
 
 </script>
@@ -48,7 +41,6 @@ async function handleOverlayClick() {
     align-items: center;
 }
 
-/* 确保居中显示模态框 */
 .my-modal {
     position: fixed;
     top: 50%;
@@ -60,11 +52,10 @@ async function handleOverlayClick() {
     width: 43rem;
     height: 45rem;
 
-    // @include breakpoint(medium) {
-    //     width: 100%;
-    //     height: 100%;
-    // }
+    @include breakpoint(medium) {
+        width: 100%;
+        height: 100%;
+    }
 }
-
-/* 定义了模态框的位置，背景色，大小等 */
 </style>
+  
