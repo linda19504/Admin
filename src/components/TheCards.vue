@@ -1,5 +1,5 @@
 <template>
-  <div class="card-container">
+  <div class="flex-container flex-column jusitify-center align-center gap-10">
     <el-row :gutter="20">
       <el-col v-for="card in cards" :key="card.id" :span="6" @click="openDialog(card)">
         <el-card class="keep-card" shadow="hover">
@@ -29,6 +29,7 @@
   </div>
 </template>
 <script setup>
+
 import { ref } from 'vue'
 import { ElMessageBox, ElMessage } from 'element-plus'
 import { useCardStore } from '@/stores/cardStore.js'
@@ -64,6 +65,7 @@ const handleClose = (done) => {
   display: flex;
   flex-direction: column;
   gap: 20px;
+
 }
 
 .keep-card {

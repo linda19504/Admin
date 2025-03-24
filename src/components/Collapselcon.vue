@@ -5,7 +5,7 @@
     </div>
   </template>
   <script lang="ts" setup>
-    import { useSettingStore } from '@/stores/setting'
+    import { useSettingStore } from '@/stores/modules/setting'
     import { computed } from 'vue'
     const SettingStore = useSettingStore()
     const isCollapse = computed(() => !SettingStore.isCollapse)

@@ -10,7 +10,7 @@ const popupStore = usePopupStore();
 const { popup } = storeToRefs(popupStore)
 // const isOrdered = true;
 
-const props = defineProps({
+const props = defineProps({  
     handleClose: {
         type: Function,
     },
@@ -25,6 +25,7 @@ const props = defineProps({
     text-align: center;
     justify-content: center;
 }
+
 
 .reveal-content {
     padding: 0 1.125rem;

@@ -24,7 +24,7 @@
 import { ref, reactive } from 'vue'
 import { useDrawerStore } from '@/stores/drawer.js'
 import { storeToRefs } from 'pinia'
-let items = [];
+let items = [ ];
 const store = useDrawerStore();
 const { drawer } = storeToRefs(store)
 const ruleFormRef = ref(null);

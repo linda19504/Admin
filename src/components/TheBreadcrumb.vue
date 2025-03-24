@@ -4,7 +4,7 @@
     <el-breadcrumb-item v-for="(item, index) in matched" :key="index.name">
       <a v-if="index !== matched.length - 1" @click.prevent="handleLink(item)">{{ item.name }}</a>
       <span v-else>{{ item.name }}</span>
-    </el-breadcrumb-item>
+    </el-breadcrumb-item >
   </el-breadcrumb>
 </template>
 <script setup>

@@ -25,8 +25,8 @@
 <script setup>
 import { computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
-import { useSettingStore } from '@/stores/setting'
-import { useTagsViewStore } from '@/stores/tagsView'
+import { useSettingStore } from '@/stores/modules/setting'
+import { useTagsViewStore } from '@/stores/modules/tagsView'
 const route = useRoute()
 const router = useRouter()
 const SettingStore = useSettingStore() 

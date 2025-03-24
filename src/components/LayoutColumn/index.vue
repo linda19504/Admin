@@ -25,9 +25,9 @@
 import { computed, watch, ref, onMounted } from 'vue'
 import{useRoute,userouter} from'vue-Router'
 import { TabsPaneContext } from 'element-plus'
-import { useTagsViewStore } from '@/stores/tagsView.js'
+import { useTagsViewStore } from '@/stores/modules/tagsView.js'
 import { usePermissionStore } from '@/store/modules/permission'
-import { useUserStore } from '@/stores/userinfo'
+import { useUserStore } from '@/stores/modules/userinfo'
 
 const router = useRouter()
 const TagsViewStore = useTagsViewStore()

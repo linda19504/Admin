@@ -68,8 +68,8 @@
               :size="descriptionData.size"
               :create_date="descriptionData.create_date"
               :last_updated_date="descriptionData.last_updated_date"
-              :creater="descriptionData.creater"
-              :approvers="descriptionData.approvers"
+              :creater="descriptionData.creater"z
+              :approvers="descriptionData.approvers"  
               :descriptionItems="descriptionData.descriptionItems"
             ></TheDescription>
             <br />
@@ -87,7 +87,7 @@
 <script setup>
 import { useRouter } from "vue-router";
 import { ref, computed } from "vue";
-import { useUserStore } from "@/stores/userinfo.js";
+import { useUserStore } from "@/stores/modules/userinfo.js";
 import { Edit, SwitchButton } from "@element-plus/icons-vue";
 import SideBar from "@/components/SideBar.vue";
 import TheBreadcrumb from "@/components/TheBreadcrumb.vue";
@@ -95,7 +95,7 @@ import { HOME_MAIN } from "@/constants/MainPage.constants.js";
 import TheDescription from "@/components/TheDescription.vue";
 import TheAvatar from "@/components/TheAvatar.vue";
 import { ElMessage, ElMessageBox } from "element-plus";
-import { useTagsViewStore } from "@/stores/tagsView.js";
+import { useTagsViewStore } from "@/stores/modules/tagsView.js";
 import PersonalDialog from "@/components/PersonalDialog.vue";
 import { storeToRefs } from "pinia";
 // import MoreButton from '@/components/MoreButton.vue'

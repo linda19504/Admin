@@ -164,7 +164,7 @@
 // import axios from 'axios';
 
 import { ref, reactive, computed } from 'vue'
-import { useUserStore } from '@/stores/userinfo.js'
+import { useUserStore } from '@/stores/modules/userinfo.js'
 import SideBar from '@/components/SideBar.vue'
 import Dialog from '@/components/Dialog.vue'
 import { HOME_MAIN } from '@/constants/MainPage.constants.js'
