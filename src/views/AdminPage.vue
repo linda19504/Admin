@@ -77,6 +77,7 @@
               :activities="descriptionData.timelineActivities"
               :size="descriptionData.size"
             />
+            <!-- <RouterView></RouterView> -->
           </el-main>
           <el-footer> </el-footer>
         </el-container>

@@ -18,17 +18,32 @@ const router = createRouter({
       component: () => import('@/views/LoginPage.vue'),
       meta: { requiresAuth: true }
     },
-    { 
+    {
       path: '/PageList',
       name: '我的列表',
       component: () => import('@/views/MyPageList.vue'),
       meta: { breadcrumb: '' }
     },
+
     {
       path: '/AdminPage',
-      name: '我的申请',
+      name: 'AdminPage',//路由名称应该是唯一的
       component: () => import('@/views/AdminPage.vue'),
-      meta: { title: '我的申请' }
+      meta: { 
+        title: '我的申请',
+        breadcrumb: '我的申请'//添加面包屑配置
+      },
+      children: [
+        {
+          path: 'CreateNextPage',
+          name: 'CreateNextPage',
+          component: () => import('@/views/CreateNextPage.vue'),
+          meta: { 
+            title: '我的申请详情',
+            breadcrumb: '我的申请详情'//子路由面包屑
+          }
+        }
+      ]
     },
     {
       path: '/CreateNextPage',
