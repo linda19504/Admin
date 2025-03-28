@@ -156,7 +156,7 @@
 import SideBar from '@/components/SideBar.vue'
 import PersonalDialog from '@/components/PersonalDialog.vue'
 import { useRouter } from 'vue-router'
-import { ref, reactive, computed } from 'vue'
+import { ref, computed } from 'vue'
 import { HOME_MAIN } from '@/constants/MainPage.constants.js'
 import TheAvatar from '@/components/TheAvatar.vue'
 import { ElMessage, ElMessageBox, resultProps } from 'element-plus'

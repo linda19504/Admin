@@ -2,6 +2,9 @@
     <div class="common-layout ">
         <el-container class="h-max">
             <el-aside>
+                <transition>
+                    
+                </transition>
                 <el-menu default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose">
                     <el-menu-item index="1-1">
                         <el-icon>
@@ -58,4 +61,5 @@ import { HOME_MAIN } from "@/constants/MainPage.constants.js";
     font-weight: bold;
     font-size: medium;
 }
+  
 </style>

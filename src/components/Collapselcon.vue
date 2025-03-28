@@ -4,7 +4,7 @@
       <el-icon v-else class="icon"><fold /></el-icon>
     </div>
   </template>
-  <script lang="ts" setup>
+  <script setup>
     import { useSettingStore } from '@/stores/modules/setting'
     import { computed } from 'vue'
     const SettingStore = useSettingStore()

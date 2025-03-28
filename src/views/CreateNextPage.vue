@@ -71,6 +71,7 @@
         <el-main>
           <el-container>
             <el-header>
+              <!-- <CollapseIcon></CollapseIcon> -->
               <TheBreadcrumb></TheBreadcrumb>
               <br />
               <div aria-label="A complete example of page header">
@@ -190,6 +191,7 @@
     <Dialog v-model="dialogVisible" @cancelDialog="handleCancel" @confirmDialog="handleConfirm">
     </Dialog>
   </div>
+  <CollapseIcon></CollapseIcon>
 </template>
 <script setup>
 import { ref, reactive, computed } from 'vue'
@@ -197,6 +199,7 @@ import { useUserStore } from '@/stores/modules/userinfo.js'
 import SideBar from '@/components/SideBar.vue'
 import Dialog from '@/components/Dialog.vue'
 import { HOME_MAIN } from '@/constants/MainPage.constants.js'
+import CollapseIcon from '@/components/Collapselcon.vue'
 import TheBreadcrumb from '@/components/TheBreadcrumb.vue'
 import { ElNotification as notify } from 'element-plus'
 import TheAvatar from '@/components/TheAvatar.vue'

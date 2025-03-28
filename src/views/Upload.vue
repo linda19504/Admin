@@ -3,7 +3,7 @@
     <h1>UploadDemo</h1>
     <Upload
       v-model="fileList"
-      @update="handleUpdate"
+      @update="handleUpdate"  
       @upload-success="handleUploadSuccess"
       @upload-error="handleUploadError"
     />
@@ -15,7 +15,9 @@
         </li>
       </ul>
     </div>
+
   </div>
+  
   </template>
   
   <script setup>
