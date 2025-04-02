@@ -33,7 +33,19 @@
             <!-- <el-icon>
             <ChromeFilled />
           </el-icon> -->
-            <span class="title_name">{{ HOME_MAIN.TITLE }}</span>
+            <div>
+                <router-link to="/">
+                  <span class="title_name">{{ HOME_MAIN.TITLE }}</span></router-link>             
+            </div>
+            <!-- <transition> -->
+            <!-- <router-link v-if="isCollapse" key="collapse" class="sidebar-logo-link" to="/">
+            <img src="@/assets/image/logo.png" class="sidebar-logo" />
+          </router-link> -->
+            <!-- <router-link key="expand" class="sidebar-logo-link" to="/">
+                <img class="sidebar-logo" />
+                <h1 class="title_name">{{ HOME_MAIN.TITLE }}</h1>
+              </router-link> -->
+            <!-- </transition> -->
           </el-menu-item>
           <!-- <el-menu-item index="1">{{ HOME_MAIN.MAIN_PAGE }}</el-menu-item> -->
           <!-- <el-menu-item index="1">{{ HOME_MAIN.ADMIN }}</el-menu-item> -->
@@ -57,7 +69,7 @@
                   <el-icon><Edit /></el-icon>修改密码
                 </el-dropdown-item>
                 <el-dropdown-item :command="4" divided @click="logOut">
-                  <el-icon><SwitchButton/></el-icon>退出登录
+                  <el-icon><SwitchButton /></el-icon>退出登录
                 </el-dropdown-item>
               </el-dropdown-menu>
             </template>
@@ -218,7 +230,7 @@ const props = defineProps({
 // }
 const userStore = useUserStore()
 const userInfo = computed(() => userStore.userInfo)
-const person = ref ()
+const person = ref()
 const modifyPassword = () => {
   person.value.show()
 }
@@ -299,7 +311,7 @@ const logOut = async () => {
         message: '退出登录成功！'
       })
     })
-    .catch(() => { })
+    .catch(() => {})
 }
 </script>
 <style scoped>
@@ -310,13 +322,14 @@ const logOut = async () => {
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: end;
-  border:none;
+  border: none;
 }
 .title_name {
+  display: flex;
   font-family: 'Arial', sans-serif;
   font-size: 1.5em;
   font-weight: bold;
-  line-height: 3.5;
+  line-height: 10.5;
   color: #5b5a5a;
 }
 .el-menu--horizontal > .el-menu-item:nth-child(1) {

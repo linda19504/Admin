@@ -9,8 +9,10 @@
         @select="handleSelect"
       >
         <el-menu-item index="0">
-          <span class="title_name">{{ HOME_MAIN.TITLE }}</span>
+          <router-link to="/">
+          <span class="title_name">{{ HOME_MAIN.TITLE }}</span></router-link>
         </el-menu-item>
+        <!-- <sidebar></sidebar> -->
         <!-- <el-menu-item index="1">{{ HOME_MAIN.MAIN_PAGE }}</el-menu-item> -->
         <!-- <el-menu-item index="1">{{ HOME_MAIN.ADMIN }}</el-menu-item> -->
         <el-dropdown>
