@@ -1,6 +1,8 @@
 <template>
   <el-menu-item :index="subItem.path" @click="handleClickMenu(subItem)">
-    <el-icon><component is="subItem?.meta?.icon"></component></el-icon>
+    <el-icon>
+      <component :is="subItem?.meta?.icon"></component>
+    </el-icon>
     <template #title>
         <span>{{ subItem?.meta?.title }}</span>
     </template>

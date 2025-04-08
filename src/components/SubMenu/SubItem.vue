@@ -1,3 +1,4 @@
+//路由菜单处理逻辑，用于动态决定菜单的展示形式
 <template>
     <template v-if="!item.hidden">
       <template v-if="!item.alwaysShow && hasOneShowingChild(item.children, item)">
