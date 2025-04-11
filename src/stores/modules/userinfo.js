@@ -24,9 +24,9 @@ export const useUserStore = defineStore({
   state: () => ({
     token: localStorage.getItem('token') || null,
     userInfo: JSON.parse(
-      localStorage.getItem('userInfo') || '{avatar_url:"avatar_three.jpg",username:"",email:""}'
+      localStorage.getItem('userInfo') || '{"avatar_url":"avatar_three.jpg","username":"","email":""}'
     ),
-    roles: JSON.parse(localStorage.getItem('roles') || [])
+    roles: JSON.parse(localStorage.getItem('roles') ||'[]' )
   }),
   actions: {
     async login(userInfo) {
@@ -54,7 +54,48 @@ export const useUserStore = defineStore({
         this.logout() // 登录失败时清除状态
         throw error
       }
-    }
+    },
+    async getInfo(roles) {
+      // return new Promise((resolve, reject) => {
+      //   this.roles = roles
+      //   resolve(roles)
+      // })
+      try {
+        const response = await api.get('/user/info')
+        this.userInfo = {
+          ...response.data,
+          avatar_url: response.data.avatar_url || 'avatar_three.jpg'
+        }
+        // 持久化存储
+        localStorage.setItem('userInfo', JSON.stringify(this.userInfo))
+  
+        return this.userInfo
+      } catch (error) {
+        console.error('获取用户信息失败:', error)
+        throw error
+      }
+    },
+    async getRoles() {
+      // return new Promise((resolve, reject) => {
+      //   this.roles = ['admin']
+      //   localStorage.roles = JSON.stringify(this.roles)bvc
+      //   resolve(this.roles)
+      // })
+      try {
+        const response = await api.get('/user/roles')
+        this.roles = response.date.roles || ['admin']
+        // 持久化存储
+        localStorage.setItem('roles', JSON.stringify(this.roles))
+      } catch (error) {
+        console.error('获取角色失败:', error)
+  
+        if (error.response?.status === 401) {
+          this.logout()
+          router.push('/login')
+        }
+        throw error
+      }
+    },
   },
   // getters: {},
 
@@ -68,47 +109,47 @@ export const useUserStore = defineStore({
   //       resolve(username)
   //     })
   //   },
-  async getRoles() {
-    // return new Promise((resolve, reject) => {
-    //   this.roles = ['admin']
-    //   localStorage.roles = JSON.stringify(this.roles)
-    //   resolve(this.roles)
-    // })
-    try {
-      const response = await api.get('/user/roles')
-      this.roles = response.date.roles || ['admin']
-      // 持久化存储
-      localStorage.setItem('roles', JSON.stringify(this.roles))
-    } catch (error) {
-      console.error('获取角色失败:', error)
+  // async getRoles() {
+  //   // return new Promise((resolve, reject) => {
+  //   //   this.roles = ['admin']
+  //   //   localStorage.roles = JSON.stringify(this.roles)bvc
+  //   //   resolve(this.roles)
+  //   // })
+  //   try {
+  //     const response = await api.get('/user/roles')
+  //     this.roles = response.date.roles || ['admin']
+  //     // 持久化存储
+  //     localStorage.setItem('roles', JSON.stringify(this.roles))
+  //   } catch (error) {
+  //     console.error('获取角色失败:', error)
 
-      if (error.response?.status === 401) {
-        this.logout()
-        router.push('/login')
-      }
-      throw error
-    }
-  },
-  async getInfo(roles) {
-    // return new Promise((resolve, reject) => {
-    //   this.roles = roles
-    //   resolve(roles)
-    // })
-    try {
-      const response = await api.get('/user/info')
-      this.userInfo = {
-        ...response.data,
-        avatar_url: response.data.avatar_url || 'avatar_three.jpg'
-      }
-      // 持久化存储
-      localStorage.setItem('userInfo', JSON.stringify(this.userInfo))
+  //     if (error.response?.status === 401) {
+  //       this.logout()
+  //       router.push('/login')
+  //     }
+  //     throw error
+  //   }
+  // },
+  // async getInfo(roles) {
+  //   // return new Promise((resolve, reject) => {
+  //   //   this.roles = roles
+  //   //   resolve(roles)
+  //   // })
+  //   try {
+  //     const response = await api.get('/user/info')
+  //     this.userInfo = {
+  //       ...response.data,
+  //       avatar_url: response.data.avatar_url || 'avatar_three.jpg'
+  //     }
+  //     // 持久化存储
+  //     localStorage.setItem('userInfo', JSON.stringify(this.userInfo))
 
-      return this.userInfo
-    } catch (error) {
-      console.error('获取用户信息失败:', error)
-      throw error
-    }
-  },
+  //     return this.userInfo
+  //   } catch (error) {
+  //     console.error('获取用户信息失败:', error)
+  //     throw error
+  //   }
+  // },
   logout() {
     // return new Promise((resolve, reject) => {
     //   this.token = null
