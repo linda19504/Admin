@@ -57,9 +57,9 @@ import { ElMessage, ElMessageBox } from 'element-plus'
 import { computed, ref } from 'vue'
 
 import AvatarLogo from '@/assets/image/avatar.png'
-import { useUserStore } from '@/store/modules/userinfo'
-import { useTagsViewStore } from '@/store/modules/tagsView'
-import { usePermissionStore } from '@/store/modules/routerPermission'
+import { useUserStore } from '@/stores/modules/userinfo'
+import { useTagsViewStore } from '@/stores/modules/tagsView'
+import { usePermissionStore } from '@/stores/modules/routerPermission'
 import PersonalDialog from './PersonalDialog.vue'
 
     const router = useRouter()

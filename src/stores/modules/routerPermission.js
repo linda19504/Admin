@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { asyncRoutes, constantRoutes, routerArray, notFoundRouter } from '@/routers/index_router'
+// import { asyncRoutes, constantRoutes, routerArray, notFoundRouter } from '@/routers/index_router'
 import { hasPermission, filterAsyncRoutes,filterKeepAlive} from '@/utils/permission'
 export const usePermissionStore = defineStore({
     
