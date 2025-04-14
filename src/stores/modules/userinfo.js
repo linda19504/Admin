@@ -19,7 +19,7 @@ export const useUserStore = defineStore({
   state: () => ({
     token: null,
     userInfo: {  },
-    roles: localStorage.roles ? JSON.parse(localStorage.roles) : [],
+    roles: localStorage.roles ? JSON.parse(localStorage.roles) : ["admin", "other"],
   }),
   // state: () => ({
   //   token: localStorage.getItem('token') || null,
