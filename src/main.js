@@ -13,6 +13,9 @@ import '@/assets/iconfont/iconfont.css'
 import '@/assets/iconfont/iconfont.js'
 import * as ElIconsModules from '@element-plus/icons-vue'//注册icon组件
 import PageWrapLayout from '@/components/PageWrapLayout/index.vue'//引入全局组件布局
+// 引入持久化插件
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
+
 const messages = {
     en,
     zh
@@ -33,7 +36,10 @@ export const registerElIcons = (app) =>{
     }
   })
 }
-app.use(createPinia())
+const pinia = createPinia()
+//pinia使用
+pinia.use(piniaPluginPersistedstate)
+app.use(pinia)
 app.use(ElementPlus)
 app.use(router)
 app.use(i18n)

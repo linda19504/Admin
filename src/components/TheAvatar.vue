@@ -67,9 +67,7 @@ import PersonalDialog from './PersonalDialog.vue'
     const PermissionStore = usePermissionStore()
     const currentRoles = computed({
       get() {
-        console.log(UserStore.roles)
         return UserStore.roles[0]
-        
       },
       set(val) {
         (async () => {
@@ -82,8 +80,8 @@ import PersonalDialog from './PersonalDialog.vue'
       }
     })
 
-    const switchRolesAction = () => {
-      if (currentRoles.value) return
+    const switchRolesAction = (type) => {
+      if (type === currentRoles.value) return
       currentRoles.value = currentRoles.value === 'admin' ? 'other' : 'admin'
     }
 

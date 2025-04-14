@@ -19,7 +19,7 @@ export const useUserStore = defineStore({
   state: () => ({
     token: null,
     userInfo: {  },
-    roles: localStorage.roles ? JSON.parse(localStorage.roles) : ["admin", "other"],
+    roles: localStorage.roles ? JSON.parse(localStorage.roles) : [],
   }),
   // state: () => ({
   //   token: localStorage.getItem('token') || null,
@@ -117,6 +117,7 @@ export const useUserStore = defineStore({
       })
     },
     getInfo(roles) {
+      console.log("getInfo : "  + JSON.stringify(roles))
       return new Promise((resolve, reject) => {
         this.roles = roles
         resolve(roles)
