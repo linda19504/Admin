@@ -57,7 +57,7 @@
                   {{ currentRoles === 'admin' ? '当前角色' : '切换角色' }}：管理员
                 </el-dropdown-item>
                 <el-dropdown-item :command="0" divided @click="switchRolesAction('other')">
-                  {{ 4 === 'other' ? '当前角色' : '切换角色' }}：普通用户
+                  {{ currentRoles === 'other' ? '当前角色' : '切换角色' }}：普通用户
                 </el-dropdown-item>
                 <el-dropdown-item :command="3" divided @click="modifyPassword">
                   <el-icon><Edit /></el-icon>修改密码

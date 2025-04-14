@@ -55,7 +55,6 @@
 import { useRouter } from 'vue-router'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { computed, ref } from 'vue'
-
 import AvatarLogo from '@/assets/image/avatar.png'
 import { useUserStore } from '@/stores/modules/userinfo'
 import { useTagsViewStore } from '@/stores/modules/tagsView'
@@ -66,10 +65,11 @@ import PersonalDialog from './PersonalDialog.vue'
     const UserStore = useUserStore()
     const TagsViewStore = useTagsViewStore()
     const PermissionStore = usePermissionStore()
-
     const currentRoles = computed({
       get() {
+        console.log(UserStore.roles)
         return UserStore.roles[0]
+        
       },
       set(val) {
         (async () => {
