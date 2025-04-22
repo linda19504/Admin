@@ -16,7 +16,7 @@ export default defineConfig({
       iconDirs: [path.resolve(process.cwd(), 'src/icons/svg')],
       // 指定symbolId格式
       symbolId: 'icon-[dir]-[name]'
-    })`1`
+    })
   ],
   resolve: {
     alias: {
